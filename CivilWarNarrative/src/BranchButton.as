@@ -8,7 +8,8 @@ package
 	 */
 	public class BranchButton extends SimpleButton
 	{
-		public static const DEFAULT_TEXT:String = "Continue";    //The default text that appears on a button for a random or conditional branch.
+		public static const DEFAULT_TEXT:String = "Continue";        //The default text that appears on a button for a random or conditional branch.
+		public static const DEFAULT_RETURN_TEXT:String = "Return";   //The default text for a button on an ending slide that takes the user back to the initial state.
 		
 		public var field:TextField;
 		public var reference:String;

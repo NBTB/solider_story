@@ -77,7 +77,7 @@
 			<Path>
 				<Weight>4</Weight> 
 				<Store key="POKEROUTCOME" value="WIN"/> <!-- Store commands are empty nodes. They cause the program to remember the given key/value pair. -->
-				<Reference>sampleconditional</Reference> <!-- If this path is followed, state changes to "sampleconditional". -->
+				<Reference>patha</Reference> <!-- If this path is followed, state changes to "sampleconditional". -->
 			</Path>
 			
 			<!-- The second path. In this case, with a 7/13 probability. -->
@@ -85,14 +85,42 @@
 				<Weight>7</Weight>
 				<Store key="POKEROUTCOME" value="LOSE"/>
 				<Text/> <!-- Text nodes are ignored for random paths. -->
-				<Reference>sampleconditional</Reference> <!-- If this path is followed, state changes to "sampleconditional". There would not normally be a need to have two random paths lead to the same slide. -->
+				<Reference>pathb</Reference> <!-- If this path is followed, state changes to "sampleconditional". There would not normally be a need to have two random paths lead to the same slide. -->
+			</Path>
+		</Branch>
+	</Slide>
+	<Slide name="patha" type="body">
+		<Content>Path A was chosen for you.</Content>
+		<!-- Image URL -->
+		<Image>slide2.png</Image> 
+		<!-- Image Attribution -->
+		<Attribution>Moore House, Yorktown, Virginia. --Gardner's Photographic Sketchbook of the War--, Vol. I, 1866. Courtesy of George Eastman House, International Museum of Photography and Film.</Attribution> 
+		<Branch type="decision">
+			<Path>
+				<Text>Continue</Text>
+				<Reference>sampleconditional</Reference>
+			</Path>
+		</Branch>
+	</Slide>
+	<Slide name="pathb" type="body">
+		<Content>Path B was chosen for you.</Content>
+		<!-- Image URL -->
+		<Image>slide2.png</Image> 
+		<!-- Image Attribution -->
+		<Attribution>Moore House, Yorktown, Virginia. --Gardner's Photographic Sketchbook of the War--, Vol. I, 1866. Courtesy of George Eastman House, International Museum of Photography and Film.</Attribution> 
+		<Branch type="decision">
+			<Path>
+				<Text>Continue</Text>
+				<Reference>sampleconditional</Reference>
 			</Path>
 		</Branch>
 	</Slide>
 	<Slide name="sampleconditional" type="body"> 
 		
 		<!-- Content that goes here appears in the main text box. -->
-		<Content>This is a sample conditional page. If the random page picked path a, the button on this page will take you to the ending. If path b, it will take you back to the random page. </Content>
+		<Content>This is a sample conditional page. The branches before this slide have merged, but decisions or random outcomes may still have an effect on future branches.
+If the random page picked Path A, the button on this page will take you to the ending. 
+If Path B, it will take you back to the random page. </Content>
 		
 		<!-- Image URL -->
 		<Image>slide2.png</Image> 

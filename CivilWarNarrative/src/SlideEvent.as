@@ -12,7 +12,7 @@ package
 		public static const CLEAR_STATE:String = "clearstate";      // Dispatched by an ending slide when the user clicks "return". Signals state should be cleared and returned to the entry slide.
 		
 		public var key:String;   // Key used in a STORE_KEY command. Unused for CHANGE_SLIDE or CLEAR_STATE.
-		public var value:String; // Value to store under key in STORE_KEY event, or slide to change to for CHANGE_SLIDE event
+		public var value:String; // Value to store under key in STORE_KEY event, or slide to change to for CHANGE_SLIDE event. Not used for CLEAR_STATE.
 		
 		public function SlideEvent(type:String, value:String = null, key:String = null) 
 		{

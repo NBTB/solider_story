@@ -16,13 +16,15 @@ package
 	public class Slide extends Sprite {
 		
 		//Constants
-		public static const TITLE_TYPE:String = "title";          //"type" attribute for a title slide.
-		public static const BODY_TYPE:String = "body";            //"type" attribute for a body slide.
-		public static const ENDING_TYPE:String = "ending";        //"type" attribute for a ending slide.
+		public static const TITLE_TYPE:String = "title";                //Slide "type" attribute for a title slide.
+		public static const BODY_TYPE:String = "body";                  //Slide "type" attribute for a body slide.
+		public static const ENDING_TYPE:String = "ending";              //Slide "type" attribute for a ending slide.
 		
-		public static const DECISION_BRANCH:String = "decision";        //"type" attribute for a decision branch.
-		public static const RANDOM_BRANCH:String = "random";            //"type" attribute for a random branch.
-		public static const CONDITIONAL_BRANCH:String = "conditional";  //"type" attribute for a conditional branch.
+		public static const DECISION_BRANCH:String = "decision";        //Branch "type" attribute for a decision branch.
+		public static const RANDOM_BRANCH:String = "random";            //Branch "type" attribute for a random branch.
+		public static const CONDITIONAL_BRANCH:String = "conditional";  //Branch "type" attribute for a conditional branch.
+		
+		public static const ENDING_TEXT:String = "The End";             //The text in the banner on an ending slide.
 		
 		
 		// The slide definition (the machine)
@@ -33,7 +35,12 @@ package
 		
 		private var background:Loader;
 		
+		private var buttons:Array;
+		
 		//placeholders
+		private var banner:TextField;
+		private var bannerFormat:TextFormat;
+		
 		private var mainText:TextField;
 		private var mainFormat:TextFormat;
 		
@@ -43,10 +50,6 @@ package
 		private var attribution:TextField;
 		private var attrFormat:TextFormat;
 		
-		private var button1:BranchButton;
-		private var button2:BranchButton;
-		private var button3:BranchButton;
-		
 		//Constructs a new Slide using the given definition.
 		public function Slide(xml:XML) {
 			
@@ -54,47 +57,13 @@ package
 			machine = xml;
 			slideName = machine.@name;
 			type = machine.@type;
+			buttons = new Array();
 			
-			//the background is uninfluenced by state
+			//the background/attribution is uninfluenced by state or slide type
 			background = new Loader();
 			addChild(background);
 			background.contentLoaderInfo.addEventListener(Event.COMPLETE, showBackground);
 			background.load(new URLRequest(machine.Image));
-			
-			
-			//set up placeholder graphics
-			mainFormat = new TextFormat();
-			mainFormat.size = 12;
-			mainFormat.color = 0xFFFFFF;
-			mainFormat.font = "Arial";
-			
-			mainText = new TextField();
-			mainText.defaultTextFormat = mainFormat;
-			mainText.x = 20;
-			mainText.y = 20;
-			mainText.width = 490;
-			mainText.height = 450;
-			mainText.border = true;
-			mainText.wordWrap = true;
-			mainText.cacheAsBitmap = true;
-			mainText.text = "Your text here!\nNewline?\nWhy, yes, it is. It is single-spaced, however.";
-			addChild(mainText);
-			
-			promptFormat = new TextFormat();
-			promptFormat.font = "Arial";
-			promptFormat.color = 0xFFFFFF;
-			promptFormat.size = 12;
-			
-			promptText = new TextField();
-			promptText.defaultTextFormat = promptFormat;
-			promptText.x = 530;
-			promptText.y = 20;
-			promptText.width = 216;
-			promptText.height = 150;
-			promptText.border = true;
-			promptText.wordWrap = true;
-			promptText.text = "Placeholding text";
-			addChild(promptText);
 			
 			attrFormat = new TextFormat();
 			attrFormat.size = 9;
@@ -110,39 +79,106 @@ package
 			attribution.height = 75;
 			attribution.border = true;
 			attribution.wordWrap = true;
-			attribution.text = "Attribution";
+			attribution.text = machine.Attribution;
 			addChild(attribution);
 			
-			button1 = new BranchButton();
-			button1.visible = false;
-			button1.addEventListener(MouseEvent.CLICK, passAlong);
-			addChild(button1);
 			
-			button2 = new BranchButton();
-			button2.visible = false;
-			button2.addEventListener(MouseEvent.CLICK, passAlong);
-			addChild(button2);
-			
-			button3 = new BranchButton();
-			button3.visible = false;
-			button3.addEventListener(MouseEvent.CLICK, passAlong);
-			addChild(button3);
-			
-			attribution.text = machine.Attribution;
-			
-			mainText.text = xml.Content;
-			
-			//prompt box
-			if (xml.Prompt == "")
+			if (type == ENDING_TYPE || type == TITLE_TYPE)
 			{
-				promptText.visible = false;
+				bannerFormat = new TextFormat();
+				bannerFormat.size = 48;
+				bannerFormat.color = 0xFFFFFF;
+				bannerFormat.font = "Arial";
+				bannerFormat.align = TextFormatAlign.CENTER;
+				
+				banner = new TextField();
+				banner.defaultTextFormat = bannerFormat;
+				banner.x = 0;
+				banner.y = 120;
+				banner.width = 766;
+				banner.height = 80;
+				banner.border = true;
+				banner.cacheAsBitmap = true;
+				banner.text = ENDING_TEXT;
+				addChild(banner);
 			}
-			else
-			{
-				promptText.text = xml.Prompt;
+			else {
+					
+				promptFormat = new TextFormat();
+				promptFormat.font = "Arial";
+				promptFormat.color = 0xFFFFFF;
+				promptFormat.size = 12;
+				
+				promptText = new TextField();
+				promptText.defaultTextFormat = promptFormat;
+				promptText.x = 530;
+				promptText.y = 20;
+				promptText.width = 216;
+				promptText.height = 150;
+				promptText.border = true;
+				promptText.wordWrap = true;
+				
+				if (machine.Prompt == "" || machine.Prompt == null)
+				{
+					promptText.visible = false;
+				}
+				else
+				{
+					promptText.text = machine.Prompt;
+				}
+				
+				addChild(promptText);
 			}
 			
+			if (type == TITLE_TYPE) {
+				banner.text = machine.Content;
+			}
+			else {
+				mainFormat = new TextFormat();
+				mainFormat.size = 12;
+				mainFormat.color = 0xFFFFFF;
+				mainFormat.font = "Arial";
+				
+				mainText = new TextField();
+				mainText.defaultTextFormat = mainFormat;
+				if (type == BODY_TYPE)
+				{
+					mainText.y = 20;
+					mainText.height = 450;
+				}
+				else
+				{
+					mainText.y = 300;
+					mainText.height = 170;
+				}
+				mainText.x = 20;
+				mainText.width = 490;
+				mainText.border = true;
+				mainText.wordWrap = true;
+				mainText.cacheAsBitmap = true;
+				mainText.text = machine.Content;
+				addChild(mainText);
+				
+			}
 			
+			//set up only as many buttons as needed
+			if (machine.Branch.@type == DECISION_BRANCH) {
+				for (var i:int = 0; i < machine.Branch.Path.length(); i++)
+				{
+					buttons.push(new BranchButton());
+					BranchButton(buttons[i]).x = 530;
+					BranchButton(buttons[i]).y = 395 - 50 * (machine.Branch.Path.length() - i);
+					BranchButton(buttons[i]).addEventListener(MouseEvent.CLICK, passAlong);
+					addChild(buttons[i]);
+				}
+			}
+			else {
+				buttons.push(new BranchButton());
+				BranchButton(buttons[0]).x = 530;
+				BranchButton(buttons[0]).y = 345;
+				BranchButton(buttons[0]).addEventListener(MouseEvent.CLICK, passAlong);
+				addChild(buttons[0]);
+			}
 		}
 		
 		//For whatever reason, these must be set after loading is complete.
@@ -153,6 +189,7 @@ package
 			background.height = 450;
 		}
 		
+		//An event listener for button clicks. Responsible for dispatching CLEAR_STATE, STORE_KEY, and CHANGE_CLIDE as necessary.
 		private function passAlong(event:Event):void {
 			if (type == ENDING_TYPE) {
 				dispatchEvent(new SlideEvent(SlideEvent.CLEAR_STATE));
@@ -168,17 +205,13 @@ package
 			dispatchEvent(change);
 		}
 		
+		//A method called upon entering this slide. Determines button text/references.
 		public function enterSlide(state:Object):void {
 			
 			if (type == ENDING_TYPE)
 			{
-				button1.setText(BranchButton.DEFAULT_TEXT);
-				button1.x = 530;
-				button1.y = 345;
-				button1.visible = true;
-				
-				button2.visible = false;
-				button3.visible = false;
+				BranchButton(buttons[0]).setText(BranchButton.DEFAULT_RETURN_TEXT);
+				//Reference doesn't matter because an ending slide sends a CLEAR_STATE event instead of a CHANGE_SLIDE event.
 				return;
 			}
 			
@@ -187,56 +220,16 @@ package
 			//set up buttons
 			if (machine.Branch.@type == "decision")
 			{
-				if (paths.length() >= 1 )
+				for (var k:int = 0; k < paths.length(); k++)
 				{
-					button1.setText(paths[0].Text);
-					button1.reference = paths[0].Reference;
-					button1.x = 530;
-					button1.y = 345;
-					if (paths[0].Store.length() > 0)
-					{
-						button1.stores = true;
-						button1.key = paths[0].Store.@key;
-						button1.value = paths[0].Store.@value;
+					BranchButton(buttons[k]).setText(paths[k].Text);
+					BranchButton(buttons[k]).reference = paths[k].Reference;
+					if (paths[k].Store.length() > 0) {
+						BranchButton(buttons[k]).stores = true;
+						BranchButton(buttons[k]).key = paths[k].Store.@key;
+						BranchButton(buttons[k]).value = paths[k].Store.@value;
 					}
-					button1.visible = true;
 				}
-				else
-					button1.visible = false;
-					
-				if (paths.length() >= 2 )
-				{
-					button2.setText(paths[1].Text);
-					button2.reference = paths[1].Reference;
-					button2.x = 530;
-					button2.y = 295;
-					if (paths[1].Store.length() > 0)
-					{
-						button2.stores = true;
-						button2.key = paths[1].Store.@key;
-						button2.value = paths[1].Store.@value;
-					}
-					button2.visible = true;
-				}
-				else
-					button2.visible = false;
-					
-				if (paths.length() >= 3 )
-				{
-					button3.setText(paths[2].Text);
-					button3.reference = paths[2].Reference;
-					button3.x = 530;
-					button3.y = 245;
-					if (paths[2].Store.length() > 0)
-					{
-						button3.stores = true;
-						button3.key = paths[2].Store.@key;
-						button3.value = paths[2].Store.@value;
-					}
-					button3.visible = true;
-				}
-				else
-					button3.visible = false;
 			}
 			else if (machine.Branch.@type == "random")
 			{
@@ -255,22 +248,15 @@ package
 					sum += Number(paths[i].Weight);
 				}
 				
-				button1.setText(BranchButton.DEFAULT_TEXT);
-				button1.reference = paths[i].Reference;
-				button1.x = 530;
-				button1.y = 345;
+				BranchButton(buttons[0]).setText(BranchButton.DEFAULT_TEXT);
+				BranchButton(buttons[0]).reference = paths[i].Reference;
 				
 				if (paths[i].Store.length() > 0)
 				{
-					button1.stores = true;
-					button1.key = paths[i].Store.@key;
-					button1.value = paths[i].Store.@value;
+					BranchButton(buttons[0]).stores = true;
+					BranchButton(buttons[0]).key = paths[i].Store.@key;
+					BranchButton(buttons[0]).value = paths[i].Store.@value;
 				}
-				
-				button1.visible = true;
-				
-				button2.visible = false;
-				button3.visible = false;
 			}
 			else if (machine.Branch.@type == "conditional")
 			{
@@ -282,22 +268,16 @@ package
 					{
 						found = true;
 						
-						button1.setText(BranchButton.DEFAULT_TEXT);
-						button1.reference = paths[j].Reference;
-						button1.x = 530;
-						button1.y = 345;
+						BranchButton(buttons[0]).setText(BranchButton.DEFAULT_TEXT);
+						BranchButton(buttons[0]).reference = paths[j].Reference;
 						
+						//theoretically useless, but whatever.
 						if (paths[j].Store.length() > 0)
 						{
-							button1.stores = true;
-							button1.key = paths[j].Store.@key;
-							button1.value = paths[j].Store.@value;
+							BranchButton(buttons[0]).stores = true;
+							BranchButton(buttons[0]).key = paths[j].Store.@key;
+							BranchButton(buttons[0]).value = paths[j].Store.@value;
 						}
-						
-						button1.visible = true;
-						
-						button2.visible = false;
-						button3.visible = false;
 					}
 					j++;
 				}
@@ -305,9 +285,7 @@ package
 				//TODO: implement default behavior.
 				if (!found)
 				{
-					button1.visible = false;
-					button2.visible = false;
-					button3.visible = false;
+					
 				}
 			}
 		}

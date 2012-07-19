@@ -1,7 +1,8 @@
-package  
+package UIComponents
 {
 	import flash.display.SimpleButton;
 	import flash.text.TextField;
+	import flash.display.Graphics;
 	/**
 	 * ...
 	 * @author Robert Cigna
@@ -11,7 +12,7 @@ package
 		public static const DEFAULT_TEXT:String = "Continue";        //The default text that appears on a button for a random or conditional branch.
 		public static const DEFAULT_RETURN_TEXT:String = "Return";   //The default text for a button on an ending slide that takes the user back to the initial state.
 		
-		public var field:TextField;
+		public var graphic:ButtonGraphic;
 		public var reference:String;
 		
 		public var stores:Boolean;
@@ -25,19 +26,14 @@ package
 			this.key = key;
 			this.value = value;
 			
-			field = new TextField();
-			field.width = 216;
-			field.height = 30;
-			field.border = true;
-			field.textColor = 0xFFFFFF;
-			field.text = text;
+			graphic = new ButtonGraphic(text);
 			
-			super(field, field, field, field);
+			super(graphic, graphic, graphic, graphic);
 		}
 		
 		public function setText(text:String):void
 		{
-			field.text = text;
+			graphic.setText(text);
 		}
 		
 	}

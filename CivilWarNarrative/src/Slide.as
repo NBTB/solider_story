@@ -2,6 +2,7 @@ package
 {
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
+	import flash.filters.ColorMatrixFilter;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
@@ -9,6 +10,11 @@ package
 	import flash.display.Loader;
 	import flash.events.Event;
 	import flash.net.URLRequest;
+	import UIComponents.AttributionBox;
+	import UIComponents.BranchButton;
+	import UIComponents.ContentBox;
+	import UIComponents.PromptBox;
+	import UIComponents.TitleBanner;
 	/**
 	 * ...
 	 * @author Robert Cigna
@@ -26,29 +32,78 @@ package
 		
 		public static const ENDING_TEXT:String = "The End";             //The text in the banner on an ending slide.
 		
+		public static const COLOR_FILTER_R_BYTE:int = 238;              //The R component of the color filter.
+		public static const COLOR_FILTER_G_BYTE:int = 234;              //The G component of the color filter.
+		public static const COLOR_FILTER_B_BYTE:int = 232;              //The B component of the color filter.
 		
-		// The slide definition (the machine)
+		//Constructs a ColorMatrixFilter to transform images into sepia tone.
+		public static function GetSepiaFilter():ColorMatrixFilter {
+			
+			var rFraction:Number = COLOR_FILTER_R_BYTE / (COLOR_FILTER_B_BYTE + COLOR_FILTER_G_BYTE + COLOR_FILTER_R_BYTE);
+			var gFraction:Number = COLOR_FILTER_G_BYTE / (COLOR_FILTER_B_BYTE + COLOR_FILTER_G_BYTE + COLOR_FILTER_R_BYTE);
+			var bFraction:Number = COLOR_FILTER_B_BYTE / (COLOR_FILTER_B_BYTE + COLOR_FILTER_G_BYTE + COLOR_FILTER_R_BYTE);
+			
+			var matrix:Array = new Array();
+			/*
+			matrix.push(COLOR_FILTER_R_BYTE / 255.0 *rFraction);
+			matrix.push(COLOR_FILTER_R_BYTE / 255.0 *gFraction);
+			matrix.push(COLOR_FILTER_R_BYTE / 255.0 *bFraction);
+			/*/
+			matrix.push(.393);
+			matrix.push(.769);
+			matrix.push(.189);
+			//*/
+			matrix.push(0);
+			matrix.push(0);
+			/*
+			matrix.push(COLOR_FILTER_G_BYTE / 255.0 *rFraction);
+			matrix.push(COLOR_FILTER_G_BYTE / 255.0 *gFraction);
+			matrix.push(COLOR_FILTER_G_BYTE / 255.0 * bFraction);
+			/*/
+			matrix.push(.349);
+			matrix.push(.686);
+			matrix.push(.131);
+			//*/
+			matrix.push(0);
+			matrix.push(0);
+			/*
+			matrix.push(COLOR_FILTER_B_BYTE / 255.0 *rFraction);
+			matrix.push(COLOR_FILTER_B_BYTE / 255.0 *gFraction);
+			matrix.push(COLOR_FILTER_B_BYTE / 255.0 * bFraction);
+			/*/
+			matrix.push(.272);
+			matrix.push(.534);
+			matrix.push(.168);
+			//*/
+			matrix.push(0);
+			matrix.push(0);
+			matrix.push(0);
+			matrix.push(0);
+			matrix.push(0);
+			matrix.push(1);
+			matrix.push(0);
+			return new ColorMatrixFilter(matrix);
+			//var filter:ColorMatrixFilter = new ColorMatrixFilter(matrix);
+		}
+		
+		//The slide definition (the machine)
 		private var machine:XML;
 		
 		public var slideName:String;
 		public var type:String;
 		
 		private var background:Loader;
-		
+		private var banner:TitleBanner;
+		private var contentBox:ContentBox;
+		private var promptBox:PromptBox;
 		private var buttons:Array;
+		private var attributionBox:AttributionBox;
+		
 		
 		//placeholders
-		private var banner:TextField;
-		private var bannerFormat:TextFormat;
+		//private var banner:TextField;
+		//private var bannerFormat:TextFormat;
 		
-		private var mainText:TextField;
-		private var mainFormat:TextFormat;
-		
-		private var promptText:TextField;
-		private var promptFormat:TextFormat;
-		
-		private var attribution:TextField;
-		private var attrFormat:TextFormat;
 		
 		//Constructs a new Slide using the given definition.
 		public function Slide(xml:XML) {
@@ -57,107 +112,81 @@ package
 			machine = xml;
 			slideName = machine.@name;
 			type = machine.@type;
+			
 			buttons = new Array();
 			
 			//the background/attribution is uninfluenced by state or slide type
 			background = new Loader();
 			addChild(background);
+			var filters:Array = background.filters;
+			filters.push(GetSepiaFilter());
+			background.filters = filters;
 			background.contentLoaderInfo.addEventListener(Event.COMPLETE, showBackground);
 			background.load(new URLRequest(machine.Image));
 			
-			attrFormat = new TextFormat();
-			attrFormat.size = 9;
-			attrFormat.font = "Arial";
-			attrFormat.color = 0xFFFFFF;
-			attrFormat.align = TextFormatAlign.RIGHT;
-			
-			attribution = new TextField();
-			attribution.defaultTextFormat = attrFormat;
-			attribution.x = 530;
-			attribution.y = 395;
-			attribution.width = 216;
-			attribution.height = 75;
-			attribution.border = true;
-			attribution.wordWrap = true;
-			attribution.text = machine.Attribution;
-			addChild(attribution);
+			attributionBox = new AttributionBox();
+			attributionBox.x = 530;
+			attributionBox.y = 395;
+			attributionBox.setText(machine.Attribution);
+			addChild(attributionBox);
 			
 			
 			if (type == ENDING_TYPE || type == TITLE_TYPE)
 			{
-				bannerFormat = new TextFormat();
-				bannerFormat.size = 48;
-				bannerFormat.color = 0xFFFFFF;
-				bannerFormat.font = "Arial";
-				bannerFormat.align = TextFormatAlign.CENTER;
-				
-				banner = new TextField();
-				banner.defaultTextFormat = bannerFormat;
+				banner = new TitleBanner();
 				banner.x = 0;
 				banner.y = 120;
-				banner.width = 766;
-				banner.height = 80;
-				banner.border = true;
-				banner.cacheAsBitmap = true;
-				banner.text = ENDING_TEXT;
+				banner.setText(ENDING_TEXT);
 				addChild(banner);
+				//bannerFormat = new TextFormat();
+				//bannerFormat.size = 48;
+				//bannerFormat.color = 0xFFFFFF;
+				//bannerFormat.font = "Arial";
+				//bannerFormat.align = TextFormatAlign.CENTER;
+				//
+				//banner = new TextField();
+				//banner.defaultTextFormat = bannerFormat;
+				//banner.width = 766;
+				//banner.height = 80;
+				//banner.border = true;
+				//banner.cacheAsBitmap = true;
+				//banner.text = ENDING_TEXT;
+				//addChild(banner);
 			}
 			else {
 					
-				promptFormat = new TextFormat();
-				promptFormat.font = "Arial";
-				promptFormat.color = 0xFFFFFF;
-				promptFormat.size = 12;
+				promptBox = new PromptBox();
+				promptBox.x = 530;
+				promptBox.y = 20;
 				
-				promptText = new TextField();
-				promptText.defaultTextFormat = promptFormat;
-				promptText.x = 530;
-				promptText.y = 20;
-				promptText.width = 216;
-				promptText.height = 150;
-				promptText.border = true;
-				promptText.wordWrap = true;
-				
-				if (machine.Prompt == "" || machine.Prompt == null)
+				//When a tag isn't present in the XML, it doesn't seem to have a definite value that can be conditioned on. 
+				//Assigning it to a string first makes sure that no tags or empty tags both equate to an empty string.
+				var prompt:String = machine.Prompt;
+				if (prompt == "")
 				{
-					promptText.visible = false;
+					promptBox.visible = false;
 				}
 				else
 				{
-					promptText.text = machine.Prompt;
+					promptBox.setText(prompt);
 				}
-				
-				addChild(promptText);
+				addChild(promptBox);
 			}
 			
 			if (type == TITLE_TYPE) {
-				banner.text = machine.Content;
+				banner.setText(machine.Content);
 			}
 			else {
-				mainFormat = new TextFormat();
-				mainFormat.size = 12;
-				mainFormat.color = 0xFFFFFF;
-				mainFormat.font = "Arial";
-				
-				mainText = new TextField();
-				mainText.defaultTextFormat = mainFormat;
-				if (type == BODY_TYPE)
-				{
-					mainText.y = 20;
-					mainText.height = 450;
+				contentBox = new ContentBox(type);
+				if (type == BODY_TYPE) {
+					contentBox.y = 20;
 				}
-				else
-				{
-					mainText.y = 300;
-					mainText.height = 170;
+				else {
+					contentBox.y = 300;
 				}
-				mainText.x = 20;
-				mainText.width = 490;
-				mainText.border = true;
-				mainText.wordWrap = true;
-				mainText.cacheAsBitmap = true;
-				mainText.text = machine.Content;
-				addChild(mainText);
+				contentBox.x = 20;
+				contentBox.setText(machine.Content);
+				addChild(contentBox);
 				
 			}
 			
@@ -189,7 +218,7 @@ package
 			background.height = 450;
 		}
 		
-		//An event listener for button clicks. Responsible for dispatching CLEAR_STATE, STORE_KEY, and CHANGE_CLIDE as necessary.
+		//An event listener for button clicks. Responsible for dispatching CLEAR_STATE, STORE_KEY, and CHANGE_SLIDE as necessary.
 		private function passAlong(event:Event):void {
 			if (type == ENDING_TYPE) {
 				dispatchEvent(new SlideEvent(SlideEvent.CLEAR_STATE));
@@ -288,6 +317,7 @@ package
 					
 				}
 			}
+			//also need default here?
 		}
 	}
 

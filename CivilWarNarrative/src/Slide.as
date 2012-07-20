@@ -32,58 +32,45 @@ package
 		
 		public static const ENDING_TEXT:String = "The End";             //The text in the banner on an ending slide.
 		
-		public static const COLOR_FILTER_R_BYTE:int = 238;              //The R component of the color filter.
-		public static const COLOR_FILTER_G_BYTE:int = 234;              //The G component of the color filter.
-		public static const COLOR_FILTER_B_BYTE:int = 232;              //The B component of the color filter.
+		//These constants define the color filter. It's not perfect, but to make 
+		//it any better I think requires a deeper understanding of color theory,
+		//so in the mean time, choose a good color first, then decrease its saturation and increase its luminance to get a good effect.
+		public static const COLOR_FILTER_R_BYTE:int = 184;				//The R component of the color filter.
+		public static const COLOR_FILTER_G_BYTE:int = 165;				//The G component of the color filter.
+		public static const COLOR_FILTER_B_BYTE:int = 135;				//The B component of the color filter.
+		public static const COLOR_FILTER_BRIGHTNESS:int = 0;			//The amount to add to each color channel when filtering.
+		                                                                //   In general, should be left at zero.
 		
 		//Constructs a ColorMatrixFilter to transform images into sepia tone.
 		public static function GetSepiaFilter():ColorMatrixFilter {
 			
-			var rFraction:Number = COLOR_FILTER_R_BYTE / (COLOR_FILTER_B_BYTE + COLOR_FILTER_G_BYTE + COLOR_FILTER_R_BYTE);
-			var gFraction:Number = COLOR_FILTER_G_BYTE / (COLOR_FILTER_B_BYTE + COLOR_FILTER_G_BYTE + COLOR_FILTER_R_BYTE);
-			var bFraction:Number = COLOR_FILTER_B_BYTE / (COLOR_FILTER_B_BYTE + COLOR_FILTER_G_BYTE + COLOR_FILTER_R_BYTE);
+			//My unscientific correction algorithm increases saturation of a low luminance color.
+			var correction:Number = 765 / (COLOR_FILTER_B_BYTE + COLOR_FILTER_G_BYTE + COLOR_FILTER_R_BYTE);
 			
-			var matrix:Array = new Array();
-			/*
-			matrix.push(COLOR_FILTER_R_BYTE / 255.0 *rFraction);
-			matrix.push(COLOR_FILTER_R_BYTE / 255.0 *gFraction);
-			matrix.push(COLOR_FILTER_R_BYTE / 255.0 *bFraction);
-			/*/
-			matrix.push(.393);
-			matrix.push(.769);
-			matrix.push(.189);
-			//*/
-			matrix.push(0);
-			matrix.push(0);
-			/*
-			matrix.push(COLOR_FILTER_G_BYTE / 255.0 *rFraction);
-			matrix.push(COLOR_FILTER_G_BYTE / 255.0 *gFraction);
-			matrix.push(COLOR_FILTER_G_BYTE / 255.0 * bFraction);
-			/*/
-			matrix.push(.349);
-			matrix.push(.686);
-			matrix.push(.131);
-			//*/
-			matrix.push(0);
-			matrix.push(0);
-			/*
-			matrix.push(COLOR_FILTER_B_BYTE / 255.0 *rFraction);
-			matrix.push(COLOR_FILTER_B_BYTE / 255.0 *gFraction);
-			matrix.push(COLOR_FILTER_B_BYTE / 255.0 * bFraction);
-			/*/
-			matrix.push(.272);
-			matrix.push(.534);
-			matrix.push(.168);
-			//*/
-			matrix.push(0);
-			matrix.push(0);
-			matrix.push(0);
-			matrix.push(0);
-			matrix.push(0);
-			matrix.push(1);
-			matrix.push(0);
+			//original I found online -- kind of a creamy salmon color.
+			//var matrix:Array = [ .393, .769, .189, 0, 0,
+			//					 .349, .686, .131, 0, 0,
+			//					 .272, .534, .168, 0, 0,
+			//					 0, 0, 0, 1, 0];
+			
+			//my first try -- dark brown. Good constrast, but makes images dull. Quite close to the paper prototype, though.
+			//var matrix:Array = [ .234, .468, .074, 0, 0,
+			//					 .222, .444, .074, 0, 0,
+			//					 .214, .428, .071, 0, 0,
+			//					 0,    0,    0,    1, 0];
+			
+			//my second try -- increased saturation, acceptable contrast. Brighter than Word's sepia filter to boot.
+			//var matrix:Array = [ .351, .702, .111, 0, 0,
+			//					 .334, .667, .111, 0, 0,
+			//					 .321, .642, .107, 0, 0,
+			//					 0,    0,    0,    1, 0];
+			
+			var matrix:Array = [ correction * .25 * COLOR_FILTER_R_BYTE / 255, correction * .7 * COLOR_FILTER_R_BYTE / 255, correction * .05 * COLOR_FILTER_R_BYTE / 255, 0, COLOR_FILTER_BRIGHTNESS,
+								 correction * .25 * COLOR_FILTER_G_BYTE / 255, correction * .7 * COLOR_FILTER_G_BYTE / 255, correction * .05 * COLOR_FILTER_G_BYTE / 255, 0, COLOR_FILTER_BRIGHTNESS,
+								 correction * .25 * COLOR_FILTER_B_BYTE / 255, correction * .7 * COLOR_FILTER_B_BYTE / 255, correction * .05 * COLOR_FILTER_B_BYTE / 255, 0, COLOR_FILTER_BRIGHTNESS,
+								 0,    0,    0,    1, 0];
+			
 			return new ColorMatrixFilter(matrix);
-			//var filter:ColorMatrixFilter = new ColorMatrixFilter(matrix);
 		}
 		
 		//The slide definition (the machine)
@@ -96,13 +83,10 @@ package
 		private var banner:TitleBanner;
 		private var contentBox:ContentBox;
 		private var promptBox:PromptBox;
-		private var buttons:Array;
 		private var attributionBox:AttributionBox;
 		
-		
-		//placeholders
-		//private var banner:TextField;
-		//private var bannerFormat:TextFormat;
+		//buttons have side effects of state
+		private var buttons:Array;
 		
 		
 		//Constructs a new Slide using the given definition.
@@ -124,40 +108,19 @@ package
 			background.contentLoaderInfo.addEventListener(Event.COMPLETE, showBackground);
 			background.load(new URLRequest(machine.Image));
 			
-			attributionBox = new AttributionBox();
-			attributionBox.x = 530;
-			attributionBox.y = 395;
+			attributionBox = new AttributionBox(530, 395, 216, 75);
 			attributionBox.setText(machine.Attribution);
 			addChild(attributionBox);
 			
 			
 			if (type == ENDING_TYPE || type == TITLE_TYPE)
 			{
-				banner = new TitleBanner();
-				banner.x = 0;
-				banner.y = 120;
+				banner = new TitleBanner(0, 120, 766, 80);
 				banner.setText(ENDING_TEXT);
 				addChild(banner);
-				//bannerFormat = new TextFormat();
-				//bannerFormat.size = 48;
-				//bannerFormat.color = 0xFFFFFF;
-				//bannerFormat.font = "Arial";
-				//bannerFormat.align = TextFormatAlign.CENTER;
-				//
-				//banner = new TextField();
-				//banner.defaultTextFormat = bannerFormat;
-				//banner.width = 766;
-				//banner.height = 80;
-				//banner.border = true;
-				//banner.cacheAsBitmap = true;
-				//banner.text = ENDING_TEXT;
-				//addChild(banner);
 			}
 			else {
-					
-				promptBox = new PromptBox();
-				promptBox.x = 530;
-				promptBox.y = 20;
+				promptBox = new PromptBox(530, 20, 216, 150);
 				
 				//When a tag isn't present in the XML, it doesn't seem to have a definite value that can be conditioned on. 
 				//Assigning it to a string first makes sure that no tags or empty tags both equate to an empty string.
@@ -177,14 +140,12 @@ package
 				banner.setText(machine.Content);
 			}
 			else {
-				contentBox = new ContentBox(type);
 				if (type == BODY_TYPE) {
-					contentBox.y = 20;
+					contentBox = new ContentBox(20, 20, 490, 450);
 				}
 				else {
-					contentBox.y = 300;
+					contentBox = new ContentBox(20, 300, 490, 170);
 				}
-				contentBox.x = 20;
 				contentBox.setText(machine.Content);
 				addChild(contentBox);
 				
@@ -194,17 +155,13 @@ package
 			if (machine.Branch.@type == DECISION_BRANCH) {
 				for (var i:int = 0; i < machine.Branch.Path.length(); i++)
 				{
-					buttons.push(new BranchButton());
-					BranchButton(buttons[i]).x = 530;
-					BranchButton(buttons[i]).y = 395 - 50 * (machine.Branch.Path.length() - i);
+					buttons.push(new BranchButton(530, 395 - 50 * (machine.Branch.Path.length() - i), 216, 30));
 					BranchButton(buttons[i]).addEventListener(MouseEvent.CLICK, passAlong);
 					addChild(buttons[i]);
 				}
 			}
 			else {
-				buttons.push(new BranchButton());
-				BranchButton(buttons[0]).x = 530;
-				BranchButton(buttons[0]).y = 345;
+				buttons.push(new BranchButton(530, 345, 216, 30));
 				BranchButton(buttons[0]).addEventListener(MouseEvent.CLICK, passAlong);
 				addChild(buttons[0]);
 			}

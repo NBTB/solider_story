@@ -16,7 +16,7 @@ package UIComponents
 		private var fieldFormat:TextFormat;
 		private var field:TextField;
 		
-		public function AttributionBox() 
+		public function AttributionBox(x:int, y:int, width:int, height:int) 
 		{
 			fieldFormat = new TextFormat();
 			fieldFormat.size = 9;
@@ -26,10 +26,10 @@ package UIComponents
 			
 			field = new TextField();
 			field.defaultTextFormat = fieldFormat;
-			//field.x = 530;
-			//field.y = 395;
-			field.width = 216;
-			field.height = 75;
+			this.x = x;
+			this.y = y;
+			field.width = width;
+			field.height = height;
 			//field.border = true;
 			field.wordWrap = true;
 			

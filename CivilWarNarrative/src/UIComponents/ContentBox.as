@@ -39,7 +39,7 @@ package UIComponents
 			fieldFormat = new TextFormat();
 			fieldFormat.font = "Arial";
 			fieldFormat.color = 0xFFFFFF;
-			fieldFormat.size = 12;
+			fieldFormat.size = 14;
 			
 			field = new TextField();
 			field.defaultTextFormat = fieldFormat;
@@ -47,13 +47,14 @@ package UIComponents
 			field.height = height - 2;
 			field.x = 1;
 			field.y = 1;
+			field.multiline = true;
 			field.wordWrap = true;
 			
 			addChild(field);
 		}
 		
 		public function setText(text:String):void {
-			field.text = text;
+			field.htmlText = text;
 		}
 	}
 

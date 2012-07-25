@@ -2,6 +2,7 @@ package
 {
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
+	import flash.events.TextEvent;
 	import flash.filters.ColorMatrixFilter;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
@@ -16,7 +17,8 @@ package
 	import UIComponents.PromptBox;
 	import UIComponents.TitleBanner;
 	/**
-	 * ...
+	 * A Slide is the basic unit of the interactive narrative. Each Slide is self-contained, and dispatches a SlideEvent to communicate
+	 * when an external action is necessary.
 	 * @author Robert Cigna
 	 */
 	public class Slide extends Sprite {
@@ -34,12 +36,13 @@ package
 		
 		//These constants define the color filter. It's not perfect, but to make 
 		//it any better I think requires a deeper understanding of color theory,
-		//so in the mean time, choose a good color first, then decrease its saturation and increase its luminance to get a good effect.
+		//so in the mean time, choose a good color first, then decrease its 
+		//saturation and increase its luminance to get a good effect.
 		public static const COLOR_FILTER_R_BYTE:int = 184;				//The R component of the color filter.
 		public static const COLOR_FILTER_G_BYTE:int = 165;				//The G component of the color filter.
 		public static const COLOR_FILTER_B_BYTE:int = 135;				//The B component of the color filter.
 		public static const COLOR_FILTER_BRIGHTNESS:int = 0;			//The amount to add to each color channel when filtering.
-		                                                                //   In general, should be left at zero.
+		                                                                //   In general, should be left at zero, unless a washout effect is desired.
 		
 		//Constructs a ColorMatrixFilter to transform images into sepia tone.
 		public static function GetSepiaFilter():ColorMatrixFilter {
@@ -76,16 +79,18 @@ package
 		//The slide definition (the machine)
 		private var machine:XML;
 		
+		//Slide properties.
 		public var slideName:String;
 		public var type:String;
 		
+		//Visual elements
 		private var background:Loader;
-		private var banner:TitleBanner;
+		private var banner:TitleBanner; // only used in TITLE_TYPE or ENDING_TYPE slides, null otherwise.
 		private var contentBox:ContentBox;
 		private var promptBox:PromptBox;
 		private var attributionBox:AttributionBox;
 		
-		//buttons have side effects of state
+		//buttons have side effects of state, so have to be reset every time this frame is entered.
 		private var buttons:Array;
 		
 		
@@ -105,7 +110,7 @@ package
 			var filters:Array = background.filters;
 			filters.push(GetSepiaFilter());
 			background.filters = filters;
-			background.contentLoaderInfo.addEventListener(Event.COMPLETE, showBackground);
+			background.contentLoaderInfo.addEventListener(Event.COMPLETE, loadComplete);
 			background.load(new URLRequest(machine.Image));
 			
 			attributionBox = new AttributionBox(530, 395, 216, 75);
@@ -141,7 +146,7 @@ package
 			}
 			else {
 				if (type == BODY_TYPE) {
-					contentBox = new ContentBox(20, 20, 490, 450);
+					contentBox = new ContentBox(20, 50, 490, 420);
 				}
 				else {
 					contentBox = new ContentBox(20, 300, 490, 170);
@@ -165,17 +170,26 @@ package
 				BranchButton(buttons[0]).addEventListener(MouseEvent.CLICK, passAlong);
 				addChild(buttons[0]);
 			}
+			
+			//TODO: an actual back button
+			var backfield:TextField = new TextField();
+			backfield.text = "BACK";
+			var backbutton:SimpleButton = new SimpleButton(backfield, backfield, backfield, backfield);
+			backbutton.addEventListener(MouseEvent.CLICK, goBack);
+			addChild(backbutton);
 		}
 		
 		//For whatever reason, these must be set after loading is complete.
-		private function showBackground(event:Event):void {
+		private function loadComplete(event:Event):void {
+			//TODO: determine final stage size
 			background.x = 0;
 			background.y = 0;
 			background.width = 766;
 			background.height = 450;
+			dispatchEvent(new SlideEvent(SlideEvent.LOAD_COMPLETE));
 		}
 		
-		//An event listener for button clicks. Responsible for dispatching CLEAR_STATE, STORE_KEY, and CHANGE_SLIDE as necessary.
+		//An event listener for branch button clicks. Responsible for dispatching CLEAR_STATE, STORE_KEY, and CHANGE_SLIDE as necessary.
 		private function passAlong(event:Event):void {
 			if (type == ENDING_TYPE) {
 				dispatchEvent(new SlideEvent(SlideEvent.CLEAR_STATE));
@@ -189,6 +203,10 @@ package
 			
 			var change:SlideEvent = new SlideEvent(SlideEvent.CHANGE_SLIDE, BranchButton(event.target).reference);
 			dispatchEvent(change);
+		}
+		
+		private function goBack(e:Event):void {
+			dispatchEvent(new SlideEvent(SlideEvent.GO_BACK));
 		}
 		
 		//A method called upon entering this slide. Determines button text/references.
@@ -257,7 +275,7 @@ package
 						BranchButton(buttons[0]).setText(BranchButton.DEFAULT_TEXT);
 						BranchButton(buttons[0]).reference = paths[j].Reference;
 						
-						//theoretically useless, but whatever.
+						//theoretically useless, but whatever. I guess in very certain circumstances it could add something.
 						if (paths[j].Store.length() > 0)
 						{
 							BranchButton(buttons[0]).stores = true;
@@ -268,13 +286,19 @@ package
 					j++;
 				}
 				
-				//TODO: implement default behavior.
 				if (!found)
 				{
-					
+					BranchButton(buttons[0]).setText(BranchButton.DEFAULT_TEXT);
+					BranchButton(buttons[0]).reference = machine.Branch.Default.Reference;
+					if (machine.Branch.Default.Store.length() > 0)
+					{
+						BranchButton(buttons[0]).stores = true;
+						BranchButton(buttons[0]).key = machine.Branch.Default.Store.@key;
+						BranchButton(buttons[0]).value = machine.Branch.Default.Store.@value;
+					}
 				}
 			}
-			//also need default here?
+			//TODO: implement error fall-through
 		}
 	}
 

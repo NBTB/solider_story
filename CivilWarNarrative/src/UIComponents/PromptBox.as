@@ -49,12 +49,13 @@ package UIComponents
 			field.x = 1;
 			field.y = 1;
 			field.wordWrap = true;
+			field.multiline = true;
 			
 			addChild(field);
 		}
 		
 		public function setText(text:String):void {
-			field.text = text;
+			field.htmlText = text;
 		}
 	}
 

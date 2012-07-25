@@ -3,7 +3,7 @@
 	<!-- The entry slide, presumably the title slide. -->
 	<Entry>titleslide</Entry> 
 	
-	<!-- Valid types are "title", "body", and "ending". -->
+	<!-- Introduction / set up phase -->
 	<Slide name="titleslide" type="title">
 		
 		<!-- In a title slide, the Content tag is interpreted as the title banner. -->
@@ -43,25 +43,29 @@
 		<Branch type="decision">
 			<Path>
 				<Text>Union</Text>
-				<Store key="loyalty" value="union"/>
 				<Reference>union</Reference>
 			</Path>
 			<Path>
 				<Text>Confederate</Text>
-				<Store key="loyalty" value="confederate"/>
 				<Reference>confederate</Reference>
 			</Path>
 		</Branch>
 	</Slide>
 	<Slide name="confederate" type="body">
-		<Content><![CDATA[The Confederate States: South Carolina, Mississippi, Florida, Alabama, Georgia, Louisiana, Texas, Virginia, Arkansas, Tennessee, and North Carolina.<br/><br/>The Confederate States have a population of 9,103,332 people, including 3,521,110 slaves. But less than 10% of the free population, only 316,632 people, own any slaves at all.<br/><br/>Except for the black slaves (and few free blacks), there is very little ethnic diversity, and except for New Orleans, no big cities.<br/><br/>Everyone you know curses those Yankees for not letting the Southerners be as they are. Many have done the honorable thing and enlisted to fight for home and freedom by driving the Yankees out. Why would any self-respecting man not join them?]]></Content>
+		<Content><![CDATA[The Confederate States: South Carolina, Mississippi, Florida, Alabama, Georgia, Louisiana, Texas, Virginia, Arkansas, Tennessee, and North Carolina.<br/><br/>The Confederate States have a population of , including  slaves. But less than 10% of the free population, only 316,632 people, own any slaves at all.<br/><br/>Except for the black slaves (and few free blacks), there is very little ethnic diversity, and except for New Orleans, no big cities.<br/><br/>Everyone you know curses those Yankees for not letting the Southerners be as they are. Many have done the honorable thing and enlisted to fight for home and freedom by driving the Yankees out. Why would any self-respecting man not join them?]]></Content>
+		<Prompt/><!--<![CDATA[Free Population: 5,582,222<br/>Slave Population: 3,521,110<br/>Total Population: 9,103,332<br/><br/>Slave Owners: 316,632]]></Prompt>-->
 		<Image>slide22.png</Image>
 		<Attribution>Emmitsburg, Maryland. Farmer's Inn and Hotel where our special artist was captured, July 5 1863. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-00835 DLC.</Attribution>
 		<Branch type="decision">
 			<Path>
-				<Text>Enlist</Text>
-				<Reference>recruitment</Reference>
+				<Text>Continue</Text>
+				<Store key="loyalty" value="confederate"/>
+				<Reference>hometown1</Reference>
 			</Path>
+			<!--<Path>
+				<Text>Back</Text>
+				<Reference>loyalty</Reference>
+			</Path>-->
 		</Branch>
 	</Slide>
 	<Slide name="union" type="body">
@@ -70,8 +74,66 @@
 		<Attribution>Marshall House, Alexandria, Virginia. Gardner's Photographic Sketchbook of the War--, Vol. I, 1866. Courtesy of George Eastman House, International Museum of Photography and Film.</Attribution>
 		<Branch type="decision">
 			<Path>
+				<Text>Continue</Text>
+				<Store key="loyalty" value="union"/>
+				<Reference>hometown1</Reference>
+			</Path>
+			<!--<Path>
+				<Text>Back</Text>
+				<Reference>loyalty</Reference>
+			</Path>-->
+		</Branch>
+	</Slide>
+	
+	<!-- Act 1: enlistment -->
+	<Slide name="hometown1" type="body">
+		<Content><![CDATA[Life for you here is your hometown is quiet but fairly productive. You own a small farm in the countryside just outside a small town. You and your wife, with whom you have been married only around five years, grow produce and raise chickens. What you don't eat yourselves you sell to a man in town who himself takes it to the city to peddle.<br/><br/>Today, you heard the news that the president is calling for more troops. You wouldn't normally be interested, but everyone else seems so enthused about enlisting, and the signing bonus would help buy that horse-drawn plow you've been eyeing. Of course, going off to war would mean leaving your wife and children alone on the farm.]]></Content>
+		<Image>01933r.jpg</Image>
+		<Attribution>http://www.loc.gov/pictures/item/cwp2003004890/PP/</Attribution>
+		<Prompt></Prompt>
+		<Branch type="decision">
+			<Path>
 				<Text>Enlist</Text>
 				<Reference>recruitment</Reference>
+			</Path>
+			<Path>
+				<Text>Stay home</Text>
+				<Reference>hometown2</Reference>
+			</Path>
+		</Branch>
+	</Slide>
+	<Slide name="hometown2" type="body">
+		<Content><![CDATA[(I was thinking of giving the user the option of resisting enlistment, in which case they get a short story about staying at home during the war, meanwhile being subjected to increasing amounts of peer pressure to join the army, and have a chance or two more to continue and enlist.)<br/><br/>(This also introduces an option to deal with conscription at some point.)]]></Content>
+		<Image>01933r.jpg</Image>
+		<Attribution>http://www.loc.gov/pictures/item/cwp2003004890/PP/</Attribution>
+		<Prompt></Prompt>
+		<Branch type="decision">
+			<Path>
+				<Text>Enlist</Text>
+				<Reference>recruitment</Reference>
+			</Path>
+		</Branch>
+	</Slide>
+	<Slide name="earlyenlistment" type="body">
+		<Content><![CDATA[(This page should describe the recruitment process, how a man would sign up and be sent off to war)<br/><br/>(As far as I can tell, there is little or no time spent between enlistment and actually being in the army, but how is this gap bridged? Were there army wagons that came around and picked up the fresh recruits and dropped them off at the front line by the bus-load?)<br/><br/>(In addition to historical context, it also serves as a transition into the main body of the narrative.)]]></Content>
+		<Image>slide5.png</Image>
+		<Attribution>Atlanta, Georgia. Federal army wagons railroad depot. Barnard, George N. 1864. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-02232 DLC.</Attribution>
+		<Branch type="decision">
+			<Path>
+				<Text>Continue</Text>
+				<Reference>camp1</Reference>
+			</Path>
+		</Branch>
+	</Slide>
+	<Slide name="midenlistment" type="body">
+		<Content><![CDATA[Deciding to enlist, you sign the town's elistment roll, and are checked out by the doctor. He has you take off your clothes and do jumping jacks, bend over, and delivers a pair of sound whacks to the stomach and back to make sure you are fit for duty. After that, he sends you off to the ]]></Content>
+		<Prompt><![CDATA[Later in the war, when the need for man power was more dire, doctors checked for <b>unfitness</b> rather than fitness for duty.]]></Prompt>
+		<Image>slide5.png</Image>
+		<Attribution>Atlanta, Georgia. Federal army wagons railroad depot. Barnard, George N. 1864. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-02232 DLC.</Attribution>
+		<Branch type="decision">
+			<Path>
+				<Text>Continue</Text>
+				<Reference>camp1</Reference>
 			</Path>
 		</Branch>
 	</Slide>
@@ -86,6 +148,8 @@
 			</Path>
 		</Branch>
 	</Slide>
+	
+	<!-- Act 2: life in the army -->
 	<Slide name="camp1" type="body">
 		<Content><![CDATA[Living in the camps is harder than you expected. Up at dawn, roll call, wash, marching drills, then breakfast. More drilling – and any work that needs to be done before dinner at noon. The afternoon is a brief respite to go into town. Then target practice, more drilling, tent inspection, and finally evening parade at half past five. Then the moon rises, and until ten the camp is aglow with candle- and fire-light. <br/><br/>Tonight, some of the guys are gathering to play cards by candlelight. The officers say gambling isn’t allowed, but there will probably be stakes anyway. They offer you to join in their poker game. ]]></Content>
 		<Image>slide4.png</Image>
@@ -196,6 +260,19 @@
 		<Content><![CDATA[The routine at this new camp is the same as the others, except with no time to go to town, as there is none nearby. Being on the front lines – near the enemy – means the soldiers are on edge.<br/><br/>One night it finally happens. The long roll (a kind of drumming) sounds, and all is chaos as everyone dashes to grab their weapons and form a defensive line.<br/><br/>Then, from the darkness, you hear a sergeant’s voice yelling that everything is fine, it was only a pig that got loose in the camp and was mistaken for a rebel. Of course, no one got any more sleep that night.]]></Content>
 		<Image>slide7.png</Image>
 		<Attribution>Bull Run, Virginia. Federal encampment at Blackburn's Ford. 1862 July 4. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01154 DLC.</Attribution>
+		<Branch type="conditional">
+			<Path key="playpoker" value="no">
+				<Reference>letterwriting2</Reference>
+			</Path>
+			<Default>
+				<Reference>marching2</Reference>
+			</Default>
+		</Branch>
+	</Slide>
+	<Slide name="letterwriting2" type="body">
+		<Content><![CDATA[The letter carrier arrives today. All the men swarm around the back of the mail wagon like pigs to the trough. <br/><br/>As the mail carrier calls out names one by one, the men whose names are called yelp with excitement and accept their mail as if they were accepting their lottery winnings.<br/><br/>Finally, he calls out your name, and you take your letter back to your tent to read it:<br/><br/>“My dear Husband,<br/><br/>It’s not the same here, either. We will not have too much trouble at harvest time, I think. The children and I will all have to work to gather the crops, but I hope we can manage.<br/><br/>Little Wally found a stray the other day, so for now we have the additional company of Sir Bark the dog. He insists having his own dog is good, and they have become close, but I told him he would have to feed the animal if we kept it. He doesn’t seem to mind now, but I worry he’d forget.<br/><br/>I miss you and wish you were home,<br/><br/>[Wife’s name]”]]></Content>
+		<Image>00098v.jpg</Image>
+		<Attribution>Falmouth, Virginia. Mail wagon for headquarters, Army of the Potomac. 1863. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-00098 DLC</Attribution>
 		<Branch type="decision">
 			<Path>
 				<Text>Continue</Text>
@@ -214,6 +291,8 @@
 			</Path>
 		</Branch>
 	</Slide>
+	
+	<!-- Act 3: battle -->
 	<Slide name="battle1" type="body">
 		<Content><![CDATA[The area around here is not what you had pictured as a battlefield before the war. The ground gently slopes forming uneven fields. Lonesome trees and small stands are here there poking up through the grass. The borders of the fields are variously thickets of small shrubs or thick forest.<br/><br/>The march has been stop-and-go as streams are forded; wagons and caissons get stuck.<br/><br/>You stop yet again. Many soldiers make themselves comfortable. As the minutes wear on, it becomes obvious that this is no ordinary stop. Soldiers ahead begin to march off sideways to form a battle line. The battery atop the hill can be seen scurrying around their guns, when all of a sudden they leap aside just in time for the cannon to emit a burst of bright smoke and with it a thunderous boom.<br/><br/>The war music is playing now, and you see the brigade commander talking to your staff officer. The men are already on their feet when the staff officer approaches with the orders.<br/><br/>You march into position and receive the order to load-at-will… Shortly thereafter is the order to fire.<br/<br/>In the heat of the battle, the formerly organized defensive line is forgotten, and soldiers are crouching behind any cover they can find – trees, ditches, even fence rails. They all still maintain a general grouping around their regimental colors, however.]]></Content>
 		<Image>slide10.png</Image>
@@ -288,11 +367,6 @@
 			</Path>
 		</Branch>
 	</Slide>
-	<Slide name="survival" type="ending">
-		<Content><![CDATA[You survived your first battle.<br/><br/>(a shorter story like this is better, no?)<br/><br/>(Here can go statistics such as survival rate)]]></Content>
-		<Image>slide20.png</Image>
-		<Attribution>Culpeper, Va. Brig. Gen. Henry Prince of the 2d Division, 3d Corps, and staff. 1863 September. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03983 DLC.</Attribution>
-	</Slide>
 	<Slide name="fieldhospital" type="body">
 		<Content><![CDATA[The ambulance wagon stops in front of the field hospital, back at camp.<br/><br/>The first thing you notice when stepping inside is the odor: the smell of fresh blood and pus. Here too there hangs in the air a painful absence of screaming. Whether this is due more to pain, fear, or anesthetic is unknowable.<br/><br/>Before taking a seat, a convalescent hands you a cup of liquor, “to help you calm down,” he says.<br/><br/>When the surgeon finally reaches you, the prescription is a foregone conclusion: amputation. You are given an inhaler of chloroform, a curious device the size of a deck of cards with two tubes poking out, one for air to go in, one for air to go out. Breathing through the device, you begin to feel drowsy, but still awake.<br/><br/>After moving you to the operating table, the surgeon begins poking the wound with his fingers to find debris and fragments of bullet, and once satisfied begins the procedure.<br/><br/>By the end, there is a moist bandage wrapped around your foreshortened limb and a new arm on the pile.]]></Content>
 		<Image>slide19.png</Image>
@@ -320,7 +394,13 @@
 		<Image>slide21.png</Image>
 		<Attribution>Washington, D.C. Convalescent soldiers and others outside quarters of the Sanitary Commission Home Lodge. 1865 April. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-04163 DLC.</Attribution>
 	</Slide>
-	<!--
+	<Slide name="survival" type="ending">
+		<Content><![CDATA[You survived your first battle.<br/><br/>(a shorter story like this is better, no?)<br/><br/>(Here can go statistics such as survival rate)]]></Content>
+		<Image>slide20.png</Image>
+		<Attribution>Culpeper, Va. Brig. Gen. Henry Prince of the 2d Division, 3d Corps, and staff. 1863 September. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03983 DLC.</Attribution>
+	</Slide>
+	
+	<!-- Slide template
 	<Slide name="" type="body">
 		<Content><![CDATA[]]></Content>
 		<Image></Image>
@@ -335,6 +415,7 @@
 		</Branch>
 	</Slide>
 	-->
+	<!-- Valid type attribute values are "title", "body", and "ending". -->
 	<Slide name="sampledecision" type="body"> 
 		
 		<!-- Content that goes here appears in the main text box. -->

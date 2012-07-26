@@ -10,7 +10,8 @@ package
 		public static const CHANGE_SLIDE:String = "changeslide";    // Dispatched by a slide in response to a BranchButton being clicked.
 		public static const STORE_KEY:String = "storekey";          // Dispatched by a slide in response to a BranchButton being clicked, if the button needs to store a key/value.
 		public static const CLEAR_STATE:String = "clearstate";      // Dispatched by an ending slide when the user clicks "return". Signals state should be cleared and returned to the entry slide.
-		public static const GO_BACK:String = "goback";              // Dispatched by a slide when the user clicks the backwards traversal button.
+		public static const POP_STATE:String = "popstate";          // Dispatched by a slide when the user clicks the backwards traversal button.
+		public static const PUSH_STATE:String = "pushstate";        // Dispatched by a slide just before dispatching state-changing events, so that the curent state can be preserved.
 		public static const LOAD_COMPLETE:String = "loadcomplete";  // Dispatched by a slide when it has finished loading content and is ready to be displayed.
 		
 		public var key:String;   // Key used in a STORE_KEY command. Unused for other types.

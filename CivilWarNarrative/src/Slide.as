@@ -12,6 +12,7 @@ package
 	import flash.events.Event;
 	import flash.net.URLRequest;
 	import UIComponents.AttributionBox;
+	import UIComponents.BackButton;
 	import UIComponents.BranchButton;
 	import UIComponents.ContentBox;
 	import UIComponents.PromptBox;
@@ -34,6 +35,9 @@ package
 		
 		public static const ENDING_TEXT:String = "The End";             //The text in the banner on an ending slide.
 		
+		public static const NORMAL_GRADIENT:Array = [0x0A1433, 0x0F1F4C, 0x293786];
+		public static const SELECTED_GRADIENT:Array = [0x425284, 0x3f60bd, 0x636da5];
+		
 		//These constants define the color filter. It's not perfect, but to make 
 		//it any better I think requires a deeper understanding of color theory,
 		//so in the mean time, choose a good color first, then decrease its 
@@ -46,6 +50,7 @@ package
 		
 		//Constructs a ColorMatrixFilter to transform images into sepia tone.
 		public static function GetSepiaFilter():ColorMatrixFilter {
+			//TODO optimize matrix instancing
 			
 			//My unscientific correction algorithm increases saturation of a low luminance color.
 			var correction:Number = 765 / (COLOR_FILTER_B_BYTE + COLOR_FILTER_G_BYTE + COLOR_FILTER_R_BYTE);
@@ -85,10 +90,11 @@ package
 		
 		//Visual elements
 		private var background:Loader;
-		private var banner:TitleBanner; // only used in TITLE_TYPE or ENDING_TYPE slides, null otherwise.
-		private var contentBox:ContentBox;
-		private var promptBox:PromptBox;
+		private var banner:TitleBanner;            // only used in TITLE_TYPE or ENDING_TYPE slides, null otherwise.
+		private var contentBox:ContentBox;         // only used in BODY_TYPE or ENDING_TYPE slides, null otherwise.
+		private var promptBox:PromptBox;           // only used in BODY_TYPE slides, but may not be visible.
 		private var attributionBox:AttributionBox;
+		private var backbutton:BackButton;
 		
 		//buttons have side effects of state, so have to be reset every time this frame is entered.
 		private var buttons:Array;
@@ -104,7 +110,7 @@ package
 			
 			buttons = new Array();
 			
-			//the background/attribution is uninfluenced by state or slide type
+			// The background/attribution is uninfluenced by state or slide type
 			background = new Loader();
 			addChild(background);
 			var filters:Array = background.filters;
@@ -117,7 +123,7 @@ package
 			attributionBox.setText(machine.Attribution);
 			addChild(attributionBox);
 			
-			
+			// Ending and Title slides both have a banner.
 			if (type == ENDING_TYPE || type == TITLE_TYPE)
 			{
 				banner = new TitleBanner(0, 120, 766, 80);
@@ -125,20 +131,21 @@ package
 				addChild(banner);
 			}
 			else {
-				promptBox = new PromptBox(530, 20, 216, 150);
+				// Only Body slides can have a prompt
 				
 				//When a tag isn't present in the XML, it doesn't seem to have a definite value that can be conditioned on. 
 				//Assigning it to a string first makes sure that no tags or empty tags both equate to an empty string.
 				var prompt:String = machine.Prompt;
-				if (prompt == "")
+				if (prompt != "")
+				//{
+				//	promptBox.visible = false;
+				//}
+				//else
 				{
-					promptBox.visible = false;
-				}
-				else
-				{
+					promptBox = new PromptBox(530, 20, 216, 150);
 					promptBox.setText(prompt);
+					addChild(promptBox);
 				}
-				addChild(promptBox);
 			}
 			
 			if (type == TITLE_TYPE) {
@@ -146,10 +153,10 @@ package
 			}
 			else {
 				if (type == BODY_TYPE) {
-					contentBox = new ContentBox(20, 50, 490, 420);
+					contentBox = new ContentBox(35, 20, 475, 450);5
 				}
 				else {
-					contentBox = new ContentBox(20, 300, 490, 170);
+					contentBox = new ContentBox(35, 300, 475, 170);
 				}
 				contentBox.setText(machine.Content);
 				addChild(contentBox);
@@ -171,10 +178,7 @@ package
 				addChild(buttons[0]);
 			}
 			
-			//TODO: an actual back button
-			var backfield:TextField = new TextField();
-			backfield.text = "BACK";
-			var backbutton:SimpleButton = new SimpleButton(backfield, backfield, backfield, backfield);
+			backbutton = new BackButton(10, 20, 15, 30);
 			backbutton.addEventListener(MouseEvent.CLICK, goBack);
 			addChild(backbutton);
 		}
@@ -186,6 +190,7 @@ package
 			background.y = 0;
 			background.width = 766;
 			background.height = 450;
+			background.cacheAsBitmap = true;
 			dispatchEvent(new SlideEvent(SlideEvent.LOAD_COMPLETE));
 		}
 		
@@ -195,6 +200,8 @@ package
 				dispatchEvent(new SlideEvent(SlideEvent.CLEAR_STATE));
 				return;
 			}
+			
+			dispatchEvent(new SlideEvent(SlideEvent.PUSH_STATE));
 			
 			if (BranchButton(event.target).stores) {
 				var store:SlideEvent = new SlideEvent(SlideEvent.STORE_KEY, BranchButton(event.target).value, BranchButton(event.target).key);
@@ -206,16 +213,24 @@ package
 		}
 		
 		private function goBack(e:Event):void {
-			dispatchEvent(new SlideEvent(SlideEvent.GO_BACK));
+			dispatchEvent(new SlideEvent(SlideEvent.POP_STATE));
 		}
 		
 		//A method called upon entering this slide. Determines button text/references.
 		public function enterSlide(state:Object):void {
+			if (state.stacklength == 0)
+				backbutton.visible = false;
 			
+			//for (var l:int = 0; l < buttons.length; l++) {
+			//	BranchButton(buttons[l]).reset();
+			//	//BranchButton(buttons[i]).mouseEnabled = false;
+			//	//BranchButton(buttons[i]).mouseEnabled = true;
+			//}
+				
 			if (type == ENDING_TYPE)
 			{
 				BranchButton(buttons[0]).setText(BranchButton.DEFAULT_RETURN_TEXT);
-				//Reference doesn't matter because an ending slide sends a CLEAR_STATE event instead of a CHANGE_SLIDE event.
+				// reference doesn't matter because an ending slide sends a CLEAR_STATE event instead of a CHANGE_SLIDE event.
 				return;
 			}
 			

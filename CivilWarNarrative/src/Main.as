@@ -28,17 +28,15 @@ package
 		// Application level variables
 		internal var apploader:URLLoader; // Loads the application details.
 		internal var numSlides:int; // The total number of slides.
-		internal var counter:int; // A counter for determining when all slides have completed loading.
+		internal var counter:int;   // A counter for determining when all slides have completed loading.
 		
-		internal var entry:String; // The slide to display first and on reset.
-		//internal var currentSlide:String; // The name of the current slide. now wrapped into "state"
+		internal var entry:String;  // The slide to display first and on reset.
 		
 		internal var slides:Object; // All slides in an associative array.
 		internal var state:Object;  // Stored key/value pairs for determining branching.
-		internal var stack:Array;  // The slide traversal stack, for backwards traversal.
+		internal var stack:Array;   // The slide traversal stack, for backwards traversal.
 		
-		public function Main():void 
-		{
+		public function Main():void {
 			XML.ignoreComments = true; 
 			XML.ignoreProcessingInstructions = true;
 			
@@ -46,8 +44,7 @@ package
 			else addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
-		private function init(e:Event = null):void 
-		{
+		private function init(e:Event = null):void {
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 			//TODO add a loading graphic
@@ -61,16 +58,10 @@ package
 			
 		}
 		
-		private function loadAppInfo(event:Event):void 
-		{
+		private function loadAppInfo(event:Event):void {
             var loader:URLLoader = URLLoader(event.target);
             //trace("Appinfo loaded: " + loader.data);
 			var xmlreader:XML = new XML(loader.data);
-			//trace(xmlreader.Entry);
-			
-			//var slideloader:URLLoader = new URLLoader();
-			//slideloader.addEventListener(Event.COMPLETE, loadSlide);
-			//slideloader.load(new URLRequest(xmlreader.Entry));
 			
 			slides = new Object();
 			state = new Object();
@@ -79,6 +70,7 @@ package
 			entry = xmlreader.Entry;
 			numSlides = xmlreader.Slide.length();
 			
+			//TODO error handling for slide loading
 			for (var i:int = 0; i < numSlides; i++ )
 			{
 				var slide:Slide = new Slide(xmlreader.Slide[i]);
@@ -86,7 +78,8 @@ package
 				slide.addEventListener(SlideEvent.CHANGE_SLIDE, changeSlide);
 				slide.addEventListener(SlideEvent.CLEAR_STATE, clearState);
 				slide.addEventListener(SlideEvent.LOAD_COMPLETE, countLoad);
-				slide.addEventListener(SlideEvent.GO_BACK, goBack);
+				slide.addEventListener(SlideEvent.POP_STATE, popState);
+				slide.addEventListener(SlideEvent.PUSH_STATE, pushState);
 				slides[slide.slideName] = slide;
 			}
 			
@@ -97,7 +90,7 @@ package
 				//TODO: remove loading graphic or change it to indicate progress.
 			if (counter == numSlides) {
 				state.currentSlide = entry;
-				//currentSlide = entry;
+				state.stacklength = stack.length;
 				slides[state.currentSlide].enterSlide(state);
 				addChild(slides[state.currentSlide]);
 			}
@@ -111,7 +104,6 @@ package
 			//TODO: slide transition
 			removeChild(slides[state.currentSlide]);
 			
-			stack.push(ObjectUtil.copy(state));
 			state.currentSlide = e.value;
 			state.stacklength = stack.length;
 			
@@ -133,7 +125,7 @@ package
 			//changeSlide(e);
 		}
 		
-		private function goBack(e:SlideEvent):void {
+		private function popState(e:SlideEvent):void {
 			//TODO: backwards slide transition
 			if (stack.length < 1) return; //fail-safe
 			
@@ -145,10 +137,9 @@ package
 			addChild(slides[state.currentSlide]);
 		}
 		
-        private function progressHandler(event:ProgressEvent):void
-		{
-            trace("progressHandler loaded:" + event.bytesLoaded + " total: " + event.bytesTotal);
-        }
+		private function pushState(e:SlideEvent):void {
+			stack.push(ObjectUtil.copy(state));
+		}
 	}
 	
 }

@@ -3,7 +3,7 @@
 	<!-- The entry slide, presumably the title slide. -->
 	<Entry>titleslide</Entry> 
 	
-	<!-- Introduction / set up phase -->
+	<!-- Act 0: Exposition -->
 	<Slide name="titleslide" type="title">
 		
 		<!-- In a title slide, the Content tag is interpreted as the title banner. -->
@@ -60,12 +60,8 @@
 			<Path>
 				<Text>Continue</Text>
 				<Store key="loyalty" value="confederate"/>
-				<Reference>hometown1</Reference>
+				<Reference>background-confederate</Reference>
 			</Path>
-			<!--<Path>
-				<Text>Back</Text>
-				<Reference>loyalty</Reference>
-			</Path>-->
 		</Branch>
 	</Slide>
 	<Slide name="union" type="body">
@@ -76,18 +72,53 @@
 			<Path>
 				<Text>Continue</Text>
 				<Store key="loyalty" value="union"/>
-				<Reference>hometown1</Reference>
+				<Reference>background-union</Reference>
 			</Path>
-			<!--<Path>
-				<Text>Back</Text>
-				<Reference>loyalty</Reference>
-			</Path>-->
+		</Branch>
+	</Slide>
+	<Slide name="background-union" type="title">
+		<Content>Choose your background</Content>
+		<Image>slide3.png</Image>
+		<Attribution>Marshall House, Alexandria, Virginia. Gardner's Photographic Sketchbook of the War--, Vol. I, 1866. Courtesy of George Eastman House, International Museum of Photography and Film.</Attribution>
+		<Branch type="decision">
+			<Path>
+				<Text>Countryside Farm</Text>
+				<Store key="background" value="farm"/>
+				<Reference>hometown-farm</Reference>
+			</Path>
+			<Path>
+				<Text>Downtown Factory</Text>
+				<Store key="background" value="factory"/>
+				<Reference>hometown-factory</Reference>
+			</Path>
+			<Path>
+				<Text>Free Black</Text>
+				<Store key="background" value="freeman"/>
+				<Reference>hometown-freeman</Reference>
+				</Path>
+		</Branch>
+	</Slide>
+	<Slide name="background-confederate" type="title">
+		<Content>Choose your background</Content>
+		<Image>slide3.png</Image>
+		<Attribution>Marshall House, Alexandria, Virginia. Gardner's Photographic Sketchbook of the War--, Vol. I, 1866. Courtesy of George Eastman House, International Museum of Photography and Film.</Attribution>
+		<Branch type="decision">
+			<Path>
+				<Text>Countryside Farm</Text>
+				<Store key="background" value="farm"/>
+				<Reference>hometown-farm</Reference>
+			</Path>
+			<Path>
+				<Text>Slave</Text>
+				<Store key="background" value="slave"/>
+				<Reference>hometown-farm</Reference>
+				</Path>
 		</Branch>
 	</Slide>
 	
-	<!-- Act 1: enlistment -->
-	<Slide name="hometown1" type="body">
-		<Content><![CDATA[Life for you here is your hometown is quiet but fairly productive. You own a small farm in the countryside just outside a small town. You and your wife, with whom you have been married only around five years, grow produce and raise chickens. What you don't eat yourselves you sell to a man in town who himself takes it to the city to peddle.<br/><br/>Today, you heard the news that the president is calling for more troops. You wouldn't normally be interested, but everyone else seems so enthused about enlisting, and the signing bonus would help buy that horse-drawn plow you've been eyeing. Of course, going off to war would mean leaving your wife and children alone on the farm.]]></Content>
+	<!-- Act 1: Enlistment -->
+	<Slide name="hometown-farm" type="body">
+		<Content><![CDATA[Life for you here in your hometown is quiet but fairly productive. You own a small farm in the countryside just outside a small town. You and your wife, with whom you have been married only around five years, grow produce and raise chickens. What you don't eat yourselves you sell to a man in town who himself takes it to the city to peddle.<br/><br/>Today, you heard the news that the president is calling for more troops. You wouldn't normally be interested, but everyone else seems so enthused about enlisting, and the signing bonus would help buy that horse-drawn plow you've been eyeing. Of course, going off to war would mean leaving your wife and children alone on the farm.<br/><br/>They say it will be a 30 days war. You'd be back in time for the harvest, anyway, right?]]></Content>
 		<Image>01933r.jpg</Image>
 		<Attribution>http://www.loc.gov/pictures/item/cwp2003004890/PP/</Attribution>
 		<Prompt></Prompt>
@@ -98,11 +129,43 @@
 			</Path>
 			<Path>
 				<Text>Stay home</Text>
-				<Reference>hometown2</Reference>
+				<Reference>hometown-farm2</Reference>
 			</Path>
 		</Branch>
 	</Slide>
-	<Slide name="hometown2" type="body">
+	<Slide name="hometown-factory" type="body">
+		<Content><![CDATA[Life for you here in your hometown is not too easy. Living in an apartment within the city limits, you work at a factory on the river's edge. You and your wife, with whom you have been married only around five years, have two children, and another on the way. Feeding your growing family is hard on a laborer's wage.<br/><br/>Today, you heard the news that the president is calling for more troops. You wouldn't normally be interested, but everyone else seems so enthused about enlisting, and the signing bonus would help buy some new clothes for your oldest. Of course, going off to war would mean leaving your wife and children alone, but a soldier is paid more than a factory worker...]]></Content>
+		<Image>01933r.jpg</Image>
+		<Attribution>http://www.loc.gov/pictures/item/cwp2003004890/PP/</Attribution>
+		<Prompt></Prompt>
+		<Branch type="decision">
+			<Path>
+				<Text>Enlist</Text>
+				<Reference>recruitment</Reference>
+			</Path>
+			<Path>
+				<Text>Stay home</Text>
+				<Reference>hometown-farm2</Reference>
+			</Path>
+		</Branch>
+	</Slide>
+	<Slide name="hometown-freeman" type="body"><!--TODO-->
+		<Content><![CDATA[Life for you here in your hometown is quiet but fairly productive. You own a small farm in the countryside just outside a small town. You and your wife, with whom you have been married only around five years, grow produce and raise chickens. What you don't eat yourselves you sell to a man in town who himself takes it to the city to peddle.<br/><br/>Today, you heard the news that the president is calling for more troops. You wouldn't normally be interested, but everyone else seems so enthused about enlisting, and the signing bonus would help buy that horse-drawn plow you've been eyeing. Of course, going off to war would mean leaving your wife and children alone on the farm.<br/><br/>They say it will be a 30 days war. You'd be back in time for the harvest, anyway, right?]]></Content>
+		<Image>01933r.jpg</Image>
+		<Attribution>http://www.loc.gov/pictures/item/cwp2003004890/PP/</Attribution>
+		<Prompt></Prompt>
+		<Branch type="decision">
+			<Path>
+				<Text>Enlist</Text>
+				<Reference>recruitment</Reference>
+			</Path>
+			<Path>
+				<Text>Stay home</Text>
+				<Reference>hometown-farm2</Reference>
+			</Path>
+		</Branch>
+	</Slide>
+	<Slide name="hometown-farm2" type="body">
 		<Content><![CDATA[(I was thinking of giving the user the option of resisting enlistment, in which case they get a short story about staying at home during the war, meanwhile being subjected to increasing amounts of peer pressure to join the army, and have a chance or two more to continue and enlist.)<br/><br/>(This also introduces an option to deal with conscription at some point.)]]></Content>
 		<Image>01933r.jpg</Image>
 		<Attribution>http://www.loc.gov/pictures/item/cwp2003004890/PP/</Attribution>
@@ -149,7 +212,7 @@
 		</Branch>
 	</Slide>
 	
-	<!-- Act 2: life in the army -->
+	<!-- Act 2: Life in the army -->
 	<Slide name="camp1" type="body">
 		<Content><![CDATA[Living in the camps is harder than you expected. Up at dawn, roll call, wash, marching drills, then breakfast. More drilling – and any work that needs to be done before dinner at noon. The afternoon is a brief respite to go into town. Then target practice, more drilling, tent inspection, and finally evening parade at half past five. Then the moon rises, and until ten the camp is aglow with candle- and fire-light. <br/><br/>Tonight, some of the guys are gathering to play cards by candlelight. The officers say gambling isn’t allowed, but there will probably be stakes anyway. They offer you to join in their poker game. ]]></Content>
 		<Image>slide4.png</Image>
@@ -292,7 +355,7 @@
 		</Branch>
 	</Slide>
 	
-	<!-- Act 3: battle -->
+	<!-- Act 3: Battle -->
 	<Slide name="battle1" type="body">
 		<Content><![CDATA[The area around here is not what you had pictured as a battlefield before the war. The ground gently slopes forming uneven fields. Lonesome trees and small stands are here there poking up through the grass. The borders of the fields are variously thickets of small shrubs or thick forest.<br/><br/>The march has been stop-and-go as streams are forded; wagons and caissons get stuck.<br/><br/>You stop yet again. Many soldiers make themselves comfortable. As the minutes wear on, it becomes obvious that this is no ordinary stop. Soldiers ahead begin to march off sideways to form a battle line. The battery atop the hill can be seen scurrying around their guns, when all of a sudden they leap aside just in time for the cannon to emit a burst of bright smoke and with it a thunderous boom.<br/><br/>The war music is playing now, and you see the brigade commander talking to your staff officer. The men are already on their feet when the staff officer approaches with the orders.<br/><br/>You march into position and receive the order to load-at-will… Shortly thereafter is the order to fire.<br/<br/>In the heat of the battle, the formerly organized defensive line is forgotten, and soldiers are crouching behind any cover they can find – trees, ditches, even fence rails. They all still maintain a general grouping around their regimental colors, however.]]></Content>
 		<Image>slide10.png</Image>

@@ -14,7 +14,7 @@ package UIComponents
 	{
 		private var field:TextField;
 		
-		public function ButtonGraphic(width:int, height:int) 
+		public function ButtonGraphic(width:int, height:int, gradient:Array) 
 		{
 			var fontsize:int = 14;
 			
@@ -23,7 +23,7 @@ package UIComponents
 			var mat:Matrix = new Matrix();
 			mat.createGradientBox(width, height, Math.PI / 2, 0, 0);
 			//graphics.beginGradientFill(GradientType.LINEAR, [0x0A1433, 0x0F1F4C, 0x142966], [.55, .55, .55], [0, 50, 255], mat);
-			graphics.beginGradientFill(GradientType.LINEAR, [0x0A1433, 0x0F1F4C, 0x293786], [.65, .85, .45], [0, 6*255/height, 255], mat);
+			graphics.beginGradientFill(GradientType.LINEAR, gradient, [.65, .85, .45], [0, 6*255/height, 255], mat);
 			graphics.moveTo(3, 0);
 			graphics.lineTo(width - height / 2, 0);
 			graphics.lineTo(width, height / 2);

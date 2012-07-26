@@ -22,7 +22,7 @@ package UIComponents
 			var mat:Matrix = new Matrix();
 			mat.createGradientBox(width, height, Math.PI / 2, 0, 0);
 			//graphics.beginGradientFill(GradientType.LINEAR, [0x0A1433, 0x0F1F4C, 0x142966], [.55, .55, .55], [0, 50, 255], mat);
-			graphics.beginGradientFill(GradientType.LINEAR, [0x0A1433, 0x0F1F4C, 0x293786], [.65, .85, .35], [0, 10*255/height, 255], mat);
+			graphics.beginGradientFill(GradientType.LINEAR, Slide.NORMAL_GRADIENT, [.65, .85, .35], [0, 10*255/height, 255], mat);
 			graphics.moveTo(3, 0);
 			graphics.lineTo(width - 3, 0);
 			graphics.curveTo(width, 0, width, 3);

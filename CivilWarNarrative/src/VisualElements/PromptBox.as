@@ -1,29 +1,30 @@
-package UIComponents 
+package VisualElements 
 {
+	import flash.display.GradientType;
 	import flash.display.Sprite;
+	import flash.geom.Matrix;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
-	import flash.text.TextFormatAlign;
-	import flash.geom.Matrix;
-	import flash.display.GradientType;
 	/**
 	 * ...
 	 * @author Robert Cigna
 	 */
 	public class PromptBox extends Sprite
 	{
+		//TODO decide if the app cant use ContentBox in all cases where it now uses PromptBox
 		private var fieldFormat:TextFormat;
 		private var field:TextField;
 		
 		public function PromptBox(x:int, y:int, width:int, height: int) 
 		{
-			graphics.lineStyle(1, 0xFFFFFF, 1, true);
+			this.x = x;
+			this.y = y;
 			
 			var mat:Matrix = new Matrix();
 			mat.createGradientBox(width, height, Math.PI / 2, 0, 0);
-			//graphics.beginGradientFill(GradientType.LINEAR, [0x0A1433, 0x0F1F4C, 0x142966], [.55, .55, .55], [0, 50, 255], mat);
 			graphics.beginGradientFill(GradientType.LINEAR, Slide.NORMAL_GRADIENT, [.65, .85, .35], [0, 10*255/height, 255], mat);
 			graphics.moveTo(3, 0);
+			graphics.lineStyle(1, 0xFFFFFF, 1, true);
 			graphics.lineTo(width - 3, 0);
 			graphics.curveTo(width, 0, width, 3);
 			graphics.lineTo(width, height - 3);
@@ -42,8 +43,6 @@ package UIComponents
 			
 			field = new TextField();
 			field.defaultTextFormat = fieldFormat;
-			this.x = x;
-			this.y = y;
 			field.width = width - 2;
 			field.height = height - 2;
 			field.x = 1;

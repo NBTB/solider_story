@@ -1,4 +1,4 @@
-package UIComponents 
+package VisualElements 
 {
 	import flash.display.Sprite;
 	import flash.text.TextField;
@@ -8,20 +8,27 @@ package UIComponents
 	import flash.display.GradientType;
 	
 	/**
-	 * ...
+	 * AttributionBoxes are inconspicuous text boxes that appear in the lower right and show attribution information for the background image.
 	 * @author Robert Cigna
 	 */
 	public class AttributionBox extends Sprite
 	{
-		public static const bordersize:int = 10;
-		public static const transparencyfrac:Number = .4;
-		public static const backgroundcolor:uint = 0x7B6748;
+		//{ region Constants
+		public static const bordersize:int = 10;                //The width of the faded edge.
+		public static const transparencyfrac:Number = .4;       //The transparency fraction of the box's general background.
+		public static const backgroundcolor:uint = 0x7B6748;    //The color of the background of the box.
+		//} endregion
 		
 		private var fieldFormat:TextFormat;
 		private var field:TextField;
 		
+		//Constructs an AttributionBox with the given position and size.
 		public function AttributionBox(x:int, y:int, width:int, height:int) 
 		{
+			this.x = x;
+			this.y = y;
+			this.cacheAsBitmap = true;
+			
 			//create a pale, transparent background to ensure readable contrast
 			graphics.lineStyle(0, 0, 0);
 			var mat:Matrix = new Matrix();
@@ -71,22 +78,18 @@ package UIComponents
 			
 			field = new TextField();
 			field.defaultTextFormat = fieldFormat;
-			this.x = x;
-			this.y = y;
 			field.x = 1;
 			field.y = 1;
 			field.width = width - 2;
 			field.height = height - 2;
-			//field.border = true;
 			field.wordWrap = true;
 			
 			addChild(field);
-			
-			this.cacheAsBitmap = true;
 		}
 		
+		//Sets the text to appear in the box. HTML tags allowed.
 		public function setText(text:String):void {
-			field.text = text;
+			field.htmlText = text;
 		}
 		
 	}

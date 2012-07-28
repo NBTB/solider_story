@@ -92,6 +92,11 @@
 				<Reference>hometown-factory</Reference>
 			</Path>
 			<Path>
+				<Text>Western Mine</Text>
+				<Store key="background" value="mine"/>
+				<Reference>hometown-mine</Reference>
+			</Path>
+			<Path>
 				<Text>Free Black</Text>
 				<Store key="background" value="freeman"/>
 				<Reference>hometown-freeman</Reference>
@@ -141,7 +146,7 @@
 		<Branch type="decision">
 			<Path>
 				<Text>Enlist</Text>
-				<Reference>recruitment</Reference>
+				<Reference>earlyenlistment</Reference>
 			</Path>
 			<Path>
 				<Text>Stay home</Text>
@@ -150,14 +155,30 @@
 		</Branch>
 	</Slide>
 	<Slide name="hometown-freeman" type="body"><!--TODO-->
-		<Content><![CDATA[Life for you here in your hometown is quiet but fairly productive. You own a small farm in the countryside just outside a small town. You and your wife, with whom you have been married only around five years, grow produce and raise chickens. What you don't eat yourselves you sell to a man in town who himself takes it to the city to peddle.<br/><br/>Today, you heard the news that the president is calling for more troops. You wouldn't normally be interested, but everyone else seems so enthused about enlisting, and the signing bonus would help buy that horse-drawn plow you've been eyeing. Of course, going off to war would mean leaving your wife and children alone on the farm.<br/><br/>They say it will be a 30 days war. You'd be back in time for the harvest, anyway, right?]]></Content>
+		<Content><![CDATA[(There of course needs to be a special story dedicated to freemen and slaves that relates the military's inital denial and eventual relenting. this is just a placeholder.)]]></Content>
 		<Image>01933r.jpg</Image>
 		<Attribution>http://www.loc.gov/pictures/item/cwp2003004890/PP/</Attribution>
 		<Prompt></Prompt>
 		<Branch type="decision">
 			<Path>
 				<Text>Enlist</Text>
-				<Reference>recruitment</Reference>
+				<Reference>earlyenlistment</Reference>
+			</Path>
+			<Path>
+				<Text>Stay home</Text>
+				<Reference>hometown-farm2</Reference>
+			</Path>
+		</Branch>
+	</Slide>
+	<Slide name="hometown-mine" type="body">
+		<Content><![CDATA[(some union soldiers came from mines in the east or particularly west [see: <a href="http://en.wikipedia.org/wiki/Comstock_Lode">Comstock Lode</a>].)]]></Content>
+		<Image>01933r.jpg</Image>
+		<Attribution>http://www.loc.gov/pictures/item/cwp2003004890/PP/</Attribution>
+		<Prompt>(number or percentage, if we can find one.)</Prompt>
+		<Branch type="decision">
+			<Path>
+				<Text>Enlist</Text>
+				<Reference>midenlistment</Reference>
 			</Path>
 			<Path>
 				<Text>Stay home</Text>
@@ -169,34 +190,98 @@
 		<Content><![CDATA[(I was thinking of giving the user the option of resisting enlistment, in which case they get a short story about staying at home during the war, meanwhile being subjected to increasing amounts of peer pressure to join the army, and have a chance or two more to continue and enlist.)<br/><br/>(This also introduces an option to deal with conscription at some point.)]]></Content>
 		<Image>01933r.jpg</Image>
 		<Attribution>http://www.loc.gov/pictures/item/cwp2003004890/PP/</Attribution>
-		<Prompt></Prompt>
 		<Branch type="decision">
 			<Path>
 				<Text>Enlist</Text>
-				<Reference>recruitment</Reference>
+				<Reference>midenlistment</Reference>
+			</Path>
+			<Path>
+				<Text>Resist</Text>
+				<Reference>rally</Reference>
+			</Path>
+		</Branch>
+	</Slide>
+	<Slide name="rally" type="body">
+		<Content><![CDATA[(A scene in which you visit a recruitment rally and choose to finally sign up or continue to decline.)]]></Content>
+		<Image>01933r.jpg</Image>
+		<Attribution>http://www.loc.gov/pictures/item/cwp2003004890/PP/</Attribution>
+		<Branch type="decision">
+			<Path>
+				<Text>Enlist</Text>
+				<Reference>lateenlistment</Reference>
+			</Path>
+			<Path>
+				<Text>Do Not Enlist</Text>
+				<Reference>conscription</Reference>
+			</Path>
+		</Branch>
+	</Slide>
+	<Slide name="conscription" type="body">
+		<Content><![CDATA[(A scene in which you are conscripted.)]]></Content>
+		<Image>01933r.jpg</Image>
+		<Attribution>http://www.loc.gov/pictures/item/cwp2003004890/PP/</Attribution>
+		<Branch type="decision">
+			<Path>
+				<Text>Show up for the draft</Text>
+				<Reference>draft</Reference>
+			</Path>
+			<Path>
+				<Text>Don't show up</Text>
+				<Reference>draft</Reference>
+			</Path>
+			<Path>
+				<Text>Purchase exemption</Text>
+				<Reference>draft</Reference>
+			</Path>
+			<Path>
+				<Text>Hire replacement</Text>
+				<Reference>draft</Reference>
 			</Path>
 		</Branch>
 	</Slide>
 	<Slide name="earlyenlistment" type="body">
-		<Content><![CDATA[(This page should describe the recruitment process, how a man would sign up and be sent off to war)<br/><br/>(As far as I can tell, there is little or no time spent between enlistment and actually being in the army, but how is this gap bridged? Were there army wagons that came around and picked up the fresh recruits and dropped them off at the front line by the bus-load?)<br/><br/>(In addition to historical context, it also serves as a transition into the main body of the narrative.)]]></Content>
+		<Content><![CDATA[Having no shortage of patriotism yourself, you find a group of like-minded men and agree to form a company with them.<br/><br/>(This page should describe the recruitment process, how a man would sign up and be sent off to war)<br/><br/>(As far as I can tell, there is little or no time spent between enlistment and actually being in the army, but how is this gap bridged? Were there army wagons that came around and picked up the fresh recruits and dropped them off at the front line by the bus-load?)<br/><br/>(In addition to historical context, it also serves as a transition into the main body of the narrative.)]]></Content>
 		<Image>slide5.png</Image>
 		<Attribution>Atlanta, Georgia. Federal army wagons railroad depot. Barnard, George N. 1864. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-02232 DLC.</Attribution>
 		<Branch type="decision">
 			<Path>
 				<Text>Continue</Text>
-				<Reference>camp1</Reference>
+				<Reference>firstday</Reference>
 			</Path>
 		</Branch>
 	</Slide>
 	<Slide name="midenlistment" type="body">
 		<Content><![CDATA[Deciding to enlist, you sign the town's elistment roll, and are checked out by the doctor. He has you take off your clothes and do jumping jacks, bend over, and delivers a pair of sound whacks to the stomach and back to make sure you are fit for duty. After that, he sends you off to the ]]></Content>
-		<Prompt><![CDATA[Later in the war, when the need for man power was more dire, doctors checked for <b>unfitness</b> rather than fitness for duty.]]></Prompt>
+		<Prompt><![CDATA[Later in the war, when the need for man power was more dire, doctors checked for <i>unfitness</i> rather than fitness for duty.]]></Prompt>
 		<Image>slide5.png</Image>
 		<Attribution>Atlanta, Georgia. Federal army wagons railroad depot. Barnard, George N. 1864. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-02232 DLC.</Attribution>
 		<Branch type="decision">
 			<Path>
 				<Text>Continue</Text>
-				<Reference>camp1</Reference>
+				<Reference>firstday</Reference>
+			</Path>
+		</Branch>
+	</Slide>
+	<Slide name="lateenlistment" type="body">
+		<Content><![CDATA[(late enlistment scene, doctor checks for unfitness for war.)]]></Content>
+		<Prompt><![CDATA[Earlier in the war, when the it was though it could not last this long, doctors were more selective, and checked for <i>fitness</i> rather than unfitness for duty.]]></Prompt>
+		<Image>slide5.png</Image>
+		<Attribution>Atlanta, Georgia. Federal army wagons railroad depot. Barnard, George N. 1864. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-02232 DLC.</Attribution>
+		<Branch type="decision">
+			<Path>
+				<Text>Continue</Text>
+				<Reference>firstday</Reference>
+			</Path>
+		</Branch>
+	</Slide>
+	<Slide name="draft" type="body">
+		<Content><![CDATA[(A scene in which you are drafted.)]]></Content>
+		<Image>slide5.png</Image>
+		<Attribution>Atlanta, Georgia. Federal army wagons railroad depot. Barnard, George N. 1864. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-02232 DLC.</Attribution>
+		<Branch type="decision">
+			<Path>
+				<Text>Continue</Text>
+				<Reference>firstday</Reference>
 			</Path>
 		</Branch>
 	</Slide>
@@ -213,6 +298,17 @@
 	</Slide>
 	
 	<!-- Act 2: Life in the army -->
+	<Slide name="firstday" type="body">
+		<Content><![CDATA[Stepping off the wagon at the camp is surreal. Rows upon rows of white canvas tents make it seem like a carnival, all the men in uniform enhance this image. As you arrive, other wagons are being loaded up with uniformed soldiers to head off to the front.<br/><br/>Here you will train for one month or until there is an urgent need for manpower, which ever comes first.]]></Content>
+		<Image>slide4.png</Image>
+		<Attribution>Inspection of Troops at Cumberlanding, Pamunkey, Virginia. Gardner's Photographic Sketchbook of the War--, Vol. I, 1866. Courtesy of George Eastman House, International Museum of Photography and Film.</Attribution>
+		<Branch type="decision">
+			<Path>
+				<Text>Continue</Text>
+				<Reference>camp1</Reference>
+			</Path>
+		</Branch>
+	</Slide>
 	<Slide name="camp1" type="body">
 		<Content><![CDATA[Living in the camps is harder than you expected. Up at dawn, roll call, wash, marching drills, then breakfast. More drilling – and any work that needs to be done before dinner at noon. The afternoon is a brief respite to go into town. Then target practice, more drilling, tent inspection, and finally evening parade at half past five. Then the moon rises, and until ten the camp is aglow with candle- and fire-light. <br/><br/>Tonight, some of the guys are gathering to play cards by candlelight. The officers say gambling isn’t allowed, but there will probably be stakes anyway. They offer you to join in their poker game. ]]></Content>
 		<Image>slide4.png</Image>
@@ -231,7 +327,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="playingpoker1" type="body">
-		<Content><![CDATA[You play a hand. Then another – and another. The stakes are getting higher and higher until you have a whole month’s pay on the line. You have a decent hand, but you can’t tell if someone else has a better one. You might as well go all in at this point, there’s nothing more to lose.]]></Content>
+		<Content><![CDATA[You play a hand. Then another – and another. The stakes are getting higher and higher until The pot is no less than four months pay. You have a decent hand, but you can’t tell if someone else has a better one. You might as well go all in at this point, there’s nothing more to lose.]]></Content>
 		<Image>slide6.png</Image>
 		<Attribution>Petersburg, Va. Officers of the 114th Pennsylvania Infantry playing cards in front of tents. 1862 May. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03882 DLC.</Attribution>
 		<Branch type="random">
@@ -320,20 +416,73 @@
 		</Branch>
 	</Slide>
 	<Slide name="camp2" type="body">
-		<Content><![CDATA[The routine at this new camp is the same as the others, except with no time to go to town, as there is none nearby. Being on the front lines – near the enemy – means the soldiers are on edge.<br/><br/>One night it finally happens. The long roll (a kind of drumming) sounds, and all is chaos as everyone dashes to grab their weapons and form a defensive line.<br/><br/>Then, from the darkness, you hear a sergeant’s voice yelling that everything is fine, it was only a pig that got loose in the camp and was mistaken for a rebel. Of course, no one got any more sleep that night.]]></Content>
+		<Content><![CDATA[The routine at this new camp is the same as the others, except with no time to go to town, as there is none nearby. Being on the front lines – near the enemy – means the soldiers are on edge.<br/><br/>One night it finally happens. The long roll sounds, and all is chaos as everyone dashes to grab their weapons and form a defensive line.<br/><br/>Then, from the darkness, you hear a sergeant’s voice yelling that everything is fine, it was only a pig that got loose in the camp and was mistaken for a rebel. Of course, no one got any more sleep that night.]]></Content>
+		<Prompt><![CDATA[<b>Long Roll</b> -- a kind of drumming used as an alarm.]]></Prompt>
 		<Image>slide7.png</Image>
 		<Attribution>Bull Run, Virginia. Federal encampment at Blackburn's Ford. 1862 July 4. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01154 DLC.</Attribution>
 		<Branch type="conditional">
 			<Path key="playpoker" value="no">
-				<Reference>letterwriting2</Reference>
+				<Reference>mailwagon</Reference>
 			</Path>
 			<Default>
-				<Reference>marching2</Reference>
+				<Reference>noletter</Reference>
 			</Default>
 		</Branch>
 	</Slide>
-	<Slide name="letterwriting2" type="body">
-		<Content><![CDATA[The letter carrier arrives today. All the men swarm around the back of the mail wagon like pigs to the trough. <br/><br/>As the mail carrier calls out names one by one, the men whose names are called yelp with excitement and accept their mail as if they were accepting their lottery winnings.<br/><br/>Finally, he calls out your name, and you take your letter back to your tent to read it:<br/><br/>“My dear Husband,<br/><br/>It’s not the same here, either. We will not have too much trouble at harvest time, I think. The children and I will all have to work to gather the crops, but I hope we can manage.<br/><br/>Little Wally found a stray the other day, so for now we have the additional company of Sir Bark the dog. He insists having his own dog is good, and they have become close, but I told him he would have to feed the animal if we kept it. He doesn’t seem to mind now, but I worry he’d forget.<br/><br/>I miss you and wish you were home,<br/><br/>[Wife’s name]”]]></Content>
+	<Slide name="noletter" type="body">
+		<Content><![CDATA[The letter carrier arrives today. All the men swarm around the back of the mail wagon like pigs to the trough. <br/><br/>As the mail carrier calls out names one by one, the men whose names are called yelp with excitement and accept their mail as if they were accepting their lottery winnings.<br/><br/>After waiting pateintly, the letter carrier calls out, "last one!"<br/><br/>You and the remaining soldiers lean in with anticipation. He calls out the addressee, and it's not you. Dejectedly, you head back to your tent.]]></Content>
+		<Image>00098v.jpg</Image>
+		<Attribution>Falmouth, Virginia. Mail wagon for headquarters, Army of the Potomac. 1863. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-00098 DLC</Attribution>
+		<Branch type="decision">
+			<Path>
+				<Text>Continue</Text>
+				<Reference>marching2</Reference>
+			</Path>
+		</Branch>
+	</Slide>
+	<Slide name="mailwagon" type="body">
+		<Content><![CDATA[The letter carrier arrives today. All the men swarm around the back of the mail wagon like pigs to the trough. <br/><br/>As the mail carrier calls out names one by one, the men whose names are called yelp with excitement and accept their mail as if they were accepting their lottery winnings.<br/><br/>Finally, he calls out your name, and you take your letter back to your tent to read it.]]></Content>
+		<Image>00098v.jpg</Image>
+		<Attribution>Falmouth, Virginia. Mail wagon for headquarters, Army of the Potomac. 1863. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-00098 DLC</Attribution>
+		<Branch type="conditional">
+			<Path key="background" value="farm">
+				<Reference>letter1</Reference>
+			</Path>
+			<Path key="background" value="factory">
+				<Reference>letter2</Reference>
+			</Path>
+			<Path key="background" value="mine">
+				<Reference>letter3</Reference>
+			</Path>
+			<Default>
+				<Reference>letter1</Reference>
+			</Default>
+		</Branch>
+	</Slide>
+	<Slide name="letter1" type="body">
+		<Content><![CDATA[You open your letter from home and read it:<br/><br/>“My dear Husband,<br/><br/>It’s not the same here, either. We will not have too much trouble at harvest time, I think. The children and I will all have to work to gather the crops, but I hope we can manage.<br/><br/>Little Wally found a stray the other day, so for now we have the additional company of Sir Bark the dog. He insists having his own dog is good, and they have become close, but I told him he would have to feed the animal if we kept it. He doesn’t seem to mind now, but I worry he’d forget.<br/><br/>I miss you and wish you were home,<br/><br/>[Wife’s name]”]]></Content>
+		<Image>00098v.jpg</Image>
+		<Attribution>Falmouth, Virginia. Mail wagon for headquarters, Army of the Potomac. 1863. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-00098 DLC</Attribution>
+		<Branch type="decision">
+			<Path>
+				<Text>Continue</Text>
+				<Reference>marching2</Reference>
+			</Path>
+		</Branch>
+	</Slide>
+	<Slide name="letter2" type="body">
+		<Content><![CDATA[<b>(Needs to be changed to reflect factory background)</b><br/><br/>You open your letter from home and read it:<br/><br/>“My dear Husband,<br/><br/>It’s not the same here, either. We will not have too much trouble at harvest time, I think. The children and I will all have to work to gather the crops, but I hope we can manage.<br/><br/>Little Wally found a stray the other day, so for now we have the additional company of Sir Bark the dog. He insists having his own dog is good, and they have become close, but I told him he would have to feed the animal if we kept it. He doesn’t seem to mind now, but I worry he’d forget.<br/><br/>I miss you and wish you were home,<br/><br/>[Wife’s name]”]]></Content>
+		<Image>00098v.jpg</Image>
+		<Attribution>Falmouth, Virginia. Mail wagon for headquarters, Army of the Potomac. 1863. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-00098 DLC</Attribution>
+		<Branch type="decision">
+			<Path>
+				<Text>Continue</Text>
+				<Reference>marching2</Reference>
+			</Path>
+		</Branch>
+	</Slide>
+	<Slide name="letter3" type="body">
+		<Content><![CDATA[<b>(Needs to be changed to reflect mine background)</b><br/><br/>You open your letter from home and read it:<br/><br/>“My dear Husband,<br/><br/>It’s not the same here, either. We will not have too much trouble at harvest time, I think. The children and I will all have to work to gather the crops, but I hope we can manage.<br/><br/>Little Wally found a stray the other day, so for now we have the additional company of Sir Bark the dog. He insists having his own dog is good, and they have become close, but I told him he would have to feed the animal if we kept it. He doesn’t seem to mind now, but I worry he’d forget.<br/><br/>I miss you and wish you were home,<br/><br/>[Wife’s name]”]]></Content>
 		<Image>00098v.jpg</Image>
 		<Attribution>Falmouth, Virginia. Mail wagon for headquarters, Army of the Potomac. 1863. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-00098 DLC</Attribution>
 		<Branch type="decision">
@@ -351,6 +500,21 @@
 			<Path>
 				<Text>Continue</Text>
 				<Reference>battle1</Reference>
+			</Path>
+		</Branch>
+	</Slide>
+	<Slide name="merchant1" type="body">
+		<Content><![CDATA[(Scene 51: The traveling merchant)<br/><br/>(In which the camp is beset by a traveling salesman and his wares, and you decide to invest in one of his fine inventions)]]></Content>
+		<Image>slide14.png</Image>
+		<Attribution>Belle Plain, Virginia. Camp of 150th Pennsylvania Infantry. 1863 Mar. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-00935 DLC.</Attribution>
+		<Branch type="decision">
+			<Path>
+				<Text>Purchase</Text>
+				<Reference>temp</Reference>
+			</Path>
+			<Path>
+				<Text>Don't Purchase</Text>
+				<Reference>temp</Reference>
 			</Path>
 		</Branch>
 	</Slide>
@@ -373,8 +537,8 @@
 	</Slide>
 	<Slide name="battle2" type="body">
 		<Content><![CDATA[The battling is fierce, minnie balls squealing past overhead and thudding as they embed into trees or softly gasping as they burrow into the ground.<br/><br/>Suddenly, the order is given to “dress on colors”, and – those men that can – form up on the colors in preparation for a charge. <br/><br/>The soldiers put on their most intimidating grimace as the charge begins. All semblance of formation is lost as the men are consumed with battle fury – whooping and hollering as they go.<br/><br/>The yelling serves to lift the heart out of fear, but also to strike the same into the enemy. The helter-skelter crowd races towards the enemy, whose location is evidenced only by the plume of smoke at the opposite end of the field. The whizzing of bullets can still be heard, and every now and then so can a grunt and a thud, as a man is injured and falls.<br/><br/>Screaming now almost as much with fear as with fury, you raise your bayonet in preparation for plunging into the enemy ranks, but as you crest the ridge, there is no one to be seen. Farther down the line, there is an abandoned battery of six guns being cautiously examined by some other men.<br/><br/>Some other soldiers are now hollering “we won!” and cheering. Shortly, the general himself appears and compliments you and your company for capturing a battery of artillery.]]></Content>
-		<Image>slide11.png</Image>
-		<Attribution>Battery D, Fifth U. S. Artillery, in Action, Fredericksburg, Virginia. --Gardner's Photographic Sketchbook of the War--, vol. I, 1866. Courtesy of George Eastman House, International Museum of Photography and Film.</Attribution>
+		<Image>22479v.jpg</Image>
+		<Attribution>Gallant Charge of Humphrey's Division at the Battle of Fredericksburg. [1862] December 13. Library of Congress, Prints &amp; Photographs Division, LC-DIG-ppmsca-22479.</Attribution>
 		<Branch type="decision">
 			<Path>
 				<Text>Continue</Text>
@@ -426,7 +590,7 @@
 		<Branch type="decision">
 			<Path>
 				<Text>Continue</Text>
-				<Reference>survival</Reference>
+				<Reference>survival-victory</Reference>
 			</Path>
 		</Branch>
 	</Slide>
@@ -448,16 +612,41 @@
 		<Branch type="decision">
 			<Path>
 				<Text>Continue</Text>
-				<Reference>amputee</Reference>
+				<Reference>amputee-arm</Reference>
 			</Path>
 		</Branch>
 	</Slide>
-	<Slide name="amputee" type="ending">
+	<Slide name="amputee-arm" type="ending">
 		<Content><![CDATA[You survived the war, but left your arm behind.<br/><br/>(Here goes statistics about loss of limb)]]></Content>
 		<Image>slide21.png</Image>
 		<Attribution>Washington, D.C. Convalescent soldiers and others outside quarters of the Sanitary Commission Home Lodge. 1865 April. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-04163 DLC.</Attribution>
 	</Slide>
-	<Slide name="survival" type="ending">
+	<Slide name="amputee-leg" type="ending">
+		<Content><![CDATA[You survived the war, but left your leg behind.<br/><br/>(Here goes statistics about loss of limb)]]></Content>
+		<Image>slide21.png</Image>
+		<Attribution>Washington, D.C. Convalescent soldiers and others outside quarters of the Sanitary Commission Home Lodge. 1865 April. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-04163 DLC.</Attribution>
+	</Slide>
+	<Slide name="death-shot" type="ending">
+		<Content><![CDATA[You did not survive the war.<br/><br/>(Here goes statistics)]]></Content>
+		<Image>02107r.jpg</Image>
+		<Attribution>http://www.loc.gov/pictures/resource/cwpb.02107/</Attribution>
+	</Slide>
+	<Slide name="death-infection" type="ending">
+		<Content><![CDATA[You were wounded and operated on, but complications and infection did you in. You did not survive the war.<br/><br/>(Here goes statistics)]]></Content>
+		<Image>02107r.jpg</Image>
+		<Attribution>http://www.loc.gov/pictures/resource/cwpb.02107/</Attribution>
+	</Slide>
+	<Slide name="death-disease" type="ending">
+		<Content><![CDATA[You were wounded and operated on, but complications and infection did you in. You did not survive the war.<br/><br/>(Here goes statistics)]]></Content>
+		<Image>02107r.jpg</Image>
+		<Attribution>http://www.loc.gov/pictures/resource/cwpb.02107/</Attribution>
+	</Slide>
+	<Slide name="survival-victory" type="ending">
+		<Content><![CDATA[You survived your first battle.<br/><br/>(a shorter story like this is better, no?)<br/><br/>(Here can go statistics such as survival rate)]]></Content>
+		<Image>slide20.png</Image>
+		<Attribution>Culpeper, Va. Brig. Gen. Henry Prince of the 2d Division, 3d Corps, and staff. 1863 September. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03983 DLC.</Attribution>
+	</Slide>
+	<Slide name="survival-defeat" type="ending">
 		<Content><![CDATA[You survived your first battle.<br/><br/>(a shorter story like this is better, no?)<br/><br/>(Here can go statistics such as survival rate)]]></Content>
 		<Image>slide20.png</Image>
 		<Attribution>Culpeper, Va. Brig. Gen. Henry Prince of the 2d Division, 3d Corps, and staff. 1863 September. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03983 DLC.</Attribution>

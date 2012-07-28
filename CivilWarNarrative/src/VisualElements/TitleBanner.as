@@ -1,4 +1,4 @@
-package UIComponents 
+package VisualElements 
 {
 	import flash.display.Sprite;
 	import flash.text.TextField;
@@ -7,7 +7,7 @@ package UIComponents
 	import flash.geom.Matrix;
 	import flash.display.GradientType;
 	/**
-	 * ...
+	 * TitleBanner is a banner that is displayed on Title and Ending slides.
 	 * @author Robert Cigna
 	 */
 	public class TitleBanner extends Sprite
@@ -15,20 +15,20 @@ package UIComponents
 		private var fieldFormat:TextFormat;
 		private var field:TextField;
 		
+		//Constructs a TitleBanner with the given position and size.
 		public function TitleBanner(x:int, y:int, width:int, height:int) 
 		{
 			var fontsize:int = 48;
-			//var width:int = 766;
 			
 			this.x = x;
 			this.y = y;
 			
-			graphics.lineStyle(1, 0xFFFFFF, 1, true);
 			
 			var mat:Matrix = new Matrix();
 			mat.createGradientBox(width, height, 0, 0, 0);
 			graphics.beginGradientFill(GradientType.LINEAR, [0x334C80, 0x0F1F4C, 0x0F1F4C, 0x334C80], [.35, .75, .75, .35], [0, 85,171, 255], mat);
 			graphics.moveTo(0, 0);
+			graphics.lineStyle(1, 0xFFFFFF, 1, true);
 			graphics.lineTo(width, 0);
 			graphics.lineStyle(0,0,0);
 			graphics.lineTo(width, height);
@@ -38,7 +38,6 @@ package UIComponents
 			graphics.lineTo(0, 0);
 			graphics.endFill();
 			
-			
 			fieldFormat = new TextFormat();
 			fieldFormat.size = fontsize;
 			fieldFormat.color = 0xFFFFFF;
@@ -47,8 +46,6 @@ package UIComponents
 			
 			field = new TextField();
 			field.defaultTextFormat = fieldFormat;
-			//field.x = 530;
-			//field.y = 20;
 			field.width = width-2;
 			field.height = height-2;
 			field.x = 1;
@@ -57,8 +54,9 @@ package UIComponents
 			addChild(field);
 		}
 		
+		//Sets the text that appears on the banner. HTML tags allowed.
 		public function setText(text:String):void {
-			field.text = text;
+			field.htmlText = text;
 		}
 		
 	}

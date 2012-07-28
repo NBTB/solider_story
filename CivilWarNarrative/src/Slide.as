@@ -1,22 +1,17 @@
 package  
 {
-	import flash.display.Sprite;
-	import flash.events.MouseEvent;
-	import flash.events.TextEvent;
-	import flash.filters.ColorMatrixFilter;
-	import flash.text.TextField;
-	import flash.text.TextFormat;
-	import flash.text.TextFormatAlign;
-	import flash.display.SimpleButton;
 	import flash.display.Loader;
+	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.MouseEvent;
+	import flash.filters.ColorMatrixFilter;
 	import flash.net.URLRequest;
-	import UIComponents.AttributionBox;
-	import UIComponents.BackButton;
-	import UIComponents.BranchButton;
-	import UIComponents.ContentBox;
-	import UIComponents.PromptBox;
-	import UIComponents.TitleBanner;
+	import VisualElements.AttributionBox;
+	import VisualElements.BackButton;
+	import VisualElements.BranchButton;
+	import VisualElements.ContentBox;
+	import VisualElements.PromptBox;
+	import VisualElements.TitleBanner;
 	/**
 	 * A Slide is the basic unit of the interactive narrative. Each Slide is self-contained, and dispatches a SlideEvent to communicate
 	 * when an external action is necessary.
@@ -24,7 +19,7 @@ package
 	 */
 	public class Slide extends Sprite {
 		
-		//Constants
+		//{ region Constants
 		public static const TITLE_TYPE:String = "title";                //Slide "type" attribute for a title slide.
 		public static const BODY_TYPE:String = "body";                  //Slide "type" attribute for a body slide.
 		public static const ENDING_TYPE:String = "ending";              //Slide "type" attribute for a ending slide.
@@ -35,8 +30,13 @@ package
 		
 		public static const ENDING_TEXT:String = "The End";             //The text in the banner on an ending slide.
 		
+		//These constants define the colors used in the normal and mouse-over color schemes.
 		public static const NORMAL_GRADIENT:Array = [0x0A1433, 0x0F1F4C, 0x293786];
 		public static const SELECTED_GRADIENT:Array = [0x425284, 0x3f60bd, 0x636da5];
+		
+		//} endregion
+		
+		//{ region Color Filter
 		
 		//These constants define the color filter. It's not perfect, but to make 
 		//it any better I think requires a deeper understanding of color theory,
@@ -45,14 +45,18 @@ package
 		public static const COLOR_FILTER_R_BYTE:int = 184;				//The R component of the color filter.
 		public static const COLOR_FILTER_G_BYTE:int = 165;				//The G component of the color filter.
 		public static const COLOR_FILTER_B_BYTE:int = 135;				//The B component of the color filter.
-		public static const COLOR_FILTER_BRIGHTNESS:int = 0;			//The amount to add to each color channel when filtering.
-		                                                                //   In general, should be left at zero, unless a washout effect is desired.
+		public static const COLOR_FILTER_BRIGHTNESS:int = 0;			//The amount to add to each color channel when filtering. In general, should be left at zero, unless a washout effect is desired.
+		
+		//Cache of the sepia filter to reduce redundancy.
+		private static var filter:ColorMatrixFilter = null;
 		
 		//Constructs a ColorMatrixFilter to transform images into sepia tone.
 		public static function GetSepiaFilter():ColorMatrixFilter {
-			//TODO optimize matrix instancing
+			//TODO verify optimized matrix instancing
 			
-			//My unscientific correction algorithm increases saturation of a low luminance color.
+			if (filter) return filter;
+			
+			//My unscientific correction equation increases saturation of a low luminance color as a side effect, I think.
 			var correction:Number = 765 / (COLOR_FILTER_B_BYTE + COLOR_FILTER_G_BYTE + COLOR_FILTER_R_BYTE);
 			
 			//original I found online -- kind of a creamy salmon color.
@@ -78,39 +82,48 @@ package
 								 correction * .25 * COLOR_FILTER_B_BYTE / 255, correction * .7 * COLOR_FILTER_B_BYTE / 255, correction * .05 * COLOR_FILTER_B_BYTE / 255, 0, COLOR_FILTER_BRIGHTNESS,
 								 0,    0,    0,    1, 0];
 			
-			return new ColorMatrixFilter(matrix);
+			filter = new ColorMatrixFilter(matrix);
+			return filter;
 		}
+		
+		//} endregion
+		
+		//{ region Instance Variables
 		
 		//The slide definition (the machine)
 		private var machine:XML;
 		
 		//Slide properties.
-		public var slideName:String;
-		public var type:String;
+		private var slideName:String;
+		public function get SlideName():String { return slideName; }
+		private var type:String;
+		public function get Type():String { return type; }
 		
 		//Visual elements
 		private var background:Loader;
 		private var banner:TitleBanner;            // only used in TITLE_TYPE or ENDING_TYPE slides, null otherwise.
 		private var contentBox:ContentBox;         // only used in BODY_TYPE or ENDING_TYPE slides, null otherwise.
-		private var promptBox:PromptBox;           // only used in BODY_TYPE slides, but may not be visible.
+		private var promptBox:PromptBox;           // only used in BODY_TYPE slides, but not always. null if not in use.
 		private var attributionBox:AttributionBox;
 		private var backbutton:BackButton;
 		
-		//buttons have side effects of state, so have to be reset every time this frame is entered.
+		//Buttons have side effects of state, so have to be reset every time this frame is entered.
 		private var buttons:Array;
 		
+		//} endregion
 		
 		//Constructs a new Slide using the given definition.
 		public function Slide(xml:XML) {
 			
-			//read definitions
+			//Read definitions
 			machine = xml;
 			slideName = machine.@name;
 			type = machine.@type;
 			
-			buttons = new Array();
 			
-			// The background/attribution is uninfluenced by state or slide type
+			//Set up graphic elements
+			
+			//Background.
 			background = new Loader();
 			addChild(background);
 			var filters:Array = background.filters;
@@ -119,35 +132,31 @@ package
 			background.contentLoaderInfo.addEventListener(Event.COMPLETE, loadComplete);
 			background.load(new URLRequest(machine.Image));
 			
+			//Attribution Box.
 			attributionBox = new AttributionBox(530, 395, 216, 75);
 			attributionBox.setText(machine.Attribution);
 			addChild(attributionBox);
 			
-			// Ending and Title slides both have a banner.
-			if (type == ENDING_TYPE || type == TITLE_TYPE)
-			{
+			//Banner. Only used by Title and Ending slides.
+			if (type == ENDING_TYPE || type == TITLE_TYPE) {
 				banner = new TitleBanner(0, 120, 766, 80);
 				banner.setText(ENDING_TEXT);
 				addChild(banner);
 			}
+			
+			//Prompt Box. Conversely, only used (when necessary) by Boy slides.
 			else {
-				// Only Body slides can have a prompt
-				
 				//When a tag isn't present in the XML, it doesn't seem to have a definite value that can be conditioned on. 
 				//Assigning it to a string first makes sure that no tags or empty tags both equate to an empty string.
 				var prompt:String = machine.Prompt;
-				if (prompt != "")
-				//{
-				//	promptBox.visible = false;
-				//}
-				//else
-				{
+				if (prompt != "") {
 					promptBox = new PromptBox(530, 20, 216, 150);
 					promptBox.setText(prompt);
 					addChild(promptBox);
 				}
 			}
 			
+			//Set Content.
 			if (type == TITLE_TYPE) {
 				banner.setText(machine.Content);
 			}
@@ -163,7 +172,8 @@ package
 				
 			}
 			
-			//set up only as many buttons as needed
+			//Buttons (only as many as needed).
+			buttons = new Array();
 			if (machine.Branch.@type == DECISION_BRANCH) {
 				for (var i:int = 0; i < machine.Branch.Path.length(); i++)
 				{
@@ -178,6 +188,7 @@ package
 				addChild(buttons[0]);
 			}
 			
+			//Back Button.
 			backbutton = new BackButton(10, 20, 15, 30);
 			backbutton.addEventListener(MouseEvent.CLICK, goBack);
 			addChild(backbutton);
@@ -212,35 +223,33 @@ package
 			dispatchEvent(change);
 		}
 		
+		//Event listener for back button clicks.
 		private function goBack(e:Event):void {
 			dispatchEvent(new SlideEvent(SlideEvent.POP_STATE));
 		}
 		
-		//A method called upon entering this slide. Determines button text/references.
+		//Because the ultimate appearance of a slide includes side-effects of state, this must be 
+		//called to make sure the current appearace of a slide reflects the current state.
 		public function enterSlide(state:Object):void {
-			if (state.stacklength == 0)
+			//Make back button invisible if the user cannot go back.
+			if (state.stacklength == 0) {
 				backbutton.visible = false;
+			}
 			
-			//for (var l:int = 0; l < buttons.length; l++) {
-			//	BranchButton(buttons[l]).reset();
-			//	//BranchButton(buttons[i]).mouseEnabled = false;
-			//	//BranchButton(buttons[i]).mouseEnabled = true;
-			//}
-				
-			if (type == ENDING_TYPE)
-			{
+			//Decide on and set button text and references.
+			
+			//Ending slides have special rules and a single button with default text on it.
+			if (type == ENDING_TYPE) {
 				BranchButton(buttons[0]).setText(BranchButton.DEFAULT_RETURN_TEXT);
-				// reference doesn't matter because an ending slide sends a CLEAR_STATE event instead of a CHANGE_SLIDE event.
+				//reference doesn't matter because an ending slide sends a CLEAR_STATE event instead of a CHANGE_SLIDE event.
 				return;
 			}
 			
 			var paths:XMLList = machine.Branch.Path;
 			
-			//set up buttons
-			if (machine.Branch.@type == "decision")
-			{
-				for (var k:int = 0; k < paths.length(); k++)
-				{
+			//Set up a decision branch
+			if (machine.Branch.@type == DECISION_BRANCH) {
+				for (var k:int = 0; k < paths.length(); k++) {
 					BranchButton(buttons[k]).setText(paths[k].Text);
 					BranchButton(buttons[k]).reference = paths[k].Reference;
 					if (paths[k].Store.length() > 0) {
@@ -250,8 +259,9 @@ package
 					}
 				}
 			}
-			else if (machine.Branch.@type == "random")
-			{
+			
+			//Set up a random branch
+			else if (machine.Branch.@type == RANDOM_BRANCH) {
 				var sum:Number = 0;
 				var i:int = 0;
 				for (; i < paths.length(); i++) {
@@ -277,14 +287,14 @@ package
 					BranchButton(buttons[0]).value = paths[i].Store.@value;
 				}
 			}
-			else if (machine.Branch.@type == "conditional")
-			{
+			
+			//Set up a conditional branch
+			else if (machine.Branch.@type == CONDITIONAL_BRANCH) {
 				var j:int = 0;
 				var found:Boolean = false;
 				
 				while (!found && j < paths.length()) {
-					if (state[paths[j].@key] == paths[j].@value)
-					{
+					if (state[paths[j].@key] == paths[j].@value) {
 						found = true;
 						
 						BranchButton(buttons[0]).setText(BranchButton.DEFAULT_TEXT);
@@ -301,8 +311,8 @@ package
 					j++;
 				}
 				
-				if (!found)
-				{
+				//fall back onto the "Default" tags.
+				if (!found) {
 					BranchButton(buttons[0]).setText(BranchButton.DEFAULT_TEXT);
 					BranchButton(buttons[0]).reference = machine.Branch.Default.Reference;
 					if (machine.Branch.Default.Store.length() > 0)

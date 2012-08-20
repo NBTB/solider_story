@@ -14,7 +14,12 @@ package VisualElements
 	{
 		private var field:TextField;
 		
-		//Constructs the graphic using the given size and color scheme.
+		/**
+		 * Constructs the graphic using the given size and color scheme.
+		 * @param	width The width of the ButtonGraphic.
+		 * @param	height The height of the ButtonGraphic. It should be greater than or equal to 6.
+		 * @param	gradient The array of colors to use as a gradient fill. It should contain exactly three elements.
+		 */
 		public function ButtonGraphic(width:int, height:int, gradient:Array) 
 		{
 			var fontsize:int = 14;
@@ -48,7 +53,10 @@ package VisualElements
 			addChild(field);
 		}
 		
-		//Sets the text that appears on the graphic. HTML tags allowed.
+		/**
+		 * Sets the text that appears on the graphic.
+		 * @param	text The text to label this graphic with. HTML tags allowed.
+		 */
 		public function setText(text:String):void {
 			field.htmlText = text;
 		}

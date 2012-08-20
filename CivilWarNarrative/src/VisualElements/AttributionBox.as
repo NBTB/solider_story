@@ -1,11 +1,11 @@
 package VisualElements 
 {
+	import flash.display.GradientType;
 	import flash.display.Sprite;
+	import flash.geom.Matrix;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
-	import flash.geom.Matrix;
-	import flash.display.GradientType;
 	
 	/**
 	 * AttributionBoxes are inconspicuous text boxes that appear in the lower right and show attribution information for the background image.
@@ -14,15 +14,21 @@ package VisualElements
 	public class AttributionBox extends Sprite
 	{
 		//{ region Constants
-		public static const bordersize:int = 10;                //The width of the faded edge.
-		public static const transparencyfrac:Number = .4;       //The transparency fraction of the box's general background.
-		public static const backgroundcolor:uint = 0x7B6748;    //The color of the background of the box.
+		public static const BORDER_SIZE:int = 10;            //The width of the faded edge.
+		public static const TRANSPARENCY_FRAC:Number = .4;   //The transparency fraction of the box's general background.
+		public static const BKG_COLOR:uint = 0x7B6748;       //The color of the background of the box.
 		//} endregion
 		
 		private var fieldFormat:TextFormat;
 		private var field:TextField;
 		
-		//Constructs an AttributionBox with the given position and size.
+		/**
+		 * Constructs an AttributionBox with the given position and size.
+		 * @param	x The x coordinate of the AttributionBox.
+		 * @param	y The y coordinate of the AttributionBox.
+		 * @param	width The width of the AttributionBox. It should be greater than twice the border size.
+		 * @param	height The height of the AttributionBox. It should be greater than twice the border size.
+		 */
 		public function AttributionBox(x:int, y:int, width:int, height:int) 
 		{
 			this.x = x;
@@ -32,40 +38,40 @@ package VisualElements
 			//create a pale, transparent background to ensure readable contrast
 			graphics.lineStyle(0, 0, 0);
 			var mat:Matrix = new Matrix();
-			mat.createGradientBox(bordersize, height, 0, 0, 0);
-			graphics.beginGradientFill(GradientType.LINEAR, [backgroundcolor, backgroundcolor], [0, transparencyfrac], [0, 255], mat);
-			graphics.drawRect(0, bordersize, bordersize, height - 2 * bordersize);
+			mat.createGradientBox(BORDER_SIZE, height, 0, 0, 0);
+			graphics.beginGradientFill(GradientType.LINEAR, [BKG_COLOR, BKG_COLOR], [0, TRANSPARENCY_FRAC], [0, 255], mat);
+			graphics.drawRect(0, BORDER_SIZE, BORDER_SIZE, height - 2 * BORDER_SIZE);
 			graphics.endFill();
-			mat.createGradientBox(bordersize, height, Math.PI, width - bordersize, 0);
-			graphics.beginGradientFill(GradientType.LINEAR, [backgroundcolor, backgroundcolor], [0, transparencyfrac], [0, 255], mat);
-			graphics.drawRect(width - bordersize, bordersize, bordersize, height - 2 * bordersize);
+			mat.createGradientBox(BORDER_SIZE, height, Math.PI, width - BORDER_SIZE, 0);
+			graphics.beginGradientFill(GradientType.LINEAR, [BKG_COLOR, BKG_COLOR], [0, TRANSPARENCY_FRAC], [0, 255], mat);
+			graphics.drawRect(width - BORDER_SIZE, BORDER_SIZE, BORDER_SIZE, height - 2 * BORDER_SIZE);
 			graphics.endFill();
-			mat.createGradientBox(width, bordersize, Math.PI/2, 0, 0);
-			graphics.beginGradientFill(GradientType.LINEAR, [backgroundcolor, backgroundcolor], [0, transparencyfrac], [0, 255], mat);
-			graphics.drawRect(bordersize, 0, width - 2 * bordersize, bordersize);
+			mat.createGradientBox(width, BORDER_SIZE, Math.PI/2, 0, 0);
+			graphics.beginGradientFill(GradientType.LINEAR, [BKG_COLOR, BKG_COLOR], [0, TRANSPARENCY_FRAC], [0, 255], mat);
+			graphics.drawRect(BORDER_SIZE, 0, width - 2 * BORDER_SIZE, BORDER_SIZE);
 			graphics.endFill();
-			mat.createGradientBox(width, bordersize, 3*Math.PI/2, 0, height - bordersize);
-			graphics.beginGradientFill(GradientType.LINEAR, [backgroundcolor, backgroundcolor], [0, transparencyfrac], [0, 255], mat);
-			graphics.drawRect(bordersize, height - bordersize, width - 2 * bordersize, bordersize);
+			mat.createGradientBox(width, BORDER_SIZE, 3*Math.PI/2, 0, height - BORDER_SIZE);
+			graphics.beginGradientFill(GradientType.LINEAR, [BKG_COLOR, BKG_COLOR], [0, TRANSPARENCY_FRAC], [0, 255], mat);
+			graphics.drawRect(BORDER_SIZE, height - BORDER_SIZE, width - 2 * BORDER_SIZE, BORDER_SIZE);
 			graphics.endFill();
-			graphics.beginFill(backgroundcolor, transparencyfrac);
-			graphics.drawRect(bordersize, bordersize, width - 2 * bordersize, height - 2 * bordersize);
+			graphics.beginFill(BKG_COLOR, TRANSPARENCY_FRAC);
+			graphics.drawRect(BORDER_SIZE, BORDER_SIZE, width - 2 * BORDER_SIZE, height - 2 * BORDER_SIZE);
 			graphics.endFill();
-			mat.createGradientBox(2 * bordersize, 2 * bordersize, 0, 0, 0);
-			graphics.beginGradientFill(GradientType.RADIAL, [backgroundcolor, backgroundcolor], [transparencyfrac, 0], [0, 255], mat);
-			graphics.drawRect(0, 0, bordersize, bordersize);
+			mat.createGradientBox(2 * BORDER_SIZE, 2 * BORDER_SIZE, 0, 0, 0);
+			graphics.beginGradientFill(GradientType.RADIAL, [BKG_COLOR, BKG_COLOR], [TRANSPARENCY_FRAC, 0], [0, 255], mat);
+			graphics.drawRect(0, 0, BORDER_SIZE, BORDER_SIZE);
 			graphics.endFill();
-			mat.createGradientBox(2 * bordersize, 2 * bordersize, 0, 0, height - 2 * bordersize);
-			graphics.beginGradientFill(GradientType.RADIAL, [backgroundcolor, backgroundcolor], [transparencyfrac, 0], [0, 255], mat);
-			graphics.drawRect(0, height - bordersize, bordersize, bordersize);
+			mat.createGradientBox(2 * BORDER_SIZE, 2 * BORDER_SIZE, 0, 0, height - 2 * BORDER_SIZE);
+			graphics.beginGradientFill(GradientType.RADIAL, [BKG_COLOR, BKG_COLOR], [TRANSPARENCY_FRAC, 0], [0, 255], mat);
+			graphics.drawRect(0, height - BORDER_SIZE, BORDER_SIZE, BORDER_SIZE);
 			graphics.endFill();
-			mat.createGradientBox(2 * bordersize, 2 * bordersize, 0, width - 2 * bordersize, 0);
-			graphics.beginGradientFill(GradientType.RADIAL, [backgroundcolor, backgroundcolor], [transparencyfrac, 0], [0, 255], mat);
-			graphics.drawRect(width - bordersize, 0, bordersize, bordersize);
+			mat.createGradientBox(2 * BORDER_SIZE, 2 * BORDER_SIZE, 0, width - 2 * BORDER_SIZE, 0);
+			graphics.beginGradientFill(GradientType.RADIAL, [BKG_COLOR, BKG_COLOR], [TRANSPARENCY_FRAC, 0], [0, 255], mat);
+			graphics.drawRect(width - BORDER_SIZE, 0, BORDER_SIZE, BORDER_SIZE);
 			graphics.endFill();
-			mat.createGradientBox(2 * bordersize, 2 * bordersize, 0, width - 2 * bordersize, height - 2 * bordersize);
-			graphics.beginGradientFill(GradientType.RADIAL, [backgroundcolor, backgroundcolor], [transparencyfrac, 0], [0, 255], mat);
-			graphics.drawRect(width - bordersize, height - bordersize, bordersize, bordersize);
+			mat.createGradientBox(2 * BORDER_SIZE, 2 * BORDER_SIZE, 0, width - 2 * BORDER_SIZE, height - 2 * BORDER_SIZE);
+			graphics.beginGradientFill(GradientType.RADIAL, [BKG_COLOR, BKG_COLOR], [TRANSPARENCY_FRAC, 0], [0, 255], mat);
+			graphics.drawRect(width - BORDER_SIZE, height - BORDER_SIZE, BORDER_SIZE, BORDER_SIZE);
 			graphics.endFill();
 			
 			
@@ -87,7 +93,10 @@ package VisualElements
 			addChild(field);
 		}
 		
-		//Sets the text to appear in the box. HTML tags allowed.
+		/**
+		 * Sets the text to appear in the box.
+		 * @param	text The text to display in the box. HTML tags allowed.
+		 */
 		public function setText(text:String):void {
 			field.htmlText = text;
 		}

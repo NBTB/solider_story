@@ -1,22 +1,52 @@
 package VisualElements 
 {
-	import flash.display.SimpleButton;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.events.MouseEvent;
 	/**
 	 * BackButtons are buttons that appear along the top of the stage and allow the user to traverse backwards through the slides.
 	 * @author Robert Cigna
 	 */
-	public class BackButton extends SimpleButton
+	public class BackButton extends Sprite
 	{
-		//Constructs a BackButton with the given position and size.
+		private var graphic:BackGraphic;
+		private var hovergraphic:BackGraphic;
+		
+		/**
+		 * Constructs a BackButton with the given position and size.
+		 * @param	x The x coordinate of the BackButton.
+		 * @param	y The y coordinate of the BackButton.
+		 * @param	width The width of the BackButton.
+		 * @param	height The height of the BackButton. It should be greater than or equal to 6.
+		 */
 		public function BackButton(x:int, y:int, width:int, height:int) {
 			this.x = x;
 			this.y = y;
 			
-			var graphic:BackGraphic = new BackGraphic(width, height, Slide.NORMAL_GRADIENT);
-			var hovergraphic:BackGraphic = new BackGraphic(width, height, Slide.SELECTED_GRADIENT);
-			super(graphic, hovergraphic, graphic, graphic);
+			graphic = new BackGraphic(width, height, Slide.NORMAL_GRADIENT);
+			hovergraphic = new BackGraphic(width, height, Slide.SELECTED_GRADIENT);
+			addChild(graphic);
+			addEventListener(MouseEvent.MOUSE_OVER, highlight);
+			addEventListener(MouseEvent.MOUSE_OUT, reset);
 		}
 		
+		/**
+		 * An event listener for mouse over events. Replaces the normal graphic with a highlighted one.
+		 * @param	e
+		 */
+		private function highlight(e:Event = null):void {
+			removeChildAt(0);
+			addChild(hovergraphic);
+		}
+		
+		/**
+		 * Resets the button back to the normal graphic.
+		 * @param	e
+		 */
+		public function reset(e:Event = null):void {
+			removeChildAt(0);
+			addChild(graphic);
+		}
 	}
 
 }

@@ -1,11 +1,11 @@
 package VisualElements 
 {
+	import flash.display.GradientType;
 	import flash.display.Sprite;
+	import flash.geom.Matrix;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
-	import flash.geom.Matrix;
-	import flash.display.GradientType;
 	/**
 	 * TitleBanner is a banner that is displayed on Title and Ending slides.
 	 * @author Robert Cigna
@@ -15,7 +15,13 @@ package VisualElements
 		private var fieldFormat:TextFormat;
 		private var field:TextField;
 		
-		//Constructs a TitleBanner with the given position and size.
+		/**
+		 * Constructs a TitleBanner with the given position and size.
+		 * @param	x The x coordinate of the TitleBanner.
+		 * @param	y The y coordinate of the TitleBanner.
+		 * @param	width The width of the TitleBanner.
+		 * @param	height The height of the TitleBanner.
+		 */
 		public function TitleBanner(x:int, y:int, width:int, height:int) 
 		{
 			var fontsize:int = 48;
@@ -54,7 +60,10 @@ package VisualElements
 			addChild(field);
 		}
 		
-		//Sets the text that appears on the banner. HTML tags allowed.
+		/**
+		 * Sets the text that appears on the banner.
+		 * @param	text The text to appear on the banner. HTML tags allowed.
+		 */
 		public function setText(text:String):void {
 			field.htmlText = text;
 		}

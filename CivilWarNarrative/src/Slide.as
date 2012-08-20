@@ -1,16 +1,19 @@
 package  
 {
+	import flash.display.BitmapData;
 	import flash.display.Loader;
+	import flash.display.Bitmap;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.IOErrorEvent;
 	import flash.events.MouseEvent;
 	import flash.filters.ColorMatrixFilter;
+	import flash.geom.Matrix;
 	import flash.net.URLRequest;
 	import VisualElements.AttributionBox;
 	import VisualElements.BackButton;
 	import VisualElements.BranchButton;
 	import VisualElements.ContentBox;
-	import VisualElements.PromptBox;
 	import VisualElements.TitleBanner;
 	/**
 	 * A Slide is the basic unit of the interactive narrative. Each Slide is self-contained, and dispatches a SlideEvent to communicate
@@ -20,18 +23,44 @@ package
 	public class Slide extends Sprite {
 		
 		//{ region Constants
-		public static const TITLE_TYPE:String = "title";                //Slide "type" attribute for a title slide.
-		public static const BODY_TYPE:String = "body";                  //Slide "type" attribute for a body slide.
-		public static const ENDING_TYPE:String = "ending";              //Slide "type" attribute for a ending slide.
+		/**
+		 * Slide "type" attribute for a title slide.
+		 */
+		public static const TITLE_TYPE:String = "title";
+		/**
+		 * Slide "type" attribute for a body slide.
+		 */
+		public static const BODY_TYPE:String = "body";
+		/**
+		 * Slide "type" attribute for a ending slide.
+		 */
+		public static const ENDING_TYPE:String = "ending";
 		
-		public static const DECISION_BRANCH:String = "decision";        //Branch "type" attribute for a decision branch.
-		public static const RANDOM_BRANCH:String = "random";            //Branch "type" attribute for a random branch.
-		public static const CONDITIONAL_BRANCH:String = "conditional";  //Branch "type" attribute for a conditional branch.
+		/**
+		 * Branch "type" attribute for a decision branch.
+		 */
+		public static const DECISION_BRANCH:String = "decision";
+		/**
+		 * Branch "type" attribute for a random branch.
+		 */
+		public static const RANDOM_BRANCH:String = "random"; 
+		/**
+		 * Branch "type" attribute for a conditional branch.
+		 */
+		public static const CONDITIONAL_BRANCH:String = "conditional";
 		
-		public static const ENDING_TEXT:String = "The End";             //The text in the banner on an ending slide.
+		/**
+		 * The text in the banner on an ending slide.
+		 */
+		public static const ENDING_TEXT:String = "The End";
 		
-		//These constants define the colors used in the normal and mouse-over color schemes.
+		/**
+		 * The normal color gradient, from top to bottom.
+		 */
 		public static const NORMAL_GRADIENT:Array = [0x0A1433, 0x0F1F4C, 0x293786];
+		/**
+		 * The color gradient, from top to bottom, of selected or highlighted elements.
+		 */
 		public static const SELECTED_GRADIENT:Array = [0x425284, 0x3f60bd, 0x636da5];
 		
 		//} endregion
@@ -42,21 +71,38 @@ package
 		//it any better I think requires a deeper understanding of color theory,
 		//so in the mean time, choose a good color first, then decrease its 
 		//saturation and increase its luminance to get a good effect.
-		public static const COLOR_FILTER_R_BYTE:int = 184;				//The R component of the color filter.
-		public static const COLOR_FILTER_G_BYTE:int = 165;				//The G component of the color filter.
-		public static const COLOR_FILTER_B_BYTE:int = 135;				//The B component of the color filter.
-		public static const COLOR_FILTER_BRIGHTNESS:int = 0;			//The amount to add to each color channel when filtering. In general, should be left at zero, unless a washout effect is desired.
 		
-		//Cache of the sepia filter to reduce redundancy.
+		/**
+		 * The R component of the color filter.
+		 */
+		public static const COLOR_FILTER_R_BYTE:int = 184;
+		/**
+		 * The G component of the color filter.
+		 */
+		public static const COLOR_FILTER_G_BYTE:int = 165;
+		/**
+		 * The B component of the color filter.
+		 */
+		public static const COLOR_FILTER_B_BYTE:int = 135;
+		/**
+		 * The amount to add to each color channel when filtering. 
+		 * In general, this is best left at zero, unless a washout effect is desired.
+		 */
+		public static const COLOR_FILTER_BRIGHTNESS:int = 0;	
+		
+		/**
+		 * Cache of the sepia filter to reduce redundancy.
+		 */
 		private static var filter:ColorMatrixFilter = null;
 		
-		//Constructs a ColorMatrixFilter to transform images into sepia tone.
+		/**
+		 * Constructs a ColorMatrixFilter to transform images into sepia tone.
+		 * @return A sepia ColorMatrixFilter.
+		 */
 		public static function GetSepiaFilter():ColorMatrixFilter {
-			//TODO verify optimized matrix instancing
-			
 			if (filter) return filter;
 			
-			//My unscientific correction equation increases saturation of a low luminance color as a side effect, I think.
+			//My unscientific correction equation increases saturation of a low luminance color as a side effect, I think...
 			var correction:Number = 765 / (COLOR_FILTER_B_BYTE + COLOR_FILTER_G_BYTE + COLOR_FILTER_R_BYTE);
 			
 			//original I found online -- kind of a creamy salmon color.
@@ -103,7 +149,7 @@ package
 		private var background:Loader;
 		private var banner:TitleBanner;            // only used in TITLE_TYPE or ENDING_TYPE slides, null otherwise.
 		private var contentBox:ContentBox;         // only used in BODY_TYPE or ENDING_TYPE slides, null otherwise.
-		private var promptBox:PromptBox;           // only used in BODY_TYPE slides, but not always. null if not in use.
+		private var promptBox:ContentBox;           // only used in BODY_TYPE slides, but not always. null if not in use.
 		private var attributionBox:AttributionBox;
 		private var backbutton:BackButton;
 		
@@ -112,25 +158,29 @@ package
 		
 		//} endregion
 		
-		//Constructs a new Slide using the given definition.
-		public function Slide(xml:XML) {
-			
+		/**
+		 * Constructs a new Slide using the given definition.
+		 * @param	xml The XML defining the slide.
+		 * @param	images An associative array of images, with filename being the key.
+		 */
+		public function Slide(xml:XML, images:Object) {
 			//Read definitions
 			machine = xml;
 			slideName = machine.@name;
 			type = machine.@type;
 			
+			trace("Constructing slide \"" + slideName + "\"...");
+			
 			
 			//Set up graphic elements
 			
 			//Background.
-			background = new Loader();
+			background = new Loader(); 
+			background.loadBytes(Loader(images[machine.Image]).contentLoaderInfo.bytes);
 			addChild(background);
 			var filters:Array = background.filters;
 			filters.push(GetSepiaFilter());
 			background.filters = filters;
-			background.contentLoaderInfo.addEventListener(Event.COMPLETE, loadComplete);
-			background.load(new URLRequest(machine.Image));
 			
 			//Attribution Box.
 			attributionBox = new AttributionBox(530, 395, 216, 75);
@@ -144,13 +194,13 @@ package
 				addChild(banner);
 			}
 			
-			//Prompt Box. Conversely, only used (when necessary) by Boy slides.
+			//Prompt Box. Conversely, only used (when necessary) by Body slides.
 			else {
 				//When a tag isn't present in the XML, it doesn't seem to have a definite value that can be conditioned on. 
 				//Assigning it to a string first makes sure that no tags or empty tags both equate to an empty string.
 				var prompt:String = machine.Prompt;
 				if (prompt != "") {
-					promptBox = new PromptBox(530, 20, 216, 150);
+					promptBox = new ContentBox(530, 20, 216, 150);
 					promptBox.setText(prompt);
 					addChild(promptBox);
 				}
@@ -174,10 +224,18 @@ package
 			
 			//Buttons (only as many as needed).
 			buttons = new Array();
-			if (machine.Branch.@type == DECISION_BRANCH) {
-				for (var i:int = 0; i < machine.Branch.Path.length(); i++)
+			
+			if (machine.Branch.@type == DECISION_BRANCH && type != ENDING_TYPE) {
+				//Number of paths limited to 4; defined as Path1, Path2, etc.
+				var num:int = 0;
+				if (exists(machine.Branch.Path1)) num++;
+				if (exists(machine.Branch.Path2)) num++;
+				if (exists(machine.Branch.Path3)) num++;
+				if (exists(machine.Branch.Path4)) num++;
+				
+				for (var i:int = 0; i < num; i++)
 				{
-					buttons.push(new BranchButton(530, 395 - 50 * (machine.Branch.Path.length() - i), 216, 30));
+					buttons.push(new BranchButton(530, 395 - 50 * (num - i), 216, 30));
 					BranchButton(buttons[i]).addEventListener(MouseEvent.CLICK, passAlong);
 					addChild(buttons[i]);
 				}
@@ -194,18 +252,10 @@ package
 			addChild(backbutton);
 		}
 		
-		//For whatever reason, these must be set after loading is complete.
-		private function loadComplete(event:Event):void {
-			//TODO: determine final stage size
-			background.x = 0;
-			background.y = 0;
-			background.width = 766;
-			background.height = 450;
-			background.cacheAsBitmap = true;
-			dispatchEvent(new SlideEvent(SlideEvent.LOAD_COMPLETE));
-		}
-		
-		//An event listener for branch button clicks. Responsible for dispatching CLEAR_STATE, STORE_KEY, and CHANGE_SLIDE as necessary.
+		/**
+		 * An event listener for branch button clicks. Responsible for dispatching CLEAR_STATE, STORE_KEY, and CHANGE_SLIDE as necessary.
+		 * @param	event
+		 */
 		private function passAlong(event:Event):void {
 			if (type == ENDING_TYPE) {
 				dispatchEvent(new SlideEvent(SlideEvent.CLEAR_STATE));
@@ -223,14 +273,29 @@ package
 			dispatchEvent(change);
 		}
 		
-		//Event listener for back button clicks.
+		/**
+		 * Event listener for back button clicks.
+		 * @param	e
+		 */
 		private function goBack(e:Event):void {
 			dispatchEvent(new SlideEvent(SlideEvent.POP_STATE));
 		}
 		
-		//Because the ultimate appearance of a slide includes side-effects of state, this must be 
-		//called to make sure the current appearace of a slide reflects the current state.
+		/**
+		 * Because the ultimate appearance of a slide includes side-effects of state, this must be 
+		 * called to make sure the current appearace of a slide reflects the current state.
+		 * @param	state The current state object.
+		 */
 		public function enterSlide(state:Object):void {
+			trace("Setting up buttons for \"" + slideName +"\"...");
+			
+			//This slide may have been visible at some point -- if so, 
+			//the buttons may have retained an "over" state and need to be reset
+			backbutton.reset();
+			for (var b:int = 0; b < buttons.length; b++) {
+				BranchButton(buttons[b]).reset();
+			}
+			
 			//Make back button invisible if the user cannot go back.
 			if (state.stacklength == 0) {
 				backbutton.visible = false;
@@ -245,86 +310,142 @@ package
 				return;
 			}
 			
-			var paths:XMLList = machine.Branch.Path;
-			
 			//Set up a decision branch
 			if (machine.Branch.@type == DECISION_BRANCH) {
-				for (var k:int = 0; k < paths.length(); k++) {
-					BranchButton(buttons[k]).setText(paths[k].Text);
-					BranchButton(buttons[k]).reference = paths[k].Reference;
-					if (paths[k].Store.length() > 0) {
-						BranchButton(buttons[k]).stores = true;
-						BranchButton(buttons[k]).key = paths[k].Store.@key;
-						BranchButton(buttons[k]).value = paths[k].Store.@value;
-					}
+				var index:int = 0;
+				if (exists(machine.Branch.Path1)) {
+					setPath(BranchButton(buttons[index]), machine.Branch.Path1);
+					index++;
+				}
+				if (exists(machine.Branch.Path2)) {
+					setPath(BranchButton(buttons[index]), machine.Branch.Path2);
+					index++;
+				}
+				if (exists(machine.Branch.Path3)) {
+					setPath(BranchButton(buttons[index]), machine.Branch.Path3);
+					index++;
+				}
+				if (exists(machine.Branch.Path4)) {
+					setPath(BranchButton(buttons[index]), machine.Branch.Path4);
+					index++;
 				}
 			}
 			
 			//Set up a random branch
 			else if (machine.Branch.@type == RANDOM_BRANCH) {
 				var sum:Number = 0;
-				var i:int = 0;
-				for (; i < paths.length(); i++) {
-					//trace(paths[i].Weight);
-					sum += Number(paths[i].Weight); 
+				var num:int = 0;
+				if (exists(machine.Branch.Path1)) {
+					sum += Number(machine.Branch.Path1.@weight);
+					num++;
+				}
+				if (exists(machine.Branch.Path2)) {
+					sum += Number(machine.Branch.Path2.@weight);
+					num++;
+				}
+				if (exists(machine.Branch.Path3)) {
+					sum += Number(machine.Branch.Path3.@weight);
+					num++;
+				}
+				if (exists(machine.Branch.Path4)) {
+					sum += Number(machine.Branch.Path4.@weight);
+					num++;
 				}
 				
-				var num:Number = Math.random() * sum;
-				sum = 0; i = -1;
+				var pick:Number = Math.random() * sum;
+				sum = 0;
+				var i:int = -1;
 				
-				while (sum < num && i < paths.length() - 1) {
-					i++;
-					sum += Number(paths[i].Weight);
+				if (exists(machine.Branch.Path1)) {
+					sum += Number(machine.Branch.Path1.@weight);
+					if (sum > pick) {
+						setPath(BranchButton(buttons[0]), machine.Branch.Path1, true);
+					}
+				}
+				if (exists(machine.Branch.Path2)) {
+					sum += Number(machine.Branch.Path2.@weight);
+					if (sum > pick) {
+						setPath(BranchButton(buttons[0]), machine.Branch.Path2, true);
+					}
+				}
+				if (exists(machine.Branch.Path3)) {
+					sum += Number(machine.Branch.Path3.@weight);
+					if (sum > pick) {
+						setPath(BranchButton(buttons[0]), machine.Branch.Path3, true);
+					}
+				}
+				if (exists(machine.Branch.Path4)) {
+					sum += Number(machine.Branch.Path4.@weight);
+					if (sum > pick) {
+						setPath(BranchButton(buttons[0]), machine.Branch.Path4, true);
+					}
 				}
 				
-				BranchButton(buttons[0]).setText(BranchButton.DEFAULT_TEXT);
-				BranchButton(buttons[0]).reference = paths[i].Reference;
 				
-				if (paths[i].Store.length() > 0)
-				{
-					BranchButton(buttons[0]).stores = true;
-					BranchButton(buttons[0]).key = paths[i].Store.@key;
-					BranchButton(buttons[0]).value = paths[i].Store.@value;
-				}
 			}
 			
 			//Set up a conditional branch
 			else if (machine.Branch.@type == CONDITIONAL_BRANCH) {
-				var j:int = 0;
-				var found:Boolean = false;
-				
-				while (!found && j < paths.length()) {
-					if (state[paths[j].@key] == paths[j].@value) {
-						found = true;
-						
-						BranchButton(buttons[0]).setText(BranchButton.DEFAULT_TEXT);
-						BranchButton(buttons[0]).reference = paths[j].Reference;
-						
-						//theoretically useless, but whatever. I guess in very certain circumstances it could add something.
-						if (paths[j].Store.length() > 0)
-						{
-							BranchButton(buttons[0]).stores = true;
-							BranchButton(buttons[0]).key = paths[j].Store.@key;
-							BranchButton(buttons[0]).value = paths[j].Store.@value;
-						}
-					}
-					j++;
+				if (exists(machine.Branch.Path1) && matchesCondition(machine.Branch.Path1, state)) {
+					setPath(BranchButton(buttons[0]), machine.Branch.Path1, true);
 				}
-				
-				//fall back onto the "Default" tags.
-				if (!found) {
-					BranchButton(buttons[0]).setText(BranchButton.DEFAULT_TEXT);
-					BranchButton(buttons[0]).reference = machine.Branch.Default.Reference;
-					if (machine.Branch.Default.Store.length() > 0)
-					{
-						BranchButton(buttons[0]).stores = true;
-						BranchButton(buttons[0]).key = machine.Branch.Default.Store.@key;
-						BranchButton(buttons[0]).value = machine.Branch.Default.Store.@value;
-					}
+				else if (exists(machine.Branch.Path2) && matchesCondition(machine.Branch.Path2, state)) {
+					setPath(BranchButton(buttons[0]), machine.Branch.Path2, true);
+				}
+				else if (exists(machine.Branch.Path3) && matchesCondition(machine.Branch.Path3, state)) {
+					setPath(BranchButton(buttons[0]), machine.Branch.Path3, true);
+				}
+				else if (exists(machine.Branch.Path4) && matchesCondition(machine.Branch.Path4, state)) {
+					setPath(BranchButton(buttons[0]), machine.Branch.Path4, true);
+				}
+				else {
+					setPath(BranchButton(buttons[0]), machine.Branch.Default, true);
 				}
 			}
+			
 			//TODO: implement error fall-through
 		}
+		
+		/**
+		 * A helper function for determining if a path tag is defined.
+		 * @param	path The XML containing of the path.
+		 * @return  true if the path is defined, false otherwise.
+		 */
+		private function exists(path:XMLList):Boolean {
+			return path.Reference != "";
+		}
+		
+		/**
+		 * A helper function for setting up the appropriate fields to make a button useful.
+		 * @param	button A reference to the button.
+		 * @param	path The XML containing the path.
+		 * @param	useDefaultText If true, uses the BranchButton.DEFAULT_TEXT as the label on the button.
+		 */
+		private function setPath(button:BranchButton, path:XMLList, useDefaultText:Boolean = false):void {
+			if (useDefaultText) {
+				button.setText(BranchButton.DEFAULT_TEXT);
+			}
+			else {
+				button.setText(path.Text);
+			}
+			button.reference = path.Reference;
+			
+			if (path.Store.@*.length() > 0)
+			{
+				button.stores = true;
+				button.key = machine.Branch.Path2.Store.@key;
+				button.value = machine.Branch.Path2.Store.@value;
+			}
+		}
+		
+		/**
+		 * A helper function for determining if a path's condition is valid for conditional branching.
+		 * @param	path The XML defining the path.
+		 * @param	state The current state object.
+		 * @return true if the conditions are met, false otherwise.
+		 */
+		private function matchesCondition(path:XMLList, state:Object):Boolean {
+			return state[path.@key] == path.@value;
+		}
 	}
-
 }

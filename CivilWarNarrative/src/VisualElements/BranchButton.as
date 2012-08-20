@@ -1,12 +1,13 @@
 package VisualElements
 {
-	import flash.display.SimpleButton;
+	import flash.display.Sprite;
+	import flash.events.Event;
 	import flash.events.MouseEvent;
 	/**
 	 * BranchButtons are the buttons on the right that lead the user further into the story.
 	 * @author Robert Cigna
 	 */
-	public class BranchButton extends SimpleButton
+	public class BranchButton extends Sprite
 	{
 		//{ region Constants
 		public static const DEFAULT_TEXT:String = "Continue";        //The default text that appears on a button for a random or conditional branch.
@@ -25,26 +26,55 @@ package VisualElements
 		
 		//} endregion
 		
-		//Constructs a new BranchButton with the given position and size.
+		/**
+		 * Constructs a new BranchButton with the given position and size.
+		 * @param	x The x coordinate of the BranchButton.
+		 * @param	y The y coordinate of the BranchButton.
+		 * @param	width The width of the BranchButton.
+		 * @param	height The height of the BranchButton. It should be greater than or equal to 6.
+		 */
 		public function BranchButton(x:int, y:int, width:int, height:int) {
 			this.x = x;
 			this.y = y;
 			
 			graphic = new ButtonGraphic(width, height, Slide.NORMAL_GRADIENT);
+			graphic.mouseEnabled = false;
+			graphic.mouseChildren = false;
+			addChild(graphic);
+			
 			hovergraphic = new ButtonGraphic(width, height, Slide.SELECTED_GRADIENT);
-			super(graphic, hovergraphic, graphic, graphic);
+			hovergraphic.mouseEnabled = false;
+			hovergraphic.mouseChildren = false;
+			
+			addEventListener(MouseEvent.MOUSE_OVER, highlight);
+			addEventListener(MouseEvent.MOUSE_OUT, reset);
 		}
 		
-		//Sets the text that appears on the button. HTML tags allowed.
+		/**
+		 * An event listener for mouse over events. Swaps the current graphic with the highlighted one.
+		 * @param	e
+		 */
+		private function highlight(e:Event = null):void {
+			removeChildAt(0);
+			addChild(hovergraphic);
+		}
+		
+		/**
+		 * Resets the button back to the normal graphic.
+		 * @param	e
+		 */
+		public function reset(e:Event = null):void {
+			removeChildAt(0);
+			addChild(graphic);
+		}
+		
+		/**
+		 * Sets the text that appears on the button.
+		 * @param	text The text to label this button. HTML tags allowed.
+		 */
 		public function setText(text:String):void {
 			graphic.setText(text);
 			hovergraphic.setText(text);
-		}
-		
-		//BUG button state retained if previsouly onstage (button is removed from stage before receiving mouse_out event).
-		public function reset():void {
-			dispatchEvent(new MouseEvent(MouseEvent.MOUSE_UP, true, false, 0, 0, super, false, false, false, false, 0));
-			dispatchEvent(new MouseEvent(MouseEvent.MOUSE_OUT, true, false, 0, 0, super, false, false, false, false, 0));
 		}
 	}
 

@@ -17,6 +17,12 @@ package
 		public var key:String;   // Key used in a STORE_KEY command. Unused for other types.
 		public var value:String; // Value to store under key in STORE_KEY event, or slide to change to for CHANGE_SLIDE event. Not used for other types.
 		
+		/**
+		 * Constructs a new SlideEvent.
+		 * @param	type The type of SlideEvent. Use the constants defined in this class.
+		 * @param	value For STORE_KEY and CHANGE_SLIDE events, contains extra payload.
+		 * @param	key For STORE_KEY events, contains extra payload.
+		 */
 		public function SlideEvent(type:String, value:String = null, key:String = null) 
 		{
 			super(type);

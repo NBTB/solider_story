@@ -6,7 +6,8 @@ package VisualElements
 	import flash.text.TextField;
 	import flash.text.TextFormat;
 	/**
-	 * A ContentBox is the dominant element on the screen, taking more than half the state and containing the actual story passages.
+	 * A ContentBox is the primary means of communicating text to the user. It it used for both the 
+	 * story content and tangential prompts or information.
 	 * @author Robert Cigna
 	 */
 	public class ContentBox extends Sprite
@@ -14,7 +15,13 @@ package VisualElements
 		private var fieldFormat:TextFormat;
 		private var field:TextField;
 		
-		//Constrcuts the ContentBox with the given position and size.
+		/**
+		 * Constructs the ContentBox with the given position and size.
+		 * @param	x The x coordinate of the ContentBox.
+		 * @param	y The y coordinate of the ContentBox.
+		 * @param	width The width of the ContentBox.
+		 * @param	height The height of the ContentBox. It should be at least 10.
+		 */
 		public function ContentBox(x:int, y:int, width:int, height:int) 
 		{
 			this.x = x;
@@ -52,7 +59,10 @@ package VisualElements
 			addChild(field);
 		}
 		
-		//Sets the text to appear in the box. HTML tags allowed.
+		/**
+		 * Sets the text to appear in the box. 
+		 * @param	text The text to show in the box. HTML tags allowed.
+		 */
 		public function setText(text:String):void {
 			field.htmlText = text;
 		}

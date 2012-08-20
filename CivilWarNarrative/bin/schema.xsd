@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="nbtb"
+xmlns="nbtb"
+elementFormDefault="unqualified">
+	<xs:element name="Data">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Entry" type="xs:string"/>
+				<xs:element name="Slide" type="slide" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="slide">
+		<xs:sequence>
+			<xs:element name="Content" type="xs:string"/>
+			<xs:element name="Image" type="xs:string"/>
+			<xs:element name="Attribution" type="xs:string"/>
+			<xs:element name="Prompt" type="xs:string"/>
+			<xs:element name="Branch" type="branch"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string"/>
+		<xs:attribute name="type" type="xs:string"/>
+	</xs:complexType>
+	
+	<xs:complexType name="branch">
+		<xs:sequence>
+			<xs:element name="Path1" type="path"/>
+			<xs:element name="Path2" type="path"/>
+			<xs:element name="Path3" type="path"/>
+			<xs:element name="Path4" type="path"/>
+			<xs:element name="Default" type="path"/>
+		</xs:sequence>
+		<xs:attribute name="type" type="xs:string">
+			<!--<xs:enumeration value="decision"/>
+			<xs:enumeration value="random"/>
+			<xs:enumeration value="conditional"/>-->
+		</xs:attribute>
+	</xs:complexType>
+	
+	<xs:complexType name="path">
+		<xs:sequence>
+			<xs:element name="Text" type="xs:string"/>
+			<xs:element name="Reference" type="xs:string"/>
+			<xs:element name="Store" minOccurs="0">
+				<xs:complexType>
+					<xs:attribute name="key" type="xs:string"/>
+					<xs:attribute name="value" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="key" type="xs:string"/>
+		<xs:attribute name="value" type="xs:string"/>
+		<xs:attribute name="weight" type="xs:integer"/>
+	</xs:complexType>
+
+</xs:schema>

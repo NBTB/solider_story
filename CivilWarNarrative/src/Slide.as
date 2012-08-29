@@ -334,50 +334,49 @@ package
 			//Set up a random branch
 			else if (machine.Branch.@type == RANDOM_BRANCH) {
 				var sum:Number = 0;
-				var num:int = 0;
 				if (exists(machine.Branch.Path1)) {
 					sum += Number(machine.Branch.Path1.@weight);
-					num++;
 				}
 				if (exists(machine.Branch.Path2)) {
 					sum += Number(machine.Branch.Path2.@weight);
-					num++;
 				}
 				if (exists(machine.Branch.Path3)) {
 					sum += Number(machine.Branch.Path3.@weight);
-					num++;
 				}
 				if (exists(machine.Branch.Path4)) {
 					sum += Number(machine.Branch.Path4.@weight);
-					num++;
 				}
 				
 				var pick:Number = Math.random() * sum;
 				sum = 0;
-				var i:int = -1;
+				var done:Boolean = false;
 				
-				if (exists(machine.Branch.Path1)) {
+				if (!done && exists(machine.Branch.Path1)) {
 					sum += Number(machine.Branch.Path1.@weight);
-					if (sum > pick) {
+					if (sum >= pick) {
 						setPath(BranchButton(buttons[0]), machine.Branch.Path1, true);
+						done = true;
 					}
 				}
-				if (exists(machine.Branch.Path2)) {
+				if (!done && exists(machine.Branch.Path2)) {
 					sum += Number(machine.Branch.Path2.@weight);
-					if (sum > pick) {
+					if (sum >= pick) {
 						setPath(BranchButton(buttons[0]), machine.Branch.Path2, true);
+						done = true;
 					}
 				}
-				if (exists(machine.Branch.Path3)) {
+				if (!done && exists(machine.Branch.Path3)) {
 					sum += Number(machine.Branch.Path3.@weight);
-					if (sum > pick) {
+					if (sum >= pick) {
 						setPath(BranchButton(buttons[0]), machine.Branch.Path3, true);
+						done = true;
 					}
 				}
-				if (exists(machine.Branch.Path4)) {
+				if (!done && exists(machine.Branch.Path4)) {
 					sum += Number(machine.Branch.Path4.@weight);
-					if (sum > pick) {
+					if (sum >= pick) {
 						setPath(BranchButton(buttons[0]), machine.Branch.Path4, true);
+						done = true;
 					}
 				}
 				
@@ -433,8 +432,8 @@ package
 			if (path.Store.@*.length() > 0)
 			{
 				button.stores = true;
-				button.key = machine.Branch.Path2.Store.@key;
-				button.value = machine.Branch.Path2.Store.@value;
+				button.key = path.Store.@key;
+				button.value = path.Store.@value;
 			}
 		}
 		

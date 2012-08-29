@@ -76,12 +76,12 @@
 			<Path1>
 				<Text>Union</Text>
 				<Reference>union</Reference>
-				<Store key="loyalty" value="union"/>
+				<Store/>
 			</Path1>
 			<Path2>
 				<Text>Confederate</Text>
 				<Reference>confederate</Reference>
-				<Store key="loyalty" value="confederate"/>
+				<Store/>
 			</Path2>
 			<Path3>
 				<Text/>
@@ -109,7 +109,7 @@
 			<Path1>
 				<Text>Continue</Text>
 				<Reference>background-confederate</Reference>
-				<Store/>
+				<Store key="loyalty" value="confederate"/>
 			</Path1>
 			<Path2>
 				<Text/>
@@ -142,7 +142,7 @@
 			<Path1>
 				<Text>Continue</Text>
 				<Reference>background-union</Reference>
-				<Store/>
+				<Store key="loyalty" value="union"/>
 			</Path1>
 			<Path2>
 				<Text/>
@@ -496,7 +496,7 @@
 			</Default>
 		</Branch>
 	</Slide>
-	<Slide name="ending-refugee" type="ending">
+	<Slide name="ending-refugee" type="body">
 		<Content>You were a runaway slave, denied a position in the army, but unable to settle down anywhere. Many freed slaves ended up in overcrowded refugee camps -- a story in its own right. The government tried to apportion land out to freed slaves, but there were simply too many. For these people, the story of the Reconstruction was just beginning.</Content>
 		<Image>slide3.png</Image>
 		<Attribution>Marshall House, Alexandria, Virginia. Gardner's Photographic Sketchbook of the War--, Vol. I, 1866. Courtesy of George Eastman House, International Museum of Photography and Film.</Attribution>
@@ -761,7 +761,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="substitute" type="body">
-		<Content>You gather up all your money. Fearing it isn't enough, you gather and sell a few things you can live without. At this point, most of the people willing to go to war already have.&lt;br/&gt;&lt;br/&gt;All that is left are a few unsavory characters who heard about the market for substitutes and -- hoping to cash in -- loiter around outside the town hall. Hopefully, you have enough to hire one of them. </Content>
+		<Content>You gathering up all your money, and sell a few things you can live without. The draft requires a $300 fee to hire a substitute, but you gather more just in case. At this point, most of the people willing to go to war already have.&lt;br/&gt;&lt;br/&gt;All that is left are a few unsavory characters who heard about the market for substitutes and -- hoping to cash in -- loiter around outside the town hall. Hopefully, you have enough to hire one of them. </Content>
 		<Image>01933r.jpg</Image>
 		<Attribution>http://www.loc.gov/pictures/item/cwp2003004890/PP/</Attribution>
 		<Prompt>Early in the draft, a commutation fee of $300 could be paid, but this was revoked when the need for manpower became even more dire.</Prompt>
@@ -860,7 +860,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="never-fought" type="ending">
-		<Content>You never went to war. Of course, not everyone did, but a large number were recruited, willingly or otherwise. Still, it also happened that some men who by rights should have fought in the war were able to dodge recruitment. Some of these men, like Grover Cleveland and John D. Rockefeller, went on to become important historical figures.&lt;br/&gt;&lt;br/&gt;Because of the loopholes in the conscription acts, it was sometimes said that the Civil War was a "rich man's war, but a poor man's fight."</Content>
+		<Content>You never went to war. Of course, not everyone did, but a large number were recruited, willingly or otherwise. Still, it also happened that some men who by rights should have fought in the war were able to dodge recruitment. &lt;br/&gt;&lt;br/&gt;Because of the loopholes in the conscription acts, it was sometimes said that the Civil War was a "rich man's war, but a poor man's fight."</Content>
 		<Image>01933r.jpg</Image>
 		<Attribution>http://www.loc.gov/pictures/item/cwp2003004890/PP/</Attribution>
 		<Prompt/>
@@ -1019,7 +1019,7 @@
 			</Path4>
 			<Default>
 				<Text/>
-				<Reference>equip-confederate</Reference>
+				<Reference/>
 				<Store/>
 			</Default>
 		</Branch>
@@ -1791,7 +1791,7 @@
 		<Branch type="decision">
 			<Path1>
 				<Text>Continue</Text>
-				<Reference>latecamp</Reference>
+				<Reference>verylatecamp</Reference>
 				<Store/>
 			</Path1>
 			<Path2>
@@ -1824,7 +1824,7 @@
 		<Branch type="decision">
 			<Path1>
 				<Text>Continue</Text>
-				<Reference>earlycamp</Reference>
+				<Reference>latecamp</Reference>
 				<Store/>
 			</Path1>
 			<Path2>
@@ -2118,7 +2118,7 @@
 		<Image>slide13.png</Image>
 		<Attribution>Gettysburg, Pennsylvania. Camp of Captain John J. Hoff. Commissory of Subsistance. 1865 July. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03913 DLC.</Attribution>
 		<Prompt/>
-		<Branch type="decision">
+		<Branch>
 			<Path1>
 				<Text>Continue</Text>
 				<Reference>earlycamp</Reference>

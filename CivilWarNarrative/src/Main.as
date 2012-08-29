@@ -6,6 +6,7 @@ package
 	import flash.display.LoaderInfo;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 	import flash.events.ProgressEvent;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
@@ -142,6 +143,16 @@ package
 		private function createSlides():void {
 			var xmlreader:XML = new XML(apploader.data);
 			
+			//var slide:Slide = new Slide(new XML("<Slide name=\"error\" type=\"ending\"><Content>An error has occured, please restart the application. " +
+			//									"If you continue to receive this message, contact an administrator and tell them what steps you are taking.</Content>" +
+			//									"<Image>titleslide.png</Image><Attribution>An error has occured.</Attribution></Slide>"), images); 
+			//slide.addEventListener(SlideEvent.CHANGE_SLIDE, changeSlide);
+			//slide.addEventListener(SlideEvent.CLEAR_STATE, clearState);
+			//slide.addEventListener(SlideEvent.POP_STATE, popState);
+			//slide.addEventListener(SlideEvent.PUSH_STATE, pushState);
+			//slide.addEventListener(SlideEvent.STORE_KEY, storeKey);
+			//slides[slide.SlideName] = slide;
+			
 			//TODO error handling for slide loading
 			for (var i:int = 0; i < numSlides; i++ )
 			{
@@ -153,8 +164,6 @@ package
 				slide.addEventListener(SlideEvent.POP_STATE, popState);
 				slide.addEventListener(SlideEvent.PUSH_STATE, pushState);
 				slides[slide.SlideName] = slide;
-				addChild(slide);
-				slide.x = stage.stageWidth * 2;
 			}
 			
 			//TODO: remove loading graphic or change it to indicate progress.
@@ -165,6 +174,7 @@ package
 			state.currentSlide = entry;
 			state.stacklength = stack.length;
 			slides[state.currentSlide].enterSlide(state);
+			addChild(slides[state.currentSlide]);
 			wipe.start(null, slides[state.currentSlide]);
 		}
 		

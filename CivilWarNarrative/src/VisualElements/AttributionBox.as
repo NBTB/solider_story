@@ -15,7 +15,7 @@ package VisualElements
 	{
 		//{ region Constants
 		public static const BORDER_SIZE:int = 10;            //The width of the faded edge.
-		public static const TRANSPARENCY_FRAC:Number = .4;   //The transparency fraction of the box's general background.
+		public static const TRANSPARENCY_FRAC:Number = .5;   //The transparency fraction of the box's general background.
 		public static const BKG_COLOR:uint = 0x7B6748;       //The color of the background of the box.
 		//} endregion
 		
@@ -84,10 +84,10 @@ package VisualElements
 			
 			field = new TextField();
 			field.defaultTextFormat = fieldFormat;
-			field.x = 1;
-			field.y = 1;
-			field.width = width - 2;
-			field.height = height - 2;
+			field.x = BORDER_SIZE/2;
+			field.y = BORDER_SIZE/2;
+			field.width = width - BORDER_SIZE;
+			field.height = height - BORDER_SIZE;
 			field.wordWrap = true;
 			
 			addChild(field);

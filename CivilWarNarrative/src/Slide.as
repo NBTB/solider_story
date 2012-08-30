@@ -176,6 +176,7 @@ package
 			
 			//Background.
 			background = new Loader(); 
+			background.contentLoaderInfo.addEventListener(Event.COMPLETE, setBkgSize);
 			background.loadBytes(Loader(images[machine.Image]).contentLoaderInfo.bytes);
 			addChild(background);
 			var filters:Array = background.filters;
@@ -183,13 +184,13 @@ package
 			background.filters = filters;
 			
 			//Attribution Box.
-			attributionBox = new AttributionBox(530, 395, 216, 75);
+			attributionBox = new AttributionBox(554, 480, 216, 75);
 			attributionBox.setText(machine.Attribution);
 			addChild(attributionBox);
 			
 			//Banner. Only used by Title and Ending slides.
 			if (type == ENDING_TYPE || type == TITLE_TYPE) {
-				banner = new TitleBanner(0, 120, 766, 80);
+				banner = new TitleBanner(0, 160, 800, 80);
 				banner.setText(ENDING_TEXT);
 				addChild(banner);
 			}
@@ -200,7 +201,7 @@ package
 				//Assigning it to a string first makes sure that no tags or empty tags both equate to an empty string.
 				var prompt:String = machine.Prompt;
 				if (prompt != "") {
-					promptBox = new ContentBox(530, 20, 216, 150);
+					promptBox = new ContentBox(554, 20, 216, 150);
 					promptBox.setText(prompt);
 					addChild(promptBox);
 				}
@@ -212,10 +213,10 @@ package
 			}
 			else {
 				if (type == BODY_TYPE) {
-					contentBox = new ContentBox(35, 20, 475, 450);5
+					contentBox = new ContentBox(35, 20, 475, 535);
 				}
 				else {
-					contentBox = new ContentBox(35, 300, 475, 170);
+					contentBox = new ContentBox(35, 360, 475, 170);
 				}
 				contentBox.setText(machine.Content);
 				addChild(contentBox);
@@ -235,13 +236,13 @@ package
 				
 				for (var i:int = 0; i < num; i++)
 				{
-					buttons.push(new BranchButton(530, 395 - 50 * (num - i), 216, 30));
+					buttons.push(new BranchButton(554, 465 - 50 * (num - i), 216, 30));
 					BranchButton(buttons[i]).addEventListener(MouseEvent.CLICK, passAlong);
 					addChild(buttons[i]);
 				}
 			}
 			else {
-				buttons.push(new BranchButton(530, 345, 216, 30));
+				buttons.push(new BranchButton(554, 415, 216, 30));
 				BranchButton(buttons[0]).addEventListener(MouseEvent.CLICK, passAlong);
 				addChild(buttons[0]);
 			}
@@ -250,6 +251,11 @@ package
 			backbutton = new BackButton(10, 20, 15, 30);
 			backbutton.addEventListener(MouseEvent.CLICK, goBack);
 			addChild(backbutton);
+		}
+		
+		private function setBkgSize(event:Event):void {
+			background.width = 800;
+			background.height = 575;
 		}
 		
 		/**

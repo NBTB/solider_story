@@ -5,7 +5,9 @@ package
 	import flash.display.Loader;
 	import flash.display.LoaderInfo;
 	import flash.display.Sprite;
+	import flash.errors.IOError;
 	import flash.events.Event;
+	import flash.events.IOErrorEvent;
 	import flash.events.MouseEvent;
 	import flash.events.ProgressEvent;
 	import flash.net.URLLoader;
@@ -129,12 +131,17 @@ package
 			if (index < list.length()) {
 				loader = new Loader();
 				loader.contentLoaderInfo.addEventListener(Event.COMPLETE, loadNextImage);
+				loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, printError);
 				trace("Fetching \"" + list[index] + "\"...");
 				loader.load(new URLRequest(list[index]));
 			}
 			else {
 				createSlides();
 			}
+		}
+		
+		private function printError(e:IOErrorEvent):void {
+			throw new Error("The file \"" + list[index] + "\" could not be loaded!");
 		}
 		
 		/**
@@ -195,10 +202,14 @@ package
 			wipe.start(slides[state.currentSlide], slides[e.value]);
 			
 			state.currentSlide = e.value;
-			
-			slides[state.currentSlide].enterSlide(state);
-			slides[state.currentSlide].x = stage.stageWidth * 2;
-			addChild(slides[state.currentSlide]);
+			try {
+				slides[state.currentSlide].enterSlide(state);
+				slides[state.currentSlide].x = stage.stageWidth * 2;
+				addChild(slides[state.currentSlide]);
+			}
+			catch (e:TypeError) {
+				throw new Error("The slide \"" + state.currentSlide + "\" could not load!");
+			}
 		}
 
 		/**

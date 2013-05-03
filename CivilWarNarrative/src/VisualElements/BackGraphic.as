@@ -16,7 +16,7 @@ package VisualElements
 		 * @param	gradient The array of colors to use as a gradient fill. Must be three elements long.
 		 */
 		public function BackGraphic(width:int, height:int, gradient:Array) {
-			graphics.lineStyle(1, 0xFFFFFF, 1, true);
+			graphics.lineStyle(1, 0xE5E5E5, 1, true);
 			
 			var mat:Matrix = new Matrix();
 			mat.createGradientBox(width, height, Math.PI / 2, 0, 0);

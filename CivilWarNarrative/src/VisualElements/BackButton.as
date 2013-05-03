@@ -22,6 +22,7 @@ package VisualElements
 		public function BackButton(x:int, y:int, width:int, height:int) {
 			this.x = x;
 			this.y = y;
+			this.buttonMode = true;
 			
 			graphic = new BackGraphic(width, height, Slide.NORMAL_GRADIENT);
 			hovergraphic = new BackGraphic(width, height, Slide.SELECTED_GRADIENT);

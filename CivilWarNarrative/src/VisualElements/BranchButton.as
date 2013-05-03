@@ -36,6 +36,7 @@ package VisualElements
 		public function BranchButton(x:int, y:int, width:int, height:int) {
 			this.x = x;
 			this.y = y;
+			this.buttonMode = true;
 			
 			graphic = new ButtonGraphic(width, height, Slide.NORMAL_GRADIENT);
 			graphic.mouseEnabled = false;

@@ -184,7 +184,7 @@ package
 			background.filters = filters;
 			
 			//Attribution Box.
-			attributionBox = new AttributionBox(554, 480, 216, 75);
+			attributionBox = new AttributionBox(554, 480, 250, 100);
 			attributionBox.setText(machine.Attribution);
 			addChild(attributionBox);
 			

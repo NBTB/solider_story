@@ -41,7 +41,7 @@ package VisualElements
 			outline = new Sprite();
 			addChild(outline);
 			outline.graphics.moveTo(3, 0);
-			outline.graphics.lineStyle(1, 0xFFFFFF, 1, true);
+			outline.graphics.lineStyle(1, 0xE5E5E5, 1, true);
 			outline.graphics.lineTo(barWidth - 3, 0);
 			outline.graphics.curveTo(barWidth, 0, barWidth, 3);
 			outline.graphics.lineTo(barWidth, barHeight - 3);

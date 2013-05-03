@@ -15,6 +15,8 @@ package
 	import flash.text.TextField;
 	import mx.utils.ObjectUtil;
 	import VisualElements.ProgressBar;
+	import com.greensock.TweenLite;
+	import com.greensock.easing.*;
 	
 	/**
 	 * The document class for the interactive narrative.
@@ -33,8 +35,6 @@ package
 		internal var loady1:ProgressBar;  //placeholder loading graphics.
 		internal var loady2:ProgressBar;  //placeholder loading graphics.
 		
-		internal var wipe:WipeTransition; //Performs animated transitions.
-		
 		internal var entry:String;        //The slide to display first and on reset.
 		
 		internal var images:Object;       //All images used by the app in an associative array.
@@ -48,6 +48,7 @@ package
 		public function Main():void {
 			XML.ignoreComments = true; 
 			XML.ignoreProcessingInstructions = true;
+			
 			
 			if (stage) init();
 			else addEventListener(Event.ADDED_TO_STAGE, init);
@@ -66,17 +67,16 @@ package
 			loady1.y = 120;
 			loady1.draw(0);
 			addChild(loady1);
+			loady1.alpha = 0;
 			loady2 = new ProgressBar(300,50);
-			loady2.x = 150;
-			loady2.y = 200;
+			loady2.x = (stage.stageWidth / 3.5);
+			loady2.y = stage.stageHeight / 2.5;
 			loady2.draw(0);
 			addChild(loady2);
-			
+			stage.frameRate = 60;
 			
 			images = new Object();
 			index = 0;
-			wipe = new WipeTransition();
-			addChild(wipe);
 			
 			slides = new Object();
 			state = new Object();
@@ -182,7 +182,9 @@ package
 			state.stacklength = stack.length;
 			slides[state.currentSlide].enterSlide(state);
 			addChild(slides[state.currentSlide]);
-			wipe.start(null, slides[state.currentSlide]);
+			slides[state.currentSlide].alpha = 0;
+			TweenLite.to(slides[state.currentSlide], 0.5, { alpha:1, ease:Sine.easeInOut } );
+			//wipe.start(null, slides[state.currentSlide]);
 		}
 		
 		/**
@@ -198,14 +200,15 @@ package
 		 * @param	e The CHANGE_SLIDE event.
 		 */
 		private function changeSlide(e:SlideEvent):void {
-			//TODO: slide transition
-			wipe.start(slides[state.currentSlide], slides[e.value]);
-			
+			TweenLite.to(slides[state.currentSlide], 0.5, { alpha:0, ease:Sine.easeInOut } );
+			removeChild(slides[state.currentSlide]); //collect teh garbage
 			state.currentSlide = e.value;
 			try {
 				slides[state.currentSlide].enterSlide(state);
-				slides[state.currentSlide].x = stage.stageWidth * 2;
 				addChild(slides[state.currentSlide]);
+				slides[state.currentSlide].alpha = 0;
+				TweenLite.to(slides[state.currentSlide], 0.5, { alpha:1, ease:Sine.easeInOut } );
+				
 			}
 			catch (e:TypeError) {
 				throw new Error("The slide \"" + state.currentSlide + "\" could not load!");
@@ -217,7 +220,8 @@ package
 		 * @param	e The CLEAR_STATE event.
 		 */
 		private function clearState(e:SlideEvent):void {
-			wipe.start(slides[state.currentSlide], slides[entry]);
+			TweenLite.to(slides[state.currentSlide], 0.5, { alpha:0, ease:Sine.easeInOut } );
+			removeChild(slides[state.currentSlide]); //collect teh garbage
 			
 			state = new Object();
 			stack = new Array();
@@ -225,6 +229,8 @@ package
 			
 			slides[state.currentSlide].enterSlide(state);
 			addChild(slides[state.currentSlide]);
+			slides[state.currentSlide].alpha = 0;
+			TweenLite.to(slides[state.currentSlide], 0.5, { alpha:1, ease:Sine.easeInOut } );
 		}
 		
 		/**
@@ -232,17 +238,16 @@ package
 		 * @param	e The POP_STATE event.
 		 */
 		private function popState(e:SlideEvent):void {
-			//TODO: backwards slide transition
 			
 			if (stack.length < 1) return; //fail-safe
 			
 			var lastSlide:String = state.currentSlide;
 			state = stack.pop();
-			
-			wipe.start(slides[lastSlide], slides[state.currentSlide], true);
-			
+			TweenLite.to(slides[lastSlide], 0.5, { alpha:0, ease:Sine.easeInOut } );	
+			removeChild(slides[lastSlide]); //collect teh garbage
 			slides[state.currentSlide].enterSlide(state);
 			addChild(slides[state.currentSlide]);
+			TweenLite.to(slides[state.currentSlide], 0.5, { alpha:1, ease:Sine.easeInOut } );
 		}
 		
 		/**

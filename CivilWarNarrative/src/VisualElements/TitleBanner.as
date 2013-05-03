@@ -14,6 +14,7 @@ package VisualElements
 	{
 		private var fieldFormat:TextFormat;
 		private var field:TextField;
+        private var embArial:Class;
 		
 		/**
 		 * Constructs a TitleBanner with the given position and size.
@@ -34,7 +35,7 @@ package VisualElements
 			mat.createGradientBox(width, height, 0, 0, 0);
 			graphics.beginGradientFill(GradientType.LINEAR, [0x334C80, 0x0F1F4C, 0x0F1F4C, 0x334C80], [.35, .75, .75, .35], [0, 85,171, 255], mat);
 			graphics.moveTo(0, 0);
-			graphics.lineStyle(1, 0xFFFFFF, 1, true);
+			graphics.lineStyle(1, 0xE5E5E5, 1, true);
 			graphics.lineTo(width, 0);
 			graphics.lineStyle(0,0,0);
 			graphics.lineTo(width, height);
@@ -44,13 +45,11 @@ package VisualElements
 			graphics.lineTo(0, 0);
 			graphics.endFill();
 			
-			fieldFormat = new TextFormat();
-			fieldFormat.size = fontsize;
-			fieldFormat.color = 0xFFFFFF;
-			fieldFormat.font = "Times New Roman";
+			fieldFormat = new TextFormat("embArial",fontsize,0xE5E5E5);
 			fieldFormat.align = TextFormatAlign.CENTER;
 			
 			field = new TextField();
+			field.embedFonts = true;
 			field.defaultTextFormat = fieldFormat;
 			field.width = width-2;
 			field.height = height-2;

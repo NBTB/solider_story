@@ -14,13 +14,15 @@ package VisualElements
 	public class AttributionBox extends Sprite
 	{
 		//{ region Constants
-		public static const BORDER_SIZE:int = 10;            //The width of the faded edge.
-		public static const TRANSPARENCY_FRAC:Number = .5;   //The transparency fraction of the box's general background.
-		public static const BKG_COLOR:uint = 0x7B6748;       //The color of the background of the box.
+		public static const BORDER_SIZE:int = 5;            //The width of the faded edge.
+		public static const TRANSPARENCY_FRAC:Number = .8;   //The transparency fraction of the box's general background.
+		public static const BKG_COLOR:uint = 0x484137;       //The color of the background of the box.
 		//} endregion
 		
 		private var fieldFormat:TextFormat;
 		private var field:TextField;
+		
+		private var embArial:Class;
 		
 		/**
 		 * Constructs an AttributionBox with the given position and size.
@@ -76,17 +78,14 @@ package VisualElements
 			
 			
 			
-			fieldFormat = new TextFormat();
-			fieldFormat.size = 9;
-			fieldFormat.font = "Arial";
-			fieldFormat.color = 0xFFFFFF;
-			fieldFormat.align = TextFormatAlign.RIGHT;
+			fieldFormat = new TextFormat("embArial",12,0xE5E5E5);
 			
 			field = new TextField();
+			field.embedFonts = true;
 			field.defaultTextFormat = fieldFormat;
-			field.x = BORDER_SIZE/2;
-			field.y = BORDER_SIZE/2;
-			field.width = width - BORDER_SIZE;
+			field.x = BORDER_SIZE / 2 + 5;
+			field.y = BORDER_SIZE/2 + 5;
+			field.width = width - BORDER_SIZE - 5;
 			field.height = height - BORDER_SIZE;
 			field.wordWrap = true;
 			

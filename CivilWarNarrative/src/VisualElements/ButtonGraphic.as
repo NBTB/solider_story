@@ -12,7 +12,10 @@ package VisualElements
 	 */
 	public class ButtonGraphic extends Sprite
 	{
+		private var fieldFormat:TextFormat;
 		private var field:TextField;
+		
+		private var embArial:Class;
 		
 		/**
 		 * Constructs the graphic using the given size and color scheme.
@@ -24,7 +27,7 @@ package VisualElements
 		{
 			var fontsize:int = 14;
 			
-			graphics.lineStyle(1, 0xFFFFFF, 1, true);
+			graphics.lineStyle(1, 0xE5E5E5, 1, true);
 			
 			var mat:Matrix = new Matrix();
 			mat.createGradientBox(width, height, Math.PI / 2, 0, 0);
@@ -38,17 +41,14 @@ package VisualElements
 			graphics.lineTo(0, 3);
 			graphics.curveTo(0, 0, 3, 0);
 			graphics.endFill();
-			
-			var fieldFormat:TextFormat = new TextFormat();
-			fieldFormat.font = "Arial";
+			fieldFormat = new TextFormat("embArial",fontsize,0xE5E5E5);
 			fieldFormat.align = TextFormatAlign.CENTER;
-			fieldFormat.size = fontsize;
 			field = new TextField();
+			field.embedFonts = true;
 			field.width = width - height / 2 - 1;
 			field.height = height - 5;
 			field.x = 1;
 			field.y = (height - fontsize - 6) / 2;
-			field.textColor = 0xFFFFFF;
 			field.defaultTextFormat = fieldFormat;
 			addChild(field);
 		}

@@ -1,6 +1,7 @@
 package  
 {
 	import flash.display.BitmapData;
+	import flash.display.DisplayObject;
 	import flash.display.Loader;
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
@@ -185,7 +186,7 @@ package
 			
 			//Attribution Box.
 			attributionBox = new AttributionBox(554, 480, 250, 100);
-			attributionBox.setText(machine.Attribution);
+			attributionBox.setText(machine.Attribution, handleTextSize(machine.Attribution));
 			addChild(attributionBox);
 			
 			//Banner. Only used by Title and Ending slides.
@@ -451,6 +452,19 @@ package
 		 */
 		private function matchesCondition(path:XMLList, state:Object):Boolean {
 			return state[path.@key] == path.@value;
+		}
+		
+		private function handleTextSize(text:String):int {
+			var chars:int = text.length;
+			switch(true) {
+				case(chars > 200):
+					return 12;
+				case(chars > 100 && chars <= 200):
+					return 14;
+				default:
+					return 20;
+			}
+			return 12;
 		}
 	}
 }

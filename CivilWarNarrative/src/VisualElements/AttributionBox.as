@@ -96,7 +96,9 @@ package VisualElements
 		 * Sets the text to appear in the box.
 		 * @param	text The text to display in the box. HTML tags allowed.
 		 */
-		public function setText(text:String):void {
+		public function setText(text:String, size:int = 12):void {
+			fieldFormat.size = size;
+			field.defaultTextFormat = fieldFormat;
 			field.htmlText = text;
 		}
 		

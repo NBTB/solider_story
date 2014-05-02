@@ -15,7 +15,10 @@ package
 	import VisualElements.BackButton;
 	import VisualElements.BranchButton;
 	import VisualElements.ContentBox;
+	import VisualElements.HideButton;
 	import VisualElements.TitleBanner;
+	import com.greensock.TweenLite;
+	import com.greensock.easing.*;
 	/**
 	 * A Slide is the basic unit of the interactive narrative. Each Slide is self-contained, and dispatches a SlideEvent to communicate
 	 * when an external action is necessary.
@@ -97,6 +100,11 @@ package
 		private static var filter:ColorMatrixFilter = null;
 		
 		/**
+		 * Whether the interface elements are currently hidden or visible
+		 */		
+		private static var elements_visible:Boolean = true;
+		
+		/**
 		 * Constructs a ColorMatrixFilter to transform images into sepia tone.
 		 * @return A sepia ColorMatrixFilter.
 		 */
@@ -153,9 +161,13 @@ package
 		private var promptBox:ContentBox;           // only used in BODY_TYPE slides, but not always. null if not in use.
 		private var attributionBox:AttributionBox;
 		private var backbutton:BackButton;
+		private var hidebutton:Sprite;
 		
 		//Buttons have side effects of state, so have to be reset every time this frame is entered.
 		private var buttons:Array;
+		
+		//Create an array of visual elements we want to be able to hide
+		private var elements:Array;
 		
 		//} endregion
 		
@@ -184,15 +196,20 @@ package
 			filters.push(GetSepiaFilter());
 			background.filters = filters;
 			
+			//Initialize elements array
+			elements = new Array();
+			
 			//Attribution Box.
 			attributionBox = new AttributionBox(554, 480, 250, 100);
 			attributionBox.setText(machine.Attribution, handleTextSize(machine.Attribution));
+			elements.push(attributionBox);
 			addChild(attributionBox);
 			
 			//Banner. Only used by Title and Ending slides.
 			if (type == ENDING_TYPE || type == TITLE_TYPE) {
 				banner = new TitleBanner(0, 160, 800, 80);
 				banner.setText(ENDING_TEXT);
+				elements.push(banner);
 				addChild(banner);
 			}
 			
@@ -204,6 +221,7 @@ package
 				if (prompt != "") {
 					promptBox = new ContentBox(554, 20, 216, 150);
 					promptBox.setText(prompt);
+					elements.push(promptBox);
 					addChild(promptBox);
 				}
 			}
@@ -220,6 +238,7 @@ package
 					contentBox = new ContentBox(35, 360, 475, 170);
 				}
 				contentBox.setText(machine.Content);
+				elements.push(contentBox);
 				addChild(contentBox);
 				
 			}
@@ -239,19 +258,44 @@ package
 				{
 					buttons.push(new BranchButton(554, 465 - 50 * (num - i), 216, 30));
 					BranchButton(buttons[i]).addEventListener(MouseEvent.CLICK, passAlong);
+					elements.push(buttons[i]);
 					addChild(buttons[i]);
 				}
 			}
 			else {
 				buttons.push(new BranchButton(554, 415, 216, 30));
 				BranchButton(buttons[0]).addEventListener(MouseEvent.CLICK, passAlong);
+				elements.push(buttons[0]);
 				addChild(buttons[0]);
 			}
 			
 			//Back Button.
 			backbutton = new BackButton(10, 20, 15, 30);
 			backbutton.addEventListener(MouseEvent.CLICK, goBack);
+			elements.push(backbutton);
 			addChild(backbutton);
+			
+			//"Hide Button", hover to hide screen elements
+			hidebutton = new HideButton(0, 524, 150, 50);
+			hidebutton.addEventListener(MouseEvent.CLICK, hideShowElements);
+			addChild(hidebutton);
+		}
+		
+		private function hideShowElements(e:MouseEvent):void {
+			var targetAlpha:int;
+			if (Slide.elements_visible) {
+				targetAlpha = 0;
+				e.target.setText("Show Interface");
+				Slide.elements_visible = false;
+			}
+			else {
+				targetAlpha = 1;
+				e.target.setText("Hide Interface");
+				Slide.elements_visible = true;
+			}
+			for (var i:int = 0; i < elements.length ; i++) {
+				TweenLite.to(elements[i], 0.5, { alpha:targetAlpha, ease:Sine.easeInOut } );
+			}
 		}
 		
 		private function setBkgSize(event:Event):void {

@@ -13,6 +13,7 @@ package
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 	import flash.text.TextField;
+	import flash.text.TextFormat;
 	import mx.utils.ObjectUtil;
 	import VisualElements.ProgressBar;
 	import com.greensock.TweenLite;
@@ -34,6 +35,7 @@ package
 		
 		internal var loady1:ProgressBar;  //placeholder loading graphics.
 		internal var loady2:ProgressBar;  //placeholder loading graphics.
+		internal var loadingText:TextField;
 		
 		internal var entry:String;        //The slide to display first and on reset.
 		
@@ -62,18 +64,35 @@ package
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 			//TODO better loading graphic
-			loady1 = new ProgressBar(300,50);
+			loady1 = new ProgressBar(100,30);
 			loady1.x = 150;
 			loady1.y = 120;
 			loady1.draw(0);
 			addChild(loady1);
 			loady1.alpha = 0;
-			loady2 = new ProgressBar(300,50);
-			loady2.x = (stage.stageWidth / 3.5);
-			loady2.y = stage.stageHeight / 2.5;
+			loady2 = new ProgressBar(100,30);
+			loady2.x = (stage.stageWidth / 2) + 15;
+			loady2.y = stage.stageHeight / 2;
 			loady2.draw(0);
 			addChild(loady2);
 			stage.frameRate = 60;
+			
+			//create loading text field
+			loadingText = new TextField();
+			loadingText.wordWrap = true;
+			loadingText.selectable = false;
+			loadingText.text = "A Soldier's Story Loading...";
+			loadingText.x = (stage.stageWidth / 3.5);
+			loadingText.y = 210;
+			loadingText.height = 168;
+			loadingText.width = 300;
+			var myTextFormat:TextFormat = new TextFormat();
+			myTextFormat.font = "Arial";
+			myTextFormat.size = 40;
+			myTextFormat.color = 0xFFFFFF;
+			myTextFormat.leading = 20;
+			loadingText.setTextFormat(myTextFormat);
+			addChild(loadingText);
 			
 			images = new Object();
 			index = 0;
@@ -176,6 +195,7 @@ package
 			//TODO: remove loading graphic or change it to indicate progress.
 			removeChild(loady1);
 			removeChild(loady2);
+			removeChild(loadingText);
 			
 			//Throw the first slide up on the screen.
 			state.currentSlide = entry;

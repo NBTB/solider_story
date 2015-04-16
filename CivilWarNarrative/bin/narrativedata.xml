@@ -9,7 +9,7 @@
 		<Branch type="decision">
 			<Path1>
 				<Text>Begin</Text>
-				<Reference>exposition</Reference>
+				<Reference>intro</Reference>
 				<Store/>
 			</Path1>
 			<Path2>
@@ -34,8 +34,41 @@
 			</Default>
 		</Branch>
 	</Slide>
+	<Slide name="intro" type="body">
+			<Content>The histories of war are often told by the winner.  Surviving documentary evidence may be more plentiful for one side than for the other.  We have attempted to portray both sides of the conflict with appropriate historic images, however, for some scenes depicting soldiers' daily life, we have used the same image for both sides.</Content>
+			<Image>3b50888u.jpg</Image>
+			<Attribution>lt;a href="http://www.loc.gov/pictures/item/91787341/"&gt;The soldier's dream of home. By Currier &amp; Ives. Between 1861 and 1865. Library of Congress, Prints &amp; Photographs Division, LC-USZC2-3014.&lt;/a&gt;</Attribution>
+			<Prompt></Prompt>
+			<Branch type="decision">
+				<Path1>
+					<Text>Continue</Text>
+					<Reference>exposition</Reference>
+					<Store/>
+				</Path1>
+				<Path2>
+					<Text/>
+					<Reference/>
+					<Store/>
+				</Path2>
+				<Path3>
+					<Text/>
+					<Reference/>
+					<Store/>
+				</Path3>
+				<Path4>
+					<Text/>
+					<Reference/>
+					<Store/>
+				</Path4>
+				<Default>
+					<Text/>
+					<Reference/>
+					<Store/>
+				</Default>
+			</Branch>
+	</Slide>
 	<Slide name="exposition" type="body">
-		<Content>In November of 1860, Abraham Lincoln is elected President of the United States. The next month, the Southern states begin to secede. In March of 1861, President Lincoln takes office and delivers his &lt;a href="http://www.bartleby.com/124/pres31.html"&gt;First Inaugural Address&lt;/a&gt;, which asserts his intention to preserve the Union by compromise.&lt;br/&gt;&lt;br/&gt;One month later, however, Fort Sumter is besieged and taken by Confederates. Lincoln calls for 75,000 men to preserve the Union, but his call to arms galvanizes the Border States. A handful more of them secede and war is begun.</Content>
+		<Content>In November of 1860, Abraham Lincoln is elected President of the United States. The next month, the Southern states begin to secede. In March of 1861, President Lincoln takes office and delivers his &lt;a href="http://www.bartleby.com/124/pres31.html"&gt;First Inaugural Address&lt;/a&gt;, which asserts his intention to preserve the Union by compromise.&lt;br/&gt;&lt;br/&gt;One month later, however, Fort Sumter is besieged and taken by Confederates. Lincoln calls for 75,000 men to preserve the Union, but his call to arms galvanizes the border states. A handful more of them secede and war is begun.</Content>
 		<Image>19469a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2008000004/PP/"&gt;Abraham Lincoln, three-quarter length portrait, seated and holding his spectacles and a pencil. By Alexander Gardner. Feb. 5, 1865. Library of Congress, Prints &amp; Photographs Division, LC-DIG-ppmsca-19469.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -69,8 +102,8 @@
 	</Slide>
 	<Slide name="loyalty" type="title">
 		<Content>Choose your loyalty</Content>
-		<Image>04174a.jpg</Image>
-		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000974/PP/"&gt;Washington, D.C. Signal Corps officers lowering flag at their camp near Georgetown; Gen Albert J. Myer, in civilian dress, at right of pole. 1865 August. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-04174.&lt;/a&gt;</Attribution>
+		<Image>choose-loyalty.jpg</Image>
+		<Attribution>Left: &lt;a href="http://hdl.loc.gov/loc.pnp/ppmsca.31308"&gt;Unidentified  Confederate soldier. Library of Congress. Right: &lt;a href="http://www.loc.gov/pictures/item/2010647778/"&gt;Unidentified Union soldier. Library of Congress,  &lt;/a&gt;</Attribution>
 		<Prompt/>
 		<Branch type="decision">
 			<Path1>
@@ -168,8 +201,8 @@
 	</Slide>
 	<Slide name="background-union" type="title">
 		<Content>Choose your background</Content>
-		<Image>10942u.jpg</Image>
-		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2010647778/"&gt;Full-length portrait of an unidentified civil war soldier. By Ball &amp; Thomas. Between 1860 and 1870. Library of Congress, Prints &amp; Photographs Division, LC-DIG-ppmsca-10942.&lt;/a&gt;</Attribution>
+		<Image>04314a.jpg</Image>
+		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000975/PP/"&gt;Washington, D.C. Chapel and other buildings of Armory Square Hospital, 6th and B Sts. SW; completed U.S. Capitol in distance. 1865 August. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-04314.&lt;/a&gt;</Attribution>
 		<Prompt/>
 		<Branch type="decision">
 			<Path1>
@@ -201,8 +234,8 @@
 	</Slide>
 	<Slide name="background-confederate" type="title">
 		<Content>Choose your background</Content>
-		<Image>10942u.jpg</Image>
-		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2010647778/"&gt;Full-length portrait of an unidentified civil war soldier. By Ball &amp; Thomas. Between 1860 and 1870. Library of Congress, Prints &amp; Photographs Division, LC-DIG-ppmsca-10942.&lt;/a&gt;</Attribution>
+		<Image>02891a.jpg</Image>
+		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000684/PP/"&gt;Richmond, Va. Front view of Capitol. 1865. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-02891.&lt;/a&gt;</Attribution>
 		<Prompt/>
 		<Branch type="decision">
 			<Path1>
@@ -233,7 +266,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="hometown-cfarm" type="body">
-		<Content>Life for you here in your hometown is quiet but fairly productive. You own a small farm in the countryside just outside a small town. Although slavery is legal in your state, you are not wealthy enough to own any. You and your wife, with whom you have been married only around five years, grow produce and raise chickens. What you don't eat yourselves you sell to a man in town who himself takes it to the city to peddle. Today, you heard the news that the President is calling for more troops. You wouldn't normally be interested, but everyone else seems so enthused about enlisting, and the signing bonus would help buy that horse-drawn plow you've been eyeing. Of course, going off to war would mean leaving your wife and children alone on the farm. They say it will be a 30 days war. You'd be back in time for the harvest, anyway, right?</Content>
+		<Content>Life for you here in your hometown is quiet but fairly productive. You own a small farm in the countryside just outside a small town. Although slavery is legal in your state, you are not wealthy enough to own any. You and your wife, with whom you have been married only around five years, grow produce and raise chickens. What you don't eat yourselves you sell to a man in town who himself takes it to the city to peddle. Today, you heard the news that President Davis is calling for more troops. You wouldn't normally be interested, but everyone else seems so enthused about enlisting, and the signing bonus would help buy that horse-drawn plow you've been eyeing. Of course, going off to war would mean leaving your wife and children alone on the farm. They say it will be a 30 days war. You'd be back in time for the harvest, anyway, right?</Content>
 		<Image>00834a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003004688/PP/"&gt;Emmitsburg, Maryland. Farmer's Inn and Hotel where our special artist was captured, July 5 1863. By James F. Gibson. 1863. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-00834.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -245,7 +278,7 @@
 			</Path1>
 			<Path2>
 				<Text>Stay Home</Text>
-				<Reference>rally</Reference>
+				<Reference>rally-confederate</Reference>
 				<Store/>
 			</Path2>
 			<Path3>
@@ -368,7 +401,7 @@
 		<Content>He seems sympathetic, and genuinely interested in helping you out. He says he can't give you a gun, but you can tend to the wounded or cook food for the soldiers if you really want to help.</Content>
 		<Image>04084a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000452/PP/"&gt;Brandy Station, Va., vicinity. Camp of 18th Pennsylvania Cavalry, 3d Division, Cavalry Corps. 1864 March. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-04084.&lt;/a&gt;</Attribution>
-		<Prompt>Until the &lt;b&gt;&lt;a href="http://www.archives.gov/exhibits/featured_documents/emancipation_proclamation/"&gt;Emancipation Proclamation&lt;/a&gt;&lt;/b&gt;, military units could not officially enroll blacks as soldiers.</Prompt>
+		<Prompt>Until the &lt;b&gt;&lt;a href="http://www.archives.gov/exhibits/featured_documents/emancipation_proclamation/"&gt;Emancipation Proclamation&lt;/a&gt;&lt;/b&gt;, military units could not officially enroll Blacks as soldiers.</Prompt>
 		<Branch type="decision">
 			<Path1>
 				<Text>Continue</Text>
@@ -497,7 +530,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="ending-refugee" type="ending">
-		<Content>You were a runaway slave, denied a position in the army, but unable to settle down anywhere. Many freed slaves ended up in overcrowded refugee camps — a story in its own right. The government tried to apportion land out to freed slaves, but there were simply too many. For these people, the story of the Reconstruction was just beginning.</Content>
+		<Content>You were a runaway slave, denied a position in the army, but unable to settle down anywhere. Many freed slaves ended up in overcrowded refugee camps&#8212;a story in its own right. The government tried to apportion land out to freed slaves, but there were simply too many. For these people, the story of the Reconstruction was just beginning.</Content>
 		<Image>03471a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000879/PP/"&gt;Atlanta, Ga. Boxcars with refugees at railroad depot. By George N. Barnard. 1864. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03471.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -530,7 +563,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="hometown-farm" type="body">
-		<Content>Life for you here in your hometown is quiet but fairly productive. You own a small farm in the countryside just outside a small town. You and your wife, with whom you have been married only around five years, grow produce and raise chickens. What you don't eat yourselves you sell to a man in town who himself takes it to the city to peddle. Today, you heard the news that the President is calling for more troops. You wouldn't normally be interested, but everyone else seems so enthused about enlisting, and the signing bonus would help buy that horse-drawn plow you've been eyeing. Of course, going off to war would mean leaving your wife and children alone on the farm. They say it will be a 30 days war. You'd be back in time for the harvest, anyway, right?</Content>
+		<Content>Life for you here in your hometown is quiet but fairly productive. You own a small farm in the countryside just outside a small town. You and your wife, with whom you have been married only around five years, grow produce and raise chickens. What you don't eat yourselves you sell to a man in town who himself takes it to the city to peddle. Today, you heard the news that President Lincoln is calling for more troops. You wouldn't normally be interested, but everyone else seems so enthused about enlisting, and the signing bonus would help buy that horse-drawn plow you've been eyeing. Of course, going off to war would mean leaving your wife and children alone on the farm. They say it will be a 30 days war. You'd be back in time for the harvest, anyway, right?</Content>
 		<Image>01933a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003004890/PP/"&gt;Dutch Gap, Virginia (vicinity). Deserted farm house near Dutch Gap canal. 1864 Nov. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01933.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -542,7 +575,7 @@
 			</Path1>
 			<Path2>
 				<Text>Stay Home</Text>
-				<Reference>rally</Reference>
+				<Reference>rally-union</Reference>
 				<Store/>
 			</Path2>
 			<Path3>
@@ -563,7 +596,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="hometown-factory" type="body">
-		<Content>Life for you here in your hometown is not too easy. Living in an apartment within the city limits, you work at a mill on the river's edge. You and your wife, with whom you have been married only around five years, have two children, and another on the way. Feeding your growing family is hard on a laborer's wage.&lt;br/&gt;&lt;br/&gt;Today, you heard the news that the President is calling for more troops. You wouldn't normally be interested, but everyone else seems so enthused about enlisting, and the signing bonus would help buy some new clothes for your oldest. Of course, going off to war would mean leaving your wife and children by themselves, but a soldier is paid more than a millworker...</Content>
+		<Content>Life for you here in your hometown is not too easy. Living in an apartment within the city limits, you work at a mill on the river's edge. You and your wife, with whom you have been married only around five years, have two children, and another on the way. Feeding your growing family is hard on a laborer's wage.&lt;br/&gt;&lt;br/&gt;Today, you heard the news that President Lincoln is calling for more troops. You wouldn't normally be interested, but everyone else seems so enthused about enlisting, and the signing bonus would help buy some new clothes for your oldest. Of course, going off to war would mean leaving your wife and children by themselves, but a soldier is paid more than a millworker...</Content>
 		<Image>04239a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003006296/PP/"&gt;Washington, District of Columbia. Hancock's Veteran Corps on F Street, N.W. Washington, D.C. 1st U.S. Volunteer Infantry. 1865 Mar. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-04239&lt;/a&gt;</Attribution>
 		<Prompt>In the late 19th century, industrial plants were more commonly referred to as &lt;b&gt;"mills"&lt;/b&gt; than "factories".</Prompt>
@@ -575,7 +608,7 @@
 			</Path1>
 			<Path2>
 				<Text>Stay Home</Text>
-				<Reference>rally</Reference>
+				<Reference>rally-union</Reference>
 				<Store/>
 			</Path2>
 			<Path3>
@@ -596,10 +629,10 @@
 		</Branch>
 	</Slide>
 	<Slide name="hometown-mine" type="body">
-		<Content>At the very least, it has been an exciting few years since moving out west to work in the mines. You, your family, and all the other miners and their families live in rough plank sheds down the hill from the mine. You and your wife, who emigrated to America with you six years ago, have three children. It would be hard enough to feed them without the scarcity of food and water out here.&lt;br/&gt;&lt;br/&gt;Today, you heard the news that the President is calling for more troops. You wouldn't normally be interested, since you wouldn't earn that much more as a soldier, but everyone else seems so enthused about enlisting, and there has been talk about the mines drying up soon. If you were a soldier, you wouldn't have to deal with cramped tunnels, cave-ins, or pools of scalding hot water, but of course you might be shot. And true, going off to war would mean leaving your wife and children by themselves, but soldiering could be a steady job... if you survive.</Content>
+		<Content>At the very least, it has been an exciting few years since moving out West to work in the mines. You, your family, and all the other miners and their families live in rough plank sheds down the hill from the mine. You and your wife, who immigrated to America with you six years ago, have three children. It would be hard enough to feed them without the scarcity of food and water out here.&lt;br/&gt;&lt;br/&gt;Today, you heard the news that President Lincoln is calling for more troops. You wouldn't normally be interested, since you wouldn't earn that much more as a soldier, but everyone else seems so enthused about enlisting, and there has been talk about the mines drying up soon. If you were a soldier, you wouldn't have to deal with cramped tunnels, cave-ins, or pools of scalding hot water, but of course you might be shot. And true, going off to war would mean leaving your wife and children by themselves, but soldiering could be a steady job... if you survive.</Content>
 		<Image>3a10813u.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2012646445/"&gt;Gold miners, El Dorado, California. Between circa 1848 and 1853. Library of Congress, Prints &amp; Photographs Division, LC-USZ62-8197.&lt;/a&gt;</Attribution>
-		<Prompt>The &lt;b&gt;&lt;a href="http://en.wikipedia.org/wiki/California_Gold_Rush"&gt;California Gold Rush&lt;/a&gt;&lt;/b&gt; had happened years ago in 1849. More recently, the &lt;b&gt;&lt;a href="http://en.wikipedia.org/wiki/Comstock_Lode"&gt;Comstock Lode&lt;/a&gt;&lt;/b&gt; was drawing men, women and their families out west again. But the more gold or silver was pulled out of the ground, the deeper they had to dig to find more.</Prompt>
+		<Prompt>The &lt;b&gt;&lt;a href="http://en.wikipedia.org/wiki/California_Gold_Rush"&gt;California Gold Rush&lt;/a&gt;&lt;/b&gt; had happened years ago in 1849. More recently, the &lt;b&gt;&lt;a href="http://en.wikipedia.org/wiki/Comstock_Lode"&gt;Comstock Lode&lt;/a&gt;&lt;/b&gt; was drawing men, women and their families out West again. But the more gold or silver was pulled out of the ground, the deeper they had to dig to find more.</Prompt>
 		<Branch type="decision">
 			<Path1>
 				<Text>Enlist</Text>
@@ -608,7 +641,7 @@
 			</Path1>
 			<Path2>
 				<Text>Stay Home</Text>
-				<Reference>rally</Reference>
+				<Reference>rally-union</Reference>
 				<Store/>
 			</Path2>
 			<Path3>
@@ -629,7 +662,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="hometown-freeman" type="body">
-		<Content>The President has said the war isn't about slavery, but you know better. All of the states that have seceded are slave states. Defeating the Confederacy can only open great oppurtunities for blacks. So, with great pride and enthusiasm, you appear before the recruiters and volunteer to go to war for the Union.&lt;br/&gt;&lt;br/&gt;Their response surprises you. "We cannot accept your enlistment," they say. Something about a law against blacks in the army. You plead, but they begin to force you out.&lt;br/&gt;&lt;br/&gt;Disappointed, you head home.</Content>
+		<Content>The President has said the war isn't about slavery, but you know better. All of the states that have seceded are slave states. Defeating the Confederacy can only open great oppurtunities for Blacks. So, with great pride and enthusiasm, you appear before the recruiters and volunteer to go to war for the Union.&lt;br/&gt;&lt;br/&gt;Their response surprises you. "We cannot accept your enlistment," they say. Something about a law against Blacks in the army. You plead, but they begin to force you out.&lt;br/&gt;&lt;br/&gt;Disappointed, you head home.</Content>
 		<Image>04239a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003006296/PP/"&gt;Washington, District of Columbia. Hancock's Veteran Corps on F Street, N.W. Washington, D.C. 1st U.S. Volunteer Infantry. 1865 Mar. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-04239&lt;/a&gt;</Attribution>
 		<Prompt>Blacks in the North could be freed slaves, or born free in the North.</Prompt>
@@ -694,10 +727,10 @@
 			</Default>
 		</Branch>
 	</Slide>
-	<Slide name="rally" type="body">
+	<Slide name="rally-union" type="body">
 		<Content>Today, a recruitment rally is being held downtown. Everyone is taking the day off to see the band from the big city play. &lt;br/&gt;&lt;br/&gt;The band plays a selection of pieces so stirring that you can't help but imagine a battalion of troops marching in strict formation towards battle, bayonet-tipped muskets pointed sharply to the heavens, steeling themselves for battle. It almost brings a tear to your eye to think of the bravery and valor of the men in the army now, fighting for the cause. &lt;br/&gt;&lt;br/&gt;Several men have walked up to the stage and are signing the enlistment roll now.</Content>
-		<Image>03018a.jpg</Image>
-		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000809/PP/"&gt;Charleston, S.C. City Hall (80 Broad Street). By George N. Barnard. 1865 April. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03018.&lt;/a&gt;</Attribution>
+		<Image>05796u-cropped.jpg</Image>
+		<Attribution>&lt;a href="http://hdl.loc.gov/loc.pnp/pga.05796"&gt;The volunteers in defence of the government against usurpation, 1861 Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03018.&lt;/a&gt;</Attribution>
 		<Prompt/>
 		<Branch type="decision">
 			<Path1>
@@ -727,11 +760,44 @@
 			</Default>
 		</Branch>
 	</Slide>
+	<Slide name="rally-confederate" type="body">
+			<Content>Today, a recruitment rally is being held downtown. Everyone is taking the day off to see the band from the big city play. &lt;br/&gt;&lt;br/&gt;The band plays a selection of pieces so stirring that you can't help but imagine a battalion of troops marching in strict formation towards battle, bayonet-tipped muskets pointed sharply to the heavens, steeling themselves for battle. It almost brings a tear to your eye to think of the bravery and valor of the men in the army now, fighting for the cause. &lt;br/&gt;&lt;br/&gt;Several men have walked up to the stage and are signing the enlistment roll now.</Content>
+			<Image>03018a.jpg</Image>
+			<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000809/PP/"&gt;Charleston, S.C. City Hall (80 Broad Street). By George N. Barnard. 1865 April. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03018.&lt;/a&gt;</Attribution>
+			<Prompt/>
+			<Branch type="decision">
+				<Path1>
+					<Text>Enlist</Text>
+					<Reference>midenlistment</Reference>
+					<Store/>
+				</Path1>
+				<Path2>
+					<Text>Do Not Enlist</Text>
+					<Reference>conscription</Reference>
+					<Store/>
+				</Path2>
+				<Path3>
+					<Text/>
+					<Reference/>
+					<Store/>
+				</Path3>
+				<Path4>
+					<Text/>
+					<Reference/>
+					<Store/>
+				</Path4>
+				<Default>
+					<Text/>
+					<Reference/>
+					<Store/>
+				</Default>
+			</Branch>
+	</Slide>
 	<Slide name="conscription" type="body">
 		<Content>Today, there is a knock at the door. The man on the other side informs you that you have been drafted and must report to the town hall after settling your personal affairs. He hands you a notice, bids you farewell, and walks off, no doubt to deliver his next conscription notice. &lt;br/&gt;&lt;br/&gt;You have heard of others avoiding the draft in the past, but you're not sure how well it worked for them, or even whether they were telling the truth, however.</Content>
 		<Image>03018a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000809/PP/"&gt;Charleston, S.C. City Hall (80 Broad Street). By George N. Barnard. 1865 April. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03018.&lt;/a&gt;</Attribution>
-		<Prompt>The draft was of course universally disliked. Only the poor or misfortunate could not in some way avoid it.</Prompt>
+		<Prompt>The draft was of course universally disliked. Only the poor or unfortunate could not in some way avoid it.</Prompt>
 		<Branch type="decision">
 			<Path1>
 				<Text>Accept Conscription</Text>
@@ -860,7 +926,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="never-fought" type="ending">
-		<Content>You never went to war. Of course, not everyone did, but a large number were recruited, willingly or otherwise. Still, it also happened that some men who by rights should have fought in the war were able to dodge recruitment. Some of these men, like Grover Cleveland and John D. Rockefeller, went on to become important historical figures.&lt;br/&gt;&lt;br/&gt;Because of the loopholes in the conscription acts, it was sometimes said that the Civil War was a "rich man's war, but a poor man's fight."</Content>
+		<Content>You never went to war. Of course, not everyone did, but a large number were recruited, willingly or otherwise. Because of the loopholes in the conscription acts, some men were able to dodge recruitment. It was sometimes said that the Civil War was a "rich man's war, but a poor man's fight." Some weatlthy men, like Grover Cleveland and John D. Rockefeller, went on to become important historical figures.&lt;br/&gt;&lt;br/&gt;</Content>
 		<Image>01933a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003004890/PP/"&gt;Dutch Gap, Virginia (vicinity). Deserted farm house near Dutch Gap canal. 1864 Nov. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01933.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -992,7 +1058,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="firstday" type="body">
-		<Content>Stepping off the wagon at the camp is surreal. Rows upon rows of white canvas tents make it seem like a carnival, all the men in uniform enhance this image. As you arrive, other wagons are being loaded up with uniformed soldiers to head off to the front.&lt;br/&gt;&lt;br/&gt;Here you will train for one month or until there is an urgent need for manpower, which ever comes first.</Content>
+		<Content>Stepping off the wagon at the camp is surreal. Rows upon rows of white canvas tents make it seem like a carnival, all the men in uniform enhance this image. As you arrive, other wagons are being loaded up with uniformed soldiers to head off to the front.&lt;br/&gt;&lt;br/&gt;Here you will train for one month or until there is an urgent need for manpower, whichever comes first.</Content>
 		<Image>04084a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000452/PP/"&gt;Brandy Station, Va., vicinity. Camp of 18th Pennsylvania Cavalry, 3d Division, Cavalry Corps. 1864 March. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-04084.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -1025,7 +1091,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="equip-union" type="body">
-		<Content>The new recruits are told to line up to meet the quartermaster. After waiting in line for a while, chatting with the other soldiers, you are finally called in to the warehouse to see the quartermaster. He walks you past stacks of goods, picks up one from each pile and hands you a haversack, canteen, knapsack, blanket, tent fly, Springfield rifled-musket, and catridge box. He makes some marks on a piece of paper, and sends you out.</Content>
+		<Content>The new recruits are told to line up to meet the quartermaster. After waiting in line for a while, chatting with the other soldiers, you are finally called in to the warehouse to see the quartermaster. He walks you past stacks of goods, picks up one from each pile and hands you a haversack, canteen, knapsack, blanket, tent fly, Springfield rifled musket, and catridge box. He makes some marks on a piece of paper, and sends you out.</Content>
 		<Image>03709a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000169/PP/"&gt;Aquia Creek Landing, Va. Personnel in front of Quartermaster's Office. By Alexander Gardner. 1863 February. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03709.&lt;/a&gt;</Attribution>
 		<Prompt>Cartridges for the &lt;b&gt;&lt;a href="http://en.wikipedia.org/wiki/Springfield_Model_1861"&gt;Springfield rifled musket&lt;/a&gt;&lt;/b&gt; were not the same as they are today. They consisted of a bullet and premeasured powder wrapped in cloth, which was opened and poured into the barrel of the musket.</Prompt>
@@ -1058,7 +1124,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="equip-confederate" type="body">
-		<Content>The new recruits are told to line up to meet the quartermaster. After waiting in line for a while, chatting with the other soldiers, you are finally called in to the warehouse to see the quartermaster. He walks you past stacks of goods, picks up one from each pile and hands you a haversack, canteen, knapsack, blanket, tent fly, Springfield rifled-musket, and catridge box. He makes some marks on a piece of paper, and sends you out.</Content>
+		<Content>The new recruits are told to line up to meet the quartermaster. After waiting in line for a while, chatting with the other soldiers, you are finally called in to the warehouse to see the quartermaster. He walks you past stacks of goods, picks up one from each pile and hands you a haversack, canteen, knapsack, blanket, tent fly, Springfield rifled musket, and catridge box. He makes some marks on a piece of paper, and sends you out.</Content>
 		<Image>03709a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000169/PP/"&gt;Aquia Creek Landing, Va. Personnel in front of Quartermaster's Office. By Alexander Gardner. 1863 February. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03709.&lt;/a&gt;</Attribution>
 		<Prompt>Lacking any major manufacturers, the Confederacy imported &lt;b&gt;&lt;a href="http://en.wikipedia.org/wiki/Pattern_1853_Enfield"&gt;Enfield rifled muskets&lt;/a&gt;&lt;/b&gt; from Britain whenever it could.</Prompt>
@@ -1127,7 +1193,7 @@
 		<Content>Later in the day, the soldiers make their way to the commissary depot, where rations are being handed out. Once everyone has their food, the soldiers begin breaking off into groups to share cooking fires. &lt;br/&gt;&lt;br/&gt;Within your group, there is a man who everyone agrees is the best cook, so they all let him cook their meals in exchange for small favors here and there. In some other groups, you can see people cooking for themselves. &lt;br/&gt;&lt;br/&gt;Having never really tried your hand at cooking, you decide to let the group's cook handle your food.</Content>
 		<Image>33073u.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2012649000/"&gt;Headquarters Army of Potomac - Brandy Station, April 1864. Commissary storehouse. By Timothy H. O'Sullivan. 1864. Library of Congress, Prints &amp; Photographs Division, LC-DIG-ppmsca-33073.&lt;/a&gt;</Attribution>
-		<Prompt>&lt;b&gt;Commissary&lt;/b&gt; — A place where food and provisions are stored and distributed.</Prompt>
+		<Prompt>&lt;b&gt;Commissary:&lt;/b&gt;  A place where food and provisions are stored and distributed.</Prompt>
 		<Branch type="conditional">
 			<Path1 key="loyalty" value="union">
 				<Text/>
@@ -1157,7 +1223,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="dinner-union" type="body">
-		<Content>Dinner tonight is typical, the other soldiers say: salt beef, rice, and beans. On the side is a biscuit the soldiers call a hardtack, because of the stiffness of the bread. To drink there is tea. It's certainly not as appetizing as a home-cooked meal, but you didn't join up for the food, did you?</Content>
+		<Content>Dinner tonight is typical, the other soldiers say: salt beef, rice, and beans. On the side is a biscuit the soldiers call hardtack, because of the stiffness of the bread. To drink there is tea. It's certainly not as appetizing as a home-cooked meal, but you didn't join up for the food, did you?</Content>
 		<Image>3a46113u.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2007678161/"&gt;U.S. Army camp scenes, 1862: Camp of 153d N.Y. Inf. Man cooking at stove. Circa 1862. Library of Congress, Prints &amp; Photographs Division, LC-USZ62-45934.&lt;/a&gt;</Attribution>
 		<Prompt>Both sides struggled to sustain their troops. Between the lack of refrigeration and lack of nutrition, soldiers' diets were not exactly healthy.</Prompt>
@@ -1421,7 +1487,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="poker-lose" type="body">
-		<Content>You lay down your hand, but with a grin someone on the other side of the table lays down his hand. You lose. Even if you do get paid soon, you won’t be spending money for a while.&lt;br/&gt;&lt;br/&gt;You hope this isn’t a bad omen.</Content>
+		<Content>You lay down your hand, but with a grin someone on the other side of the table lays down his hand. You lose. Even if you do get paid soon, you won&apos;t be spending money for a while.&lt;br/&gt;&lt;br/&gt;You hope this isn&apos;t a bad omen.</Content>
 		<Image>03882a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000565/PP/"&gt;Petersburg, Va. Officers of the 114th Pennsylvania Infantry playing cards in front of tents. 1862 May. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03882.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -1553,7 +1619,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="letter-mine" type="body">
-		<Content>“My Dear Wife,&lt;br/&gt;&lt;br/&gt;The camp here isn't as different from home as I expected. The soldiers have a similar sense of humour as the miners back home.&lt;br/&gt;&lt;br/&gt;Still, I miss you greatly, especially your home cooking. Here we only occasionally get fresh meat, usually only salt meat. It makes a fellow quite thirsty.&lt;br/&gt;&lt;br/&gt;How are things in town? I hope it isn't too much trouble living alone with the children. Stay out of the saloons, they would only be trouble for you.&lt;br/&gt;&lt;br/&gt;Please write me back when you receive this letter, I look forward to hearing from you.&lt;br/&gt;&lt;br/&gt;    Signed, Your Loving Husband”</Content>
+		<Content>“My Dear Wife,&lt;br/&gt;&lt;br/&gt;The camp here isn't as different from home as I expected. The soldiers have a similar sense of humor as the miners back home.&lt;br/&gt;&lt;br/&gt;Still, I miss you greatly, especially your home cooking. Here we only occasionally get fresh meat, usually only salt meat. It makes a fellow quite thirsty.&lt;br/&gt;&lt;br/&gt;How are things in town? I hope it isn't too much trouble living alone with the children. Stay out of the saloons; they would only be trouble for you.&lt;br/&gt;&lt;br/&gt;Please write me back when you receive this letter, I look forward to hearing from you.&lt;br/&gt;&lt;br/&gt;Your Loving Husband”</Content>
 		<Image>01671a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003004786/PP/"&gt;Washington, District of Columbia. Camp of 31st Penn. Inf. (later, 82d Penn. Inf.) at Queen's farm, vicinity of Fort Slocum. 1861. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01670.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -1718,7 +1784,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="burden-kept" type="body">
-		<Content>It's hard to walk, but you just can't bear to part with the vest you paid so dearly for. It might save your life, after all! &lt;br/&gt;&lt;br/&gt; Walking is very difficult, and the stiffness of the vest makes your gait undignified and not unlike a waddle. Gradually, the rest of the soldiers pull ahead of you until it is only you and a few other stragglers on the road.</Content>
+		<Content>It's hard to walk, but you just can't bear to part with the vest you paid so dearly for. It might save your life, after all! &lt;br/&gt;&lt;br/&gt;Walking is very difficult, and the stiffness of the vest makes your gait undignified and not unlike a waddle. Gradually, the rest of the soldiers pull ahead of you until it is only you and a few other stragglers on the road.</Content>
 		<Image>01175a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003005579/PP/"&gt;Germanna Ford, Rapidan River, Virginia. Grant's troops crossing Germannia Ford. By Timothy H. O'Sullivan. May 4, 1864. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01175.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2147,10 +2213,10 @@
 		</Branch>
 	</Slide>
 	<Slide name="camp" type="body">
-		<Content>The routine at this new camp is the same as the others, except with no time to go to town, as there is none nearby. Being on the front lines – near the enemy – means the soldiers are on edge.&lt;br/&gt;&lt;br/&gt;One night it finally happens. The long roll sounds, and all is chaos as everyone dashes to grab their weapons and form a defensive line.&lt;br/&gt;&lt;br/&gt;Then, from the darkness, you hear a sergeant’s voice yelling that everything is fine, it was only a pig that got loose in the camp and was mistaken for a rebel. Of course, no one got any more sleep that night.</Content>
+		<Content>The routine at this new camp is the same as the others, except this time there is no town nearby to visit. Being on the front lines – near the enemy – means the soldiers are on edge.&lt;br/&gt;&lt;br/&gt;One night it finally happens. The long roll sounds, and all is chaos as everyone dashes to grab their weapons and form a defensive line.&lt;br/&gt;&lt;br/&gt;Then, from the darkness, you hear a sergeant’s voice yelling that everything is fine; it was only a pig that got loose in the camp and was mistaken for a rebel. Of course, no one got any more sleep that night.</Content>
 		<Image>01153a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003005565/PP/"&gt;Bull Run, Virginia. Federal encampment at Blackburn's Ford. By TimothyH. O'Sullivan. 1862 July 4. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01154.&lt;/a&gt;</Attribution>
-		<Prompt>&lt;b&gt;Long Roll&lt;/b&gt; — a kind of drumming used as an alarm.</Prompt>
+		<Prompt>&lt;b&gt;Long Roll:&lt;/b&gt;  a kind of drumming used as an alarm.</Prompt>
 		<Branch type="decision">
 			<Path1>
 				<Text>Continue</Text>
@@ -2279,7 +2345,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="Rletter-farm" type="body">
-		<Content>You open your letter from home and read it:&lt;br/&gt;&lt;br/&gt;“My dear Husband,&lt;br/&gt;&lt;br/&gt;It’s not the same here, either. We will not have too much trouble at harvest time, I think. The children and I will all have to work to gather the crops, but I think we can manage.&lt;br/&gt;&lt;br/&gt;Little Wally found a stray the other day, so for now we have the additional company of Sir Bark the dog. He insists having his own dog is good, and they have become close, but I told him he would have to feed the animal if we kept it. He doesn’t seem to mind now, but I worry he’d forget.&lt;br/&gt;&lt;br/&gt;I miss you and wish you were home,&lt;br/&gt;&lt;br/&gt;Your Loving Wife”</Content>
+		<Content>You open your letter from home and read it:&lt;br/&gt;&lt;br/&gt;“My dear Husband,&lt;br/&gt;&lt;br/&gt;It’s not the same here, either. We will not have too much trouble at harvest time, I think. The children and I will all have to work to gather the crops, but I think we can manage.&lt;br/&gt;&lt;br/&gt;Little Wally found a stray the other day, so for now we have the additional company of Sir Bark the dog. He insists having his own dog is good, and they have become close, but I told him he would have to feed the animal if we kept it. He doesn&apos;t seem to mind now, but I worry he&apos;d forget.&lt;br/&gt;&lt;br/&gt;I miss you and wish you were home,&lt;br/&gt;&lt;br/&gt;Your Loving Wife”</Content>
 		<Image>20648u.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2004661845/"&gt;News from home. By Edwin Forbes. September 30, 1863. Library of Congress, Prints &amp; Photographs Division, LC-DIG-ppmsca-20648.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2477,7 +2543,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="march-drop" type="body">
-		<Content>Nevertheless, you do fall out of line, due to the heavy weight of the "bullet-proof vest" you intend to wear into combat.&lt;br/&gt;&lt;br/&gt;The officer doesn't sympathize, however. They order you to take it off and drop it on the side of the road. You plead with him to let you keep it, saying you'll keep up, and that may have worked the first time he told you to stay in line, but not now, on the third time.&lt;br/&gt;&lt;br/&gt;With mixed disappointment and apprehension, you take it off, drop it, and run to catch up.</Content>
+		<Content>Nevertheless, you do fall out of line, due to the heavy weight of the "bullet-proof vest" you intend to wear into combat.&lt;br/&gt;&lt;br/&gt;The officer doesn't sympathize, however. He orders you to take it off and drop it on the side of the road. You plead with him to let you keep it, saying you'll keep up, and that may have worked the first time he told you to stay in line, but not now, on the third time.&lt;br/&gt;&lt;br/&gt;With mixed disappointment and apprehension, you take it off, drop it, and run to catch up.</Content>
 		<Image>00935a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003005022/PP/"&gt;Belle Plain, Virginia. Camp of 150th Pennsylvania Infantry. 1863 Mar. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-00935.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2576,7 +2642,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="charge" type="body">
-		<Content>The battling is fierce, minnie balls squealing past overhead and thudding as they embed into trees or softly gasping as they burrow into the ground.&lt;br/&gt;&lt;br/&gt;Suddenly, the order is given to “dress on colors”, and those men that can form up on the colors in preparation for a charge. &lt;br/&gt;&lt;br/&gt;The soldiers put on their most intimidating grimace as the charge begins. All semblance of formation is lost as the men are consumed with battle fury – whooping and hollering as they go.&lt;br/&gt;&lt;br/&gt;The yelling serves to lift the heart out of fear, but also to strike the same into the enemy. The helter-skelter crowd races towards the enemy, whose location is evidenced only by the plume of smoke at the opposite end of the field. The whizzing of bullets can still be heard, and every now and then so can a grunt and a thud, as a man is injured and falls.</Content>
+		<Content>The battling is fierce, minnie balls squealing past overhead and thudding as they embed into trees or softly gasping as they burrow into the ground.&lt;br/&gt;&lt;br/&gt;Suddenly, the order is given to &quot;dress on colors&quot;, and those men that can form up on the colors in preparation for a charge. &lt;br/&gt;&lt;br/&gt;The soldiers put on their most intimidating grimace as the charge begins. All semblance of formation is lost as the men are consumed with battle fury – whooping and hollering as they go.&lt;br/&gt;&lt;br/&gt;The yelling serves to lift the heart out of fear, but also to strike fear into the enemy. The helter-skelter crowd races towards the enemy, whose location is evidenced only by the plume of smoke at the opposite end of the field. The whizzing of bullets can still be heard, and every now and then so can a grunt and a thud, as a man is injured and falls.</Content>
 		<Image>22479u.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2004661366/"&gt;Gallant Charge of Humphrey's Division at the Battle of Fredericksburg. By Alfred R. Waud. [1862] December 13. Library of Congress, Prints &amp; Photographs Division, LC-DIG-ppmsca-22479.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2609,7 +2675,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="charge-rout" type="body">
-		<Content>Screaming now almost as much with fear as with fury, you raise your bayonet in preparation for plunging into the enemy ranks, but as you crest the ridge, there is no one to be seen. Farther down the line, there is an abandoned battery of six guns being cautiously examined by some other men.&lt;br/&gt;&lt;br/&gt;Some other soldiers are now hollering “we won!” and cheering. Shortly, the general himself appears and compliments you and your company for capturing a battery of artillery.</Content>
+		<Content>Screaming now almost as much with fear as with fury, you raise your bayonet in preparation for plunging into the enemy ranks, but as you crest the ridge, there is no one to be seen. Farther down the line, there is an abandoned battery of six guns being cautiously examined by some other men.&lt;br/&gt;&lt;br/&gt;Some other soldiers are now hollering &quot;We won!&quot; and cheering. Shortly, the general himself appears and compliments you and your company for capturing a battery of artillery.</Content>
 		<Image>22479u.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2004661366/"&gt;Gallant Charge of Humphrey's Division at the Battle of Fredericksburg. By Alfred R. Waud. [1862] December 13. Library of Congress, Prints &amp; Photographs Division, LC-DIG-ppmsca-22479.&lt;/a&gt;</Attribution>
 		<Prompt>Bayonet charges were common, but hand to hand combat was not. More often, the enemy would retreat rather than engage.</Prompt>
@@ -2645,7 +2711,7 @@
 		<Content>Screaming now almost as much with fear as with fury, you raise your bayonet in preparation for plunging into the enemy ranks, but as you crest the ridge, you hear a familiar sound. Your eyes are drawn to its source: an artillery piece's muzzle flash from the left side of the enemies' ranks. &lt;br/&gt;&lt;br/&gt;Less than a second later, your ranks are met with canister shot as they whiz through the air, burrow through the men, and come to rest in small puffs of dirt. You feel something hit your leg, and you collapse forward. Shocked and in pain, you lie still on the ground as the rest of the soldiers charge past.</Content>
 		<Image>22479u.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2004661366/"&gt;Gallant Charge of Humphrey's Division at the Battle of Fredericksburg. By Alfred R. Waud. [1862] December 13. Library of Congress, Prints &amp; Photographs Division, LC-DIG-ppmsca-22479.&lt;/a&gt;</Attribution>
-		<Prompt>&lt;b&gt;&lt;a href="http://en.wikipedia.org/wiki/Field_artillery_in_the_American_Civil_War#Canister"&gt;Canister shot&lt;/a&gt;&lt;/b&gt; — many small rounds packed into a container that are loaded into field artillery instead of a single large round.</Prompt>
+		<Prompt>&lt;b&gt;&lt;a href="http://en.wikipedia.org/wiki/Field_artillery_in_the_American_Civil_War#Canister"&gt;Canister shot:&lt;/a&gt;&lt;/b&gt;  many small rounds packed into a container that are loaded into field artillery instead of a single large round.</Prompt>
 		<Branch type="random">
 			<Path1 weight="2">
 				<Text/>
@@ -2708,7 +2774,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="pinned-survive" type="body">
-		<Content>This goes on for what seems  to be days, although it can’t have been, since the sun never set. Your hands and face are black with powder, your throat hoarse from smoke and yelling, but you realize that you haven’t heard a cannon shot in a while.&lt;br/&gt;&lt;br/&gt;Gradually, the crack of gunpowder from across the field dies down and – cautiously – the men stand up to get a better view. There doesn’t seem to be any sign of the enemy, and one soldier points  to a group of friendly soldiers on the other side of the field. &lt;br/&gt;&lt;br/&gt;It seems the battle has been won after all.</Content>
+		<Content>This goes on for what seems  to be days, although it can&apos;t have been, since the sun never set. Your hands and face are black with powder, your throat hoarse from smoke and yelling, but you realize that you haven’t heard a cannon shot in a while.&lt;br/&gt;&lt;br/&gt;Gradually, the crack of gunpowder from across the field dies down and – cautiously – the men stand up to get a better view. There doesn’t seem to be any sign of the enemy, and one soldier points  to a group of friendly soldiers on the other side of the field. &lt;br/&gt;&lt;br/&gt;It seems the battle has been won after all.</Content>
 		<Image>01104a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003005540/PP/"&gt;Antietam, Maryland. Bodies of dead, Louisiana Regiment. By Alexander Gardner. 1862 Sept. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01104.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2774,7 +2840,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="pinned-retreat" type="body">
-		<Content>This goes on for what seems to be days, although it can\'’t have been, since the sun never set. Your hands and face are black with powder, your throat hoarse from smoke and yelling. You and the other soldiers are running low on ammunition and morale. &lt;br/&gt;&lt;br/&gt;Abruptly, the crack of gunfire from the enemy ranks ceases. Hesitantly, one of the soldiers peeks out from behind his cover, gasps, and stands up to run away. Peering around the corner, you see why: the enemy has regrouped and has begun to charge, whooping and hollering, bayonets aimed at you.&lt;br/&gt;&lt;br/&gt;Just then, an officer rides up on his horse, yelling "retreat!" The soldiers don't need to be told twice.</Content>
+		<Content>This goes on for what seems to be days, although it can&apos;t have been, since the sun never set. Your hands and face are black with powder, your throat hoarse from smoke and yelling. You and the other soldiers are running low on ammunition and morale. &lt;br/&gt;&lt;br/&gt;Abruptly, the crack of gunfire from the enemy ranks ceases. Hesitantly, one of the soldiers peeks out from behind his cover, gasps, and stands up to run away. Peering around the corner, you see why: the enemy has regrouped and has begun to charge, whooping and hollering, bayonets aimed at you.&lt;br/&gt;&lt;br/&gt;Just then, an officer rides up on his horse, yelling "retreat!" The soldiers don't need to be told twice.</Content>
 		<Image>01327a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003004579/PP/"&gt;Ambulance Corps. Method of removing wounded from the field. By William Frank Browne. Between 1861 and 1869. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01328.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2876,7 +2942,7 @@
 		<Content>The ambulance wagon stops in front of the field hospital, back at camp.&lt;br/&gt;&lt;br/&gt;The first thing you notice when stepping inside is  the smell of fresh blood and pus. Here, too, it is curiously quiet. Whether this is due more to pain, fear, or anesthetic is unknowable.&lt;br/&gt;&lt;br/&gt;Before taking a seat, another convalescent hands you a cup of liquor, “to help you calm down,” he says.</Content>
 		<Image>00202a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003005816/PP/"&gt;Savage Station, Virginia. Union field hospital after the battle of June 27. By James F. Gibson. 1862 June. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-00202.&lt;/a&gt;</Attribution>
-		<Prompt>&lt;b&gt;Convalescent&lt;/b&gt; — a person who is recovering from injury, surgery, or disease.</Prompt>
+		<Prompt>&lt;b&gt;Convalescent:&lt;/b&gt;  a person who is recovering from injury, surgery, or disease.</Prompt>
 		<Branch type="conditional">
 			<Path1 key="injury" value="arm">
 				<Text/>
@@ -3041,7 +3107,7 @@
 		<Content>After the surgery, you stay in bed for a few days recovering. The stump where your amputated limb used to be begins to bloat and discolor with pus under the skin. The doctor says this is healthy and a sign your body is healing.&lt;br/&gt;&lt;br/&gt;Each day you feel weaker and weaker, until you are so weak you can't feed yourself. Eventually, you can't even eat the food that is fed to you. The doctor can't do anything more for you.</Content>
 		<Image>00202a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003005816/PP/"&gt;Savage Station, Virginia. Union field hospital after the battle of June 27. By James F. Gibson. 1862 June. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-00202.&lt;/a&gt;</Attribution>
-		<Prompt>It was believed that excessive pus was a sign of dead tissue being expelled — we know today it is a sign of serious infection.</Prompt>
+		<Prompt>It was believed that excessive pus was a sign of dead tissue being expelled&#8212;we know today it is a sign of serious infection.</Prompt>
 		<Branch type="decision">
 			<Path1>
 				<Text>Continue</Text>
@@ -3071,7 +3137,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="death-infection" type="ending">
-		<Content>You were wounded and operated on, but complications and infection did you in. You did not survive the war.&lt;br/&gt;&lt;br/&gt;This was a common death for soldiers of the Civil War. Their weapons rarely killed outright, but often caused maiming wounds. These wounds almost always became infected because of the lack of sanitation and the primitive healthcare. And these infections often killed the infected, because at that point there were no treatments, if the infection was even recognized.</Content>
+		<Content>You were wounded and operated on, but complications and infection did you in. You did not survive the war.&lt;br/&gt;&lt;br/&gt;This was a common death for soldiers of the Civil War. Their weapons rarely killed outright, but often caused maiming wounds. These wounds often became infected because of the lack of sanitation and the primitive healthcare. </Content>
 		<Image>02106a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003004958/PP/"&gt;Murfreesboro, Tennessee (vicinity). Monument erected on the battlefield at Stones River. Between 1863 and 1869. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-02106.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -3170,7 +3236,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="march-victory" type="body">
-		<Content>The men are all aglow with pride and flush with relief from surviving the battle on the march back to camp. &lt;br/&gt;&lt;br/&gt;Soldiers all around are boasting of great feats of bravery and grace – making a strongman pose to mimic standing up to taunt the enemy, cartwheels to dodge enemy musket balls at the last moment, and more. &lt;br/&gt;&lt;br/&gt;Whether all of these tales are true can’t be gleaned from the faces of the exuberant men. Perhaps it is the shock that makes it easier to ignore the deaths, yet every so often, someone calls out for a friend to listen to their story, only to be met with silence, before another soldier steps in to lighten the mood again.</Content>
+		<Content>The men are all aglow with pride and flush with relief from surviving the battle on the march back to camp. &lt;br/&gt;&lt;br/&gt;Soldiers all around are boasting of great feats of bravery and grace&#8212;making a strongman pose to mimic standing up to taunt the enemy, or doing cartwheels to dodge enemy musket balls at the last moment. &lt;br/&gt;&lt;br/&gt;Whether all of these tales are true can&apos;t be gleaned from the faces of the exuberant men. Perhaps it is the shock that makes it easier to ignore the deaths, yet every so often someone calls out to a friend to hear their story. The call is met with silence. Before long, though, another soldier speaks up and tells another tale to lighten the mood.</Content>
 		<Image>04019a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000177/PP/"&gt;Falmouth, Va. Drum corps of 61st New York Infantry. By Timothy H. O'Sullivan. 1863 March. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-04019.&lt;/a&gt;</Attribution>
 		<Prompt/>

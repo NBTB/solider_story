@@ -37,7 +37,7 @@
 	<Slide name="intro" type="body">
 			<Content>The histories of war are often told by the winner.  Surviving documentary evidence may be more plentiful for one side than for the other.  We have attempted to portray both sides of the conflict with appropriate historic images, however, for some scenes depicting soldiers' daily life, we have used the same image for both sides.</Content>
 			<Image>3b50888u.jpg</Image>
-			<Attribution>lt;a href="http://www.loc.gov/pictures/item/91787341/"&gt;The soldier's dream of home. By Currier &amp; Ives. Between 1861 and 1865. Library of Congress, Prints &amp; Photographs Division, LC-USZC2-3014.&lt;/a&gt;</Attribution>
+			<Attribution>&lt;a href="http://www.loc.gov/pictures/item/91787341/"&gt;The soldier's dream of home. By Currier &amp; Ives. Between 1861 and 1865. Library of Congress, Prints &amp; Photographs Division, LC-USZC2-3014.&lt;/a&gt;</Attribution>
 			<Prompt></Prompt>
 			<Branch type="decision">
 				<Path1>
@@ -107,14 +107,14 @@
 		<Prompt/>
 		<Branch type="decision">
 			<Path1>
-				<Text>Union</Text>
-				<Reference>union</Reference>
-				<Store key="loyalty" value="union"/>
-			</Path1>
-			<Path2>
 				<Text>Confederate</Text>
 				<Reference>confederate</Reference>
 				<Store key="loyalty" value="confederate"/>
+			</Pat1>
+			<Path2>
+				<Text>Union</Text>
+				<Reference>union</Reference>
+				<Store key="loyalty" value="union"/>
 			</Path2>
 			<Path3>
 				<Text/>
@@ -530,7 +530,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="ending-refugee" type="ending">
-		<Content>You were a runaway slave, denied a position in the army, but unable to settle down anywhere. Many freed slaves ended up in overcrowded refugee camps&#8212;a story in its own right. The government tried to apportion land out to freed slaves, but there were simply too many. For these people, the story of the Reconstruction was just beginning.</Content>
+		<Content>You were a runaway slave, denied a position in the army, but unable to settle down anywhere. Many freed slaves ended up in overcrowded refugee camps; a story in its own right. The government tried to apportion land out to freed slaves, but there were simply too many. For these people, the story of the Reconstruction was just beginning.</Content>
 		<Image>03471a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000879/PP/"&gt;Atlanta, Ga. Boxcars with refugees at railroad depot. By George N. Barnard. 1864. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03471.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -730,7 +730,7 @@
 	<Slide name="rally-union" type="body">
 		<Content>Today, a recruitment rally is being held downtown. Everyone is taking the day off to see the band from the big city play. &lt;br/&gt;&lt;br/&gt;The band plays a selection of pieces so stirring that you can't help but imagine a battalion of troops marching in strict formation towards battle, bayonet-tipped muskets pointed sharply to the heavens, steeling themselves for battle. It almost brings a tear to your eye to think of the bravery and valor of the men in the army now, fighting for the cause. &lt;br/&gt;&lt;br/&gt;Several men have walked up to the stage and are signing the enlistment roll now.</Content>
 		<Image>05796u-cropped.jpg</Image>
-		<Attribution>&lt;a href="http://hdl.loc.gov/loc.pnp/pga.05796"&gt;The volunteers in defence of the government against usurpation, 1861 Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03018.&lt;/a&gt;</Attribution>
+		<Attribution>Detail from &lt;a href="http://hdl.loc.gov/loc.pnp/pga.05796"&gt;The volunteers in defence of the government against usurpation, 1861 Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03018.&lt;/a&gt;</Attribution>
 		<Prompt/>
 		<Branch type="decision">
 			<Path1>
@@ -926,7 +926,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="never-fought" type="ending">
-		<Content>You never went to war. Of course, not everyone did, but a large number were recruited, willingly or otherwise. Because of the loopholes in the conscription acts, some men were able to dodge recruitment. It was sometimes said that the Civil War was a "rich man's war, but a poor man's fight." Some weatlthy men, like Grover Cleveland and John D. Rockefeller, went on to become important historical figures.&lt;br/&gt;&lt;br/&gt;</Content>
+		<Content>You never went to war. Of course, not everyone did, but a large number were recruited, willingly or otherwise. Because of the loopholes in the conscription acts, some men were able to dodge recruitment. It was sometimes said that the Civil War was a "rich man's war, but a poor man's fight." Some wealthy men, like Grover Cleveland and John D. Rockefeller, went on to become important historical figures.&lt;br/&gt;&lt;br/&gt;</Content>
 		<Image>01933a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003004890/PP/"&gt;Dutch Gap, Virginia (vicinity). Deserted farm house near Dutch Gap canal. 1864 Nov. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01933.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -1322,7 +1322,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="buy-vest" type="body">
-		<Content>You approach the merchant and ask to see the bullet-proof vest. Holding it in your hands, it is quite heavy. You tell the merchant you are interested in purchasing the vest. He asks $50 for it.  A steep price — more than four months worth of pay — but if it saves your life, it's worth it, right?</Content>
+		<Content>You approach the merchant and ask to see the bullet-proof vest. Holding it in your hands, it is quite heavy. You tell the merchant you are interested in purchasing the vest. He asks $50 for it.  A steep price&#x2014;more than four months worth of pay&#x2014;but if it saves your life, it's worth it, right?</Content>
 		<Image>3b53061u.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2006683287/"&gt;Ellsworth's campaign &amp; barrack or dress uniforms. Plate 1. By Edward Mendel. Sept. 28, 1861. Library of Congress, Prints &amp; Photographs Division, LC-USZC4-1557.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -1388,7 +1388,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="poker" type="body">
-		<Content>Tonight, some of the fellows are gathering to play cards by candlelight. The officers say gambling isn’t allowed, but there will probably be stakes anyway. They offer you to join in their poker game.</Content>
+		<Content>Tonight, some of the fellows are gathering to play cards by candlelight. The officers say gambling isn&apos;t allowed, but there will probably be stakes anyway. They offer you to join in their poker game.</Content>
 		<Image>03882a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000565/PP/"&gt;Petersburg, Va. Officers of the 114th Pennsylvania Infantry playing cards in front of tents. 1862 May. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03882.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -1421,7 +1421,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="poker-playing" type="body">
-		<Content>You play a hand. Then another – and another. The stakes are getting higher and higher until... The bet is no less than four months pay. You have a decent hand, but you can't tell if someone else has a better one. You might as well go all in at this point, there’s nothing more to lose.</Content>
+		<Content>You play a hand. Then another – and another. The stakes are getting higher and higher until... The bet is no less than four months pay. You have a decent hand, but you can't tell if someone else has a better one. You might as well go all in at this point, there&apos;s nothing more to lose.</Content>
 		<Image>03882a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000565/PP/"&gt;Petersburg, Va. Officers of the 114th Pennsylvania Infantry playing cards in front of tents. 1862 May. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03882.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -1454,7 +1454,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="poker-win" type="body">
-		<Content>You lay down your hand, and the other players scowl and toss their cards on the table. You won!&lt;br/&gt;&lt;br/&gt;You may have won a lot of money from them, but since everyone was betting their future pay, you don't actually walk away with any currency. It'll be up to you to remind them how much they owe.</Content>
+		<Content>You lay down your hand, and the other players scowl and toss their cards on the table. You won!&lt;br/&gt;&lt;br/&gt;You may have won a lot of money from them, but since everyone was betting their future pay, you don't actually walk away with any currency. It&apos;ll be up to you to remind them how much they owe.</Content>
 		<Image>03882a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000565/PP/"&gt;Petersburg, Va. Officers of the 114th Pennsylvania Infantry playing cards in front of tents. 1862 May. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03882.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -1553,7 +1553,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="letter-farm" type="body">
-		<Content>“My Dear Wife,&lt;br/&gt;&lt;br/&gt;I miss you greatly. The camp here is nothing like home. I often find myself craving a delicious roast like we used to have. Here we only occasionally get fresh meat, usually only salt meat. It makes a fellow quite thirsty.&lt;br/&gt;&lt;br/&gt;How are things on the farm? I’m worried about harvest time. The crops will need to be reaped before too long. I hope managing the livestock hasn’t been too difficult, either.&lt;br/&gt;&lt;br/&gt;Please write me back when you receive this letter, I look forward to hearing from you.&lt;br/&gt;&lt;br/&gt;    Signed, Your Loving Husband”</Content>
+		<Content>“My Dear Wife,&lt;br/&gt;&lt;br/&gt;I miss you greatly. The camp here is nothing like home. I often find myself craving a delicious roast like we used to have. Here we only occasionally get fresh meat, usually only salt meat. It makes a fellow quite thirsty.&lt;br/&gt;&lt;br/&gt;How are things on the farm? I’m worried about harvest time. The crops will need to be reaped before too long. I hope managing the livestock hasn&apos;t been too difficult, either.&lt;br/&gt;&lt;br/&gt;Please write me back when you receive this letter, I look forward to hearing from you.&lt;br/&gt;&lt;br/&gt;    Signed, Your Loving Husband”</Content>
 		<Image>01671a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003004786/PP/"&gt;Washington, District of Columbia. Camp of 31st Penn. Inf. (later, 82d Penn. Inf.) at Queen's farm, vicinity of Fort Slocum. 1861. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01670.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -1652,7 +1652,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="letter-generic" type="body">
-		<Content>“My Dear Wife,&lt;br/&gt;&lt;br/&gt;I miss you greatly. The camp here is nothing like home. I often find myself craving a delicious roast like we used to have. Here we only occasionally get fresh meat, usually only salt meat. It makes a fellow quite thirsty. And at least at home there was a roof over my head.&lt;br/&gt;&lt;br/&gt;How are the children? I'm sorry I won't be there to see them grow up, but I'll be back as soon as I can. I hope you are doing alright, and the children aren't too much trouble.&lt;br/&gt;&lt;br/&gt;Please write me back when you receive this letter, I look forward to hearing from you.&lt;br/&gt;&lt;br/&gt;    Signed, Your Loving Husband”</Content>
+		<Content>“My Dear Wife,&lt;br/&gt;&lt;br/&gt;I miss you greatly. The camp here is nothing like home. I often find myself craving a delicious roast like we used to have. Here we only occasionally get fresh meat, usually only salt meat. It makes a fellow quite thirsty. And at least at home there was a roof over my head.&lt;br/&gt;&lt;br/&gt;How are the children? I&apos;m sorry I won&apos;t be there to see them grow up, but I&apos;ll be back as soon as I can. I hope you are doing alright, and the children aren&apos;t too much trouble.&lt;br/&gt;&lt;br/&gt;Please write me back when you receive this letter, I look forward to hearing from you.&lt;br/&gt;&lt;br/&gt;    Signed, Your Loving Husband”</Content>
 		<Image>01671a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003004786/PP/"&gt;Washington, District of Columbia. Camp of 31st Penn. Inf. (later, 82d Penn. Inf.) at Queen's farm, vicinity of Fort Slocum. 1861. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01670.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -1718,7 +1718,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="burdened" type="body">
-		<Content>The walking tires you out faster than the other soldiers because you are carrying the metal vest you purchased from the merchant. In fact, it wouldn't fit in your sack, so you decided to wear it while walking. The weight and stiffness of the metal makes walking difficult and makes your skin and uniform clammy. You've already dropped a few rows (such as they are) backwards in the march. At this rate, you wonder if you'll even make it to camp.</Content>
+		<Content>The walking tires you out faster than the other soldiers because you are carrying the metal vest you purchased from the merchant. In fact, it wouldn&apos;t fit in your sack, so you decided to wear it while walking. The weight and stiffness of the metal makes walking difficult and makes your skin and uniform clammy. You&apos;ve already dropped a few rows (such as they are) backwards in the march. At this rate, you wonder if you&apos;ll even make it to camp.</Content>
 		<Image>01175a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003005579/PP/"&gt;Germanna Ford, Rapidan River, Virginia. Grant's troops crossing Germannia Ford. By Timothy H. O'Sullivan. May 4, 1864. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01175.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -1784,7 +1784,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="burden-kept" type="body">
-		<Content>It's hard to walk, but you just can't bear to part with the vest you paid so dearly for. It might save your life, after all! &lt;br/&gt;&lt;br/&gt;Walking is very difficult, and the stiffness of the vest makes your gait undignified and not unlike a waddle. Gradually, the rest of the soldiers pull ahead of you until it is only you and a few other stragglers on the road.</Content>
+		<Content>It&apos;s hard to walk, but you just can&apos;t bear to part with the vest you paid so dearly for. It might save your life, after all! &lt;br/&gt;&lt;br/&gt;Walking is very difficult, and the stiffness of the vest makes your gait undignified and not unlike a waddle. Gradually, the rest of the soldiers pull ahead of you until it is only you and a few other stragglers on the road.</Content>
 		<Image>01175a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003005579/PP/"&gt;Germanna Ford, Rapidan River, Virginia. Grant's troops crossing Germannia Ford. By Timothy H. O'Sullivan. May 4, 1864. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01175.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -1850,7 +1850,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="coffee-stopped" type="body">
-		<Content>You decide to break off from the march for a bit. You and your friends build a fire on the side of the road and roast some coffee beans, then brew coffee and drink it. By now your place in the march has long since passed, and you have to hurry to catch up. Of course, the other marching soldiers are tired, too, and aren't too keen to move aside for you.</Content>
+		<Content>You decide to break off from the march for a bit. You and your friends build a fire on the side of the road and roast some coffee beans, then brew coffee and drink it. By now your place in the march has long since passed, and you have to hurry to catch up. Of course, the other marching soldiers are tired, too, and aren&apos;t too keen to move aside for you.</Content>
 		<Image>03294a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003005396/PP/"&gt;Port Royal Island, South Carolina. Road through woods. 1865. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-03294.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -1949,7 +1949,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="latecamp" type="body">
-		<Content>You never caught up to your place in the march. When you reach the camp site, the fires are already burning and the soldiers that didn't slow down are already eating a hot meal. Luckily, there seems to be enough time for you to eat as well.</Content>
+		<Content>You never caught up to your place in the march. When you reach the camp site, the fires are already burning and the soldiers that didn&apos;t slow down are already eating a hot meal. Luckily, there seems to be enough time for you to eat as well.</Content>
 		<Image>20526u.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2004661593/"&gt;Stragglers on the march to headquarters. Under guard. By Edwin Forbes.  February 10, 1863. Library of Congress, Prints &amp; Photographs Division, LC-DIG-ppmsca-20526.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -1982,7 +1982,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="verylatecamp" type="body">
-		<Content>After struggling to keep moving and stopping frequently, you have to rely on the light from the camp fires in the distance to find the camp. The fires are dying out and all the wood has already been scavenged, so you'll have to make do with an uncooked meal.</Content>
+		<Content>After struggling to keep moving and stopping frequently, you have to rely on the light from the camp fires in the distance to find the camp. The fires are dying out and all the wood has already been scavenged, so you&apos;ll have to make do with an uncooked meal.</Content>
 		<Image>20526u.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2004661593/"&gt;Stragglers on the march to headquarters. Under guard. By Edwin Forbes.  February 10, 1863. Library of Congress, Prints &amp; Photographs Division, LC-DIG-ppmsca-20526.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2114,7 +2114,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="marching-water" type="body">
-		<Content>Heading through the trees and over the ridge, there indeed is the stream the soldiers were talking about. There are many soldiers using their hands to drink and splash their faces.&lt;br/&gt;&lt;br/&gt;There are even a few who have taken the shoes off and are wading, shin-deep, in the water. You make sure to go upstream of them.</Content>
+		<Content>Heading through the trees and over the ridge, there indeed is the stream the soldiers were talking about. There are many soldiers using their hands to drink and splash their faces.&lt;br/&gt;&lt;br/&gt;There are even a few who have taken their shoes off and are wading, shin-deep, in the water. You make sure to go upstream of them.</Content>
 		<Image>02780a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003005207/PP/"&gt;Petersburg, Virginia (vicinity). South Side Railroad trestle (west of Petersburg) across Indian Town creek. 1865 Apr. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-02780.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2180,7 +2180,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="water-canteen" type="body">
-		<Content>You take a drink from the stream with your hands, and find the water cool and refreshing, if a bit earthy in flavor. You can't resist splashing your face like the other men.&lt;br/&gt;&lt;br/&gt;Feeling much better, you fill your canteen and walk back to the road.</Content>
+		<Content>You take a drink from the stream with your hands, and find the water cool and refreshing, if a bit earthy in flavor. You can&apos;t resist splashing your face like the other men.&lt;br/&gt;&lt;br/&gt;Feeling much better, you fill your canteen and walk back to the road.</Content>
 		<Image>02780a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003005207/PP/"&gt;Petersburg, Virginia (vicinity). South Side Railroad trestle (west of Petersburg) across Indian Town creek. 1865 Apr. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-02780.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2279,7 +2279,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="Rletter-none" type="body">
-		<Content>After waiting patiently  the letter carrier calls out, "last one!"&lt;br/&gt;&lt;br/&gt;You and the remaining soldiers lean in with anticipation. He calls out the addressee, and it's not you. Dejectedly, you head back to your tent.</Content>
+		<Content>After waiting patiently  the letter carrier calls out, "last one!"&lt;br/&gt;&lt;br/&gt;You and the remaining soldiers lean in with anticipation. He calls out the addressee, and it&apos;s not you. Dejectedly, you head back to your tent.</Content>
 		<Image>00098a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003005898/PP/"&gt;Falmouth, Virginia. Mail wagon for headquarters, Army of the Potomac. 1863. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-00098.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2345,7 +2345,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="Rletter-farm" type="body">
-		<Content>You open your letter from home and read it:&lt;br/&gt;&lt;br/&gt;“My dear Husband,&lt;br/&gt;&lt;br/&gt;It’s not the same here, either. We will not have too much trouble at harvest time, I think. The children and I will all have to work to gather the crops, but I think we can manage.&lt;br/&gt;&lt;br/&gt;Little Wally found a stray the other day, so for now we have the additional company of Sir Bark the dog. He insists having his own dog is good, and they have become close, but I told him he would have to feed the animal if we kept it. He doesn&apos;t seem to mind now, but I worry he&apos;d forget.&lt;br/&gt;&lt;br/&gt;I miss you and wish you were home,&lt;br/&gt;&lt;br/&gt;Your Loving Wife”</Content>
+		<Content>You open your letter from home and read it:&lt;br/&gt;&lt;br/&gt;“My dear Husband,&lt;br/&gt;&lt;br/&gt;It&apos;s not the same here, either. We will not have too much trouble at harvest time, I think. The children and I will all have to work to gather the crops, but I think we can manage.&lt;br/&gt;&lt;br/&gt;Little Wally found a stray the other day, so for now we have the additional company of Sir Bark the dog. He insists having his own dog is good, and they have become close, but I told him he would have to feed the animal if we kept it. He doesn&apos;t seem to mind now, but I worry he&apos;d forget.&lt;br/&gt;&lt;br/&gt;I miss you and wish you were home,&lt;br/&gt;&lt;br/&gt;Your Loving Wife”</Content>
 		<Image>20648u.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2004661845/"&gt;News from home. By Edwin Forbes. September 30, 1863. Library of Congress, Prints &amp; Photographs Division, LC-DIG-ppmsca-20648.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2378,7 +2378,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="Rletter-factory" type="body">
-		<Content>You open your letter from home and read it:&lt;br/&gt;&lt;br/&gt;“My dear Husband,&lt;br/&gt;&lt;br/&gt;It’s not the same here, either. The money you send home keeps us well fed, but it's disappointing to have an empty chair at the dinner table.&lt;br/&gt;&lt;br/&gt;I think you must have been away too long; you would not miss the smell of that alleyway if you could smell it now. &lt;br/&gt;&lt;br/&gt;Little Wally found a stray the other day, so for now we have the additional company of Sir Bark the dog. He insists having his own dog is good, and they have become close, but I told him he would have to feed the animal if we kept it. He doesn’t seem to mind now, but I worry he’d forget.&lt;br/&gt;&lt;br/&gt;I miss you and wish you were home,&lt;br/&gt;&lt;br/&gt;Your loving Wife”</Content>
+		<Content>You open your letter from home and read it:&lt;br/&gt;&lt;br/&gt;“My dear Husband,&lt;br/&gt;&lt;br/&gt;It&apos;s not the same here, either. The money you send home keeps us well fed, but it's disappointing to have an empty chair at the dinner table.&lt;br/&gt;&lt;br/&gt;I think you must have been away too long; you would not miss the smell of that alleyway if you could smell it now. &lt;br/&gt;&lt;br/&gt;Little Wally found a stray the other day, so for now we have the additional company of Sir Bark the dog. He insists having his own dog is good, and they have become close, but I told him he would have to feed the animal if we kept it. He doesn&apos;t seem to mind now, but I worry he&apos;d forget.&lt;br/&gt;&lt;br/&gt;I miss you and wish you were home,&lt;br/&gt;&lt;br/&gt;Your loving Wife”</Content>
 		<Image>20648u.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2004661845/"&gt;News from home. By Edwin Forbes. September 30, 1863. Library of Congress, Prints &amp; Photographs Division, LC-DIG-ppmsca-20648.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2411,7 +2411,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="Rletter-mine" type="body">
-		<Content>You open your letter from home and read it:&lt;br/&gt;&lt;br/&gt;“My dear Husband,&lt;br/&gt;&lt;br/&gt;I'm glad you found something to remind you of home. We have been doing alright, here. The children and I have made ourselves busy stitching and mending clothing for the other townsfolk.&lt;br/&gt;&lt;br/&gt;Little Wally found a stray the other day, so for now we have the additional company of Sir Bark the dog. He insists having his own dog is good, and they have become close, but I told him he would have to feed the animal if we kept it. He doesn’t seem to mind now, but I worry he’d forget.&lt;br/&gt;&lt;br/&gt;I miss you and look forward to your return,&lt;br/&gt;&lt;br/&gt;Your Loving Wife”</Content>
+		<Content>You open your letter from home and read it:&lt;br/&gt;&lt;br/&gt;“My dear Husband,&lt;br/&gt;&lt;br/&gt;I'm glad you found something to remind you of home. We have been doing alright, here. The children and I have made ourselves busy stitching and mending clothing for the other townsfolk.&lt;br/&gt;&lt;br/&gt;Little Wally found a stray the other day, so for now we have the additional company of Sir Bark the dog. He insists having his own dog is good, and they have become close, but I told him he would have to feed the animal if we kept it. He doesn&apos;t seem to mind now, but I worry he&apos;d forget.&lt;br/&gt;&lt;br/&gt;I miss you and look forward to your return,&lt;br/&gt;&lt;br/&gt;Your Loving Wife”</Content>
 		<Image>20648u.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2004661845/"&gt;News from home. By Edwin Forbes. September 30, 1863. Library of Congress, Prints &amp; Photographs Division, LC-DIG-ppmsca-20648.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2444,7 +2444,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="Rletter-generic" type="body">
-		<Content>You open your letter from home and read it:&lt;br/&gt;&lt;br/&gt;“My dear Husband,&lt;br/&gt;&lt;br/&gt;It’s not the same here, either. The money you send home keeps us well fed, but it's disappointing to have an empty chair at the dinner table.&lt;br/&gt;&lt;br/&gt;Little Wally found a stray the other day, so for now we have the additional company of Sir Bark the dog. He insists having his own dog is good, and they have become close, but I told him he would have to feed the animal if we kept it. He doesn’t seem to mind now, but I worry he’d forget.&lt;br/&gt;&lt;br/&gt;I miss you and wish you were home,&lt;br/&gt;&lt;br/&gt;Your loving Wife”</Content>
+		<Content>You open your letter from home and read it:&lt;br/&gt;&lt;br/&gt;“My dear Husband,&lt;br/&gt;&lt;br/&gt;It&apos;s not the same here, either. The money you send home keeps us well fed, but it&apos;s disappointing to have an empty chair at the dinner table.&lt;br/&gt;&lt;br/&gt;Little Wally found a stray the other day, so for now we have the additional company of Sir Bark the dog. He insists having his own dog is good, and they have become close, but I told him he would have to feed the animal if we kept it. He doesn&apos;t seem to mind now, but I worry he&apos;d forget.&lt;br/&gt;&lt;br/&gt;I miss you and wish you were home,&lt;br/&gt;&lt;br/&gt;Your loving Wife”</Content>
 		<Image>20648u.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2004661845/"&gt;News from home. By Edwin Forbes. September 30, 1863. Library of Congress, Prints &amp; Photographs Division, LC-DIG-ppmsca-20648.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2543,7 +2543,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="march-drop" type="body">
-		<Content>Nevertheless, you do fall out of line, due to the heavy weight of the "bullet-proof vest" you intend to wear into combat.&lt;br/&gt;&lt;br/&gt;The officer doesn't sympathize, however. He orders you to take it off and drop it on the side of the road. You plead with him to let you keep it, saying you'll keep up, and that may have worked the first time he told you to stay in line, but not now, on the third time.&lt;br/&gt;&lt;br/&gt;With mixed disappointment and apprehension, you take it off, drop it, and run to catch up.</Content>
+		<Content>Nevertheless, you do fall out of line, due to the heavy weight of the "bullet-proof vest" you intend to wear into combat.&lt;br/&gt;&lt;br/&gt;The officer doesn&apos;t sympathize, however. He orders you to take it off and drop it on the side of the road. You plead with him to let you keep it, saying you&apos;ll keep up, and that may have worked the first time he told you to stay in line, but not now, on the third time.&lt;br/&gt;&lt;br/&gt;With mixed disappointment and apprehension, you take it off, drop it, and run to catch up.</Content>
 		<Image>00935a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003005022/PP/"&gt;Belle Plain, Virginia. Camp of 150th Pennsylvania Infantry. 1863 Mar. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-00935.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2642,7 +2642,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="charge" type="body">
-		<Content>The battling is fierce, minnie balls squealing past overhead and thudding as they embed into trees or softly gasping as they burrow into the ground.&lt;br/&gt;&lt;br/&gt;Suddenly, the order is given to &quot;dress on colors&quot;, and those men that can form up on the colors in preparation for a charge. &lt;br/&gt;&lt;br/&gt;The soldiers put on their most intimidating grimace as the charge begins. All semblance of formation is lost as the men are consumed with battle fury – whooping and hollering as they go.&lt;br/&gt;&lt;br/&gt;The yelling serves to lift the heart out of fear, but also to strike fear into the enemy. The helter-skelter crowd races towards the enemy, whose location is evidenced only by the plume of smoke at the opposite end of the field. The whizzing of bullets can still be heard, and every now and then so can a grunt and a thud, as a man is injured and falls.</Content>
+		<Content>The battling is fierce, minnie balls squealing past overhead and thudding as they embed into trees or softly gasping as they burrow into the ground.&lt;br/&gt;&lt;br/&gt;Suddenly, the order is given to &quot;dress on colors&quot;, and those men that can form up on the colors in preparation for a charge. &lt;br/&gt;&lt;br/&gt;The soldiers put on their most intimidating grimace as the charge begins. All semblance of formation is lost as the men are consumed with battle fury, whooping and hollering as they go.&lt;br/&gt;&lt;br/&gt;The yelling serves to lift the heart out of fear, but also to strike fear into the enemy. The helter-skelter crowd races towards the enemy, whose location is evidenced only by the plume of smoke at the opposite end of the field. The whizzing of bullets can still be heard, and every now and then so can a grunt and a thud, as a man is injured and falls.</Content>
 		<Image>22479u.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2004661366/"&gt;Gallant Charge of Humphrey's Division at the Battle of Fredericksburg. By Alfred R. Waud. [1862] December 13. Library of Congress, Prints &amp; Photographs Division, LC-DIG-ppmsca-22479.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2708,7 +2708,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="charge-shot" type="body">
-		<Content>Screaming now almost as much with fear as with fury, you raise your bayonet in preparation for plunging into the enemy ranks, but as you crest the ridge, you hear a familiar sound. Your eyes are drawn to its source: an artillery piece's muzzle flash from the left side of the enemies' ranks. &lt;br/&gt;&lt;br/&gt;Less than a second later, your ranks are met with canister shot as they whiz through the air, burrow through the men, and come to rest in small puffs of dirt. You feel something hit your leg, and you collapse forward. Shocked and in pain, you lie still on the ground as the rest of the soldiers charge past.</Content>
+		<Content>Screaming now almost as much with fear as with fury, you raise your bayonet in preparation for plunging into the enemy ranks, but as you crest the ridge, you hear a familiar sound. Your eyes are drawn to its source: an artillery piece&apos;s muzzle flash from the left side of the enemies&apos; ranks. &lt;br/&gt;&lt;br/&gt;Less than a second later, your ranks are met with canister shot as they whiz through the air, burrow through the men, and come to rest in small puffs of dirt. You feel something hit your leg, and you collapse forward. Shocked and in pain, you lie still on the ground as the rest of the soldiers charge past.</Content>
 		<Image>22479u.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/2004661366/"&gt;Gallant Charge of Humphrey's Division at the Battle of Fredericksburg. By Alfred R. Waud. [1862] December 13. Library of Congress, Prints &amp; Photographs Division, LC-DIG-ppmsca-22479.&lt;/a&gt;</Attribution>
 		<Prompt>&lt;b&gt;&lt;a href="http://en.wikipedia.org/wiki/Field_artillery_in_the_American_Civil_War#Canister"&gt;Canister shot:&lt;/a&gt;&lt;/b&gt;  many small rounds packed into a container that are loaded into field artillery instead of a single large round.</Prompt>
@@ -2741,7 +2741,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="pinned" type="body">
-		<Content>Evidently the enemy is very interested in the specific plot of ground that you  are occupying. Your company's volley of shots is returned immediately by the enemy's retort by cannon-fire.&lt;br/&gt;&lt;br/&gt;The approaching shells are distinguished by a distinctive and unnerving whistling, but by the time your realize those shells are aimed at you, there is but a scant moment to react.&lt;br/&gt;&lt;br/&gt;One round screams into your midst, and makes a deafening rumble as it is embedded into the earth behind you. Turning, you see a fellow soldier, covered now by a shower of earth.&lt;br/&gt;&lt;br/&gt;Another shell hits a tree nearby, sending forth a cloud of splinters.</Content>
+		<Content>Evidently the enemy is very interested in the specific plot of ground that you  are occupying. Your company&apos;s volley of shots is returned immediately by the enemy&apos;s retort by cannon-fire.&lt;br/&gt;&lt;br/&gt;The approaching shells are distinguished by a distinctive and unnerving whistling, but by the time your realize those shells are aimed at you, there is but a scant moment to react.&lt;br/&gt;&lt;br/&gt;One round screams into your midst, and makes a deafening rumble as it is embedded into the earth behind you. Turning, you see a fellow soldier, covered now by a shower of earth.&lt;br/&gt;&lt;br/&gt;Another shell hits a tree nearby, sending forth a cloud of splinters.</Content>
 		<Image>00068a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003006184/PP/"&gt;Gettysburg, Pennsylvania. Confederate soldiers who had evidently been shelled by our batteries on Round Top. By Timothy H. O'Sullivan. 1863 July. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-00068.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2774,7 +2774,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="pinned-survive" type="body">
-		<Content>This goes on for what seems  to be days, although it can&apos;t have been, since the sun never set. Your hands and face are black with powder, your throat hoarse from smoke and yelling, but you realize that you haven’t heard a cannon shot in a while.&lt;br/&gt;&lt;br/&gt;Gradually, the crack of gunpowder from across the field dies down and – cautiously – the men stand up to get a better view. There doesn’t seem to be any sign of the enemy, and one soldier points  to a group of friendly soldiers on the other side of the field. &lt;br/&gt;&lt;br/&gt;It seems the battle has been won after all.</Content>
+		<Content>This goes on for what seems  to be days, although it can&apos;t have been, since the sun never set. Your hands and face are black with powder, your throat hoarse from smoke and yelling, but you realize that you haven&apos;t heard a cannon shot in a while.&lt;br/&gt;&lt;br/&gt;Gradually, the crack of gunpowder from across the field dies down and – cautiously – the men stand up to get a better view. There doesn&apos;t seem to be any sign of the enemy, and one soldier points  to a group of friendly soldiers on the other side of the field. &lt;br/&gt;&lt;br/&gt;It seems the battle has been won after all.</Content>
 		<Image>01104a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003005540/PP/"&gt;Antietam, Maryland. Bodies of dead, Louisiana Regiment. By Alexander Gardner. 1862 Sept. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01104.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2807,7 +2807,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="pinned-injured" type="body">
-		<Content>This seems to go on for a long time, but in truth it couldn't have lasted more than a single hour before you feel a searing pain in your arm. Clutching at the pain, you feel moist cloth, and withdraw a red-stained hand. &lt;br/&gt;&lt;br/&gt;You try to roll over, and find that you can not  move your left arm.&lt;br/&gt;&lt;br/&gt;Yelling for help, you are largely ignored or told to be quiet and wait for the stretcher-bearers.</Content>
+		<Content>This seems to go on for a long time, but in truth it couldn&apos;t have lasted more than a single hour before you feel a searing pain in your arm. Clutching at the pain, you feel moist cloth, and withdraw a red-stained hand. &lt;br/&gt;&lt;br/&gt;You try to roll over, and find that you can not  move your left arm.&lt;br/&gt;&lt;br/&gt;Yelling for help, you are largely ignored or told to be quiet and wait for the stretcher-bearers.</Content>
 		<Image>01327a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003004579/PP/"&gt;Ambulance Corps. Method of removing wounded from the field. By William Frank Browne. Between 1861 and 1869. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01328.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2873,7 +2873,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="ambulance-arm" type="body">
-		<Content>The shouting, booming, and crackling of musket-fire blend together as you struggle to stay conscious.  Suddenly, you become aware of someone talking to you. The tourniquet they put around your arm is extremely tight, but at least it’s a distraction. The medics made a sling for you from part of your uniform.&lt;br/&gt;&lt;br/&gt;The soldiers are expressionless as they tend the wounded; some who shamble along, while others are carried to an ambulance wagon. Stretchers fill the wagons. The less wounded ride on the wagon steps. It’s a bumpy ride, but the only sound from those in pain is a low groan.</Content>
+		<Content>The shouting, booming, and crackling of musket-fire blend together as you struggle to stay conscious.  Suddenly, you become aware of someone talking to you. The tourniquet they put around your arm is extremely tight, but at least it&apos;s a distraction. The medics made a sling for you from part of your uniform.&lt;br/&gt;&lt;br/&gt;The soldiers are expressionless as they tend the wounded; some who shamble along, while others are carried to an ambulance wagon. Stretchers fill the wagons. The less wounded ride on the wagon steps. It&apos;s a bumpy ride, but the only sound from those in pain is a low groan.</Content>
 		<Image>01327a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003004579/PP/"&gt;Ambulance Corps. Method of removing wounded from the field. By William Frank Browne. Between 1861 and 1869. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01328.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2906,7 +2906,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="ambulance-leg" type="body">
-		<Content>The shouting, booming, and crackling of musket-fire blend together as you struggle to stay conscious.  Suddenly, you become aware of someone talking to you. The tourniquet they put around your leg is extremely tight, but at least it’s a distraction. The medics improvised a splint for you by tying your musket tightly to your leg to prevent it from moving.&lt;br/&gt;&lt;br/&gt;The soldiers are expressionless as they tend the wounded; some who shamble along, while others are carried to an ambulance wagon. Stretchers fill the wagons. The less wounded ride on the wagon steps. It’s a bumpy ride, but the only sound from those in pain is a low groan.</Content>
+		<Content>The shouting, booming, and crackling of musket-fire blend together as you struggle to stay conscious.  Suddenly, you become aware of someone talking to you. The tourniquet they put around your leg is extremely tight, but at least it&apos;s a distraction. The medics improvised a splint for you by tying your musket tightly to your leg to prevent it from moving.&lt;br/&gt;&lt;br/&gt;The soldiers are expressionless as they tend the wounded; some who shamble along, while others are carried to an ambulance wagon. Stretchers fill the wagons. The less wounded ride on the wagon steps. It&apos;s a bumpy ride, but the only sound from those in pain is a low groan.</Content>
 		<Image>01327a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003004579/PP/"&gt;Ambulance Corps. Method of removing wounded from the field. By William Frank Browne. Between 1861 and 1869. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-01328.&lt;/a&gt;</Attribution>
 		<Prompt/>
@@ -2939,7 +2939,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="fieldhospital" type="body">
-		<Content>The ambulance wagon stops in front of the field hospital, back at camp.&lt;br/&gt;&lt;br/&gt;The first thing you notice when stepping inside is  the smell of fresh blood and pus. Here, too, it is curiously quiet. Whether this is due more to pain, fear, or anesthetic is unknowable.&lt;br/&gt;&lt;br/&gt;Before taking a seat, another convalescent hands you a cup of liquor, “to help you calm down,” he says.</Content>
+		<Content>The ambulance wagon stops in front of the field hospital, back at camp.&lt;br/&gt;&lt;br/&gt;The first thing you notice when stepping inside is  the smell of fresh blood and pus. Here, too, it is curiously quiet. Whether this is due more to pain, fear, or anest" he says.</Content>
 		<Image>00202a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003005816/PP/"&gt;Savage Station, Virginia. Union field hospital after the battle of June 27. By James F. Gibson. 1862 June. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-00202.&lt;/a&gt;</Attribution>
 		<Prompt>&lt;b&gt;Convalescent:&lt;/b&gt;  a person who is recovering from injury, surgery, or disease.</Prompt>
@@ -3107,7 +3107,7 @@
 		<Content>After the surgery, you stay in bed for a few days recovering. The stump where your amputated limb used to be begins to bloat and discolor with pus under the skin. The doctor says this is healthy and a sign your body is healing.&lt;br/&gt;&lt;br/&gt;Each day you feel weaker and weaker, until you are so weak you can't feed yourself. Eventually, you can't even eat the food that is fed to you. The doctor can't do anything more for you.</Content>
 		<Image>00202a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003005816/PP/"&gt;Savage Station, Virginia. Union field hospital after the battle of June 27. By James F. Gibson. 1862 June. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-00202.&lt;/a&gt;</Attribution>
-		<Prompt>It was believed that excessive pus was a sign of dead tissue being expelled&#8212;we know today it is a sign of serious infection.</Prompt>
+		<Prompt>It was believed that excessive pus was a sign of dead tissue being expelled. We know today it is a sign of serious infection.</Prompt>
 		<Branch type="decision">
 			<Path1>
 				<Text>Continue</Text>
@@ -3236,7 +3236,7 @@
 		</Branch>
 	</Slide>
 	<Slide name="march-victory" type="body">
-		<Content>The men are all aglow with pride and flush with relief from surviving the battle on the march back to camp. &lt;br/&gt;&lt;br/&gt;Soldiers all around are boasting of great feats of bravery and grace&#8212;making a strongman pose to mimic standing up to taunt the enemy, or doing cartwheels to dodge enemy musket balls at the last moment. &lt;br/&gt;&lt;br/&gt;Whether all of these tales are true can&apos;t be gleaned from the faces of the exuberant men. Perhaps it is the shock that makes it easier to ignore the deaths, yet every so often someone calls out to a friend to hear their story. The call is met with silence. Before long, though, another soldier speaks up and tells another tale to lighten the mood.</Content>
+		<Content>The men are all aglow with pride and flush with relief from surviving the battle on the march back to camp. &lt;br/&gt;&lt;br/&gt;Soldiers all around are boasting of great feats of bravery and grace: making a strongman pose to mimic standing up to taunt the enemy, or doing cartwheels to dodge enemy musket balls at the last moment. &lt;br/&gt;&lt;br/&gt;Whether all of these tales are true can&apos;t be gleaned from the faces of the exuberant men. Perhaps it is the shock that makes it easier to ignore the deaths, yet every so often someone calls out to a friend to hear their story. The call is met with silence. Before long, though, another soldier speaks up and tells another tale to lighten the mood.</Content>
 		<Image>04019a.jpg</Image>
 		<Attribution>&lt;a href="http://www.loc.gov/pictures/item/cwp2003000177/PP/"&gt;Falmouth, Va. Drum corps of 61st New York Infantry. By Timothy H. O'Sullivan. 1863 March. Library of Congress, Prints &amp; Photographs Division, LC-DIG-cwpb-04019.&lt;/a&gt;</Attribution>
 		<Prompt/>

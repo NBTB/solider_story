@@ -110,7 +110,7 @@
 				<Text>Confederate</Text>
 				<Reference>confederate</Reference>
 				<Store key="loyalty" value="confederate"/>
-			</Pat1>
+			</Path1>
 			<Path2>
 				<Text>Union</Text>
 				<Reference>union</Reference>
